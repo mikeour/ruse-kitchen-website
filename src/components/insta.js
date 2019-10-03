@@ -16,6 +16,7 @@ const Insta = () => {
       `}
     >
       <h1>What's New With Us?</h1>
+
       <div
         css={css`
           /* border: 1px solid red; */

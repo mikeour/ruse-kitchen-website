@@ -36,7 +36,7 @@ const ContactPage = () => {
               type="text"
             ></input>
             <input type="hidden" name="bot-field" />
-            <button>Send</button>
+            <button type="submit">Send</button>
           </form>
           <Link to="/">Go back to the homepage</Link>
         </div>
