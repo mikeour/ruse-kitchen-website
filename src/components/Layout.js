@@ -1,21 +1,10 @@
 import React from "react"
 import Nav from "./nav"
+import Footer from "./footer"
 import { css, Global } from "@emotion/core"
 import { globalStyles } from "../styles/global"
 
 const Layout = ({ children }) => {
-  // const { image } = useStaticQuery(graphql`
-  //   query {
-  //     image: file(relativePath: { eq: "instagram-logo.png" }) {
-  //       sharp: childImageSharp {
-  //         fixed {
-  //           ...GatsbyImageSharpFixed
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
-
   return (
     <div
       css={css`
@@ -31,9 +20,8 @@ const Layout = ({ children }) => {
       </header>
 
       <main>{children}</main>
-      <footer>
-        <small>Website created by Mike Roeslein</small>
-      </footer>
+
+      <Footer />
     </div>
   )
 }

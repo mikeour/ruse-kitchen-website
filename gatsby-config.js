@@ -16,20 +16,20 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // {
-    //   resolve: "gatsby-plugin-web-font-loader",
-    //   options: {
-    //     google: {
-    //       families: ["Playfair Display"],
-    //     },
-    //   },
-    // },
     {
-      resolve: `gatsby-plugin-typography`,
+      resolve: "gatsby-plugin-web-font-loader",
       options: {
-        pathToConfigModule: `src/utils/typography`,
+        google: {
+          families: ["Scope One", "Scope One:300,400,700"],
+        },
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-typography`,
+    //   options: {
+    //     pathToConfigModule: `src/utils/typography`,
+    //   },
+    // },
     {
       resolve: "gatsby-source-instagram",
       options: {

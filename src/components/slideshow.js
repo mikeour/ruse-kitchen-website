@@ -1,6 +1,7 @@
-import React, { useState } from "react"
+import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
+import useSlideshow from "../hooks/use-slideshow"
 import { css } from "@emotion/core"
 
 const Slideshow = () => {
@@ -23,15 +24,10 @@ const Slideshow = () => {
     }
   `)
 
-  const allFiles = [imageOne, imageTwo]
-
-  const length = allFiles.length - 1
-  const [index, setIndex] = useState(0)
-
-  const handleNext = () =>
-    index === length ? setIndex(0) : setIndex(index + 1)
-  const handlePrevious = () =>
-    index === 0 ? setIndex(length) : setIndex(index - 1)
+  const { current, handleNext, handlePrevious } = useSlideshow([
+    imageOne,
+    imageTwo,
+  ])
 
   return (
     <div
@@ -39,7 +35,7 @@ const Slideshow = () => {
         position: relative;
       `}
     >
-      <Img fluid={allFiles[index].sharp.fluid}></Img>
+      <Img fluid={current.sharp.fluid}></Img>
       <div>
         <div
           css={css`

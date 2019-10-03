@@ -1,14 +1,13 @@
 import React from "react"
-import { NavLink, StyledA } from "./navLink"
-import useSocialMediaLogos from "../hooks/use-social-media-logos"
-import Img from "gatsby-image"
 import { css } from "@emotion/core"
+import Img from "gatsby-image"
+import useSocialMediaLogos from "../hooks/use-social-media-logos"
+import { StyledA } from "./navLink"
 
-const Nav = () => {
+const Footer = () => {
   const { instagram, facebook, yelp } = useSocialMediaLogos()
-
   return (
-    <nav
+    <footer
       css={css`
         width: 100%;
         height: 5rem;
@@ -16,22 +15,13 @@ const Nav = () => {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        position: fixed;
-        background: var(--nav);
-        z-index: 234234;
+        background: var(--footer);
       `}
     >
-      <NavLink to="/">Home</NavLink>
-
-      <NavLink to="/menu">Menu</NavLink>
-
-      <NavLink to="/where">Where</NavLink>
-
-      <NavLink to="/calendar">Calendar</NavLink>
-
-      <NavLink to="/contact">Contact</NavLink>
-
-      <NavLink to="/about">About</NavLink>
+      <form>
+        <input type="text"></input>
+        <button>Add me!</button>
+      </form>
 
       <div
         css={css`
@@ -66,8 +56,8 @@ const Nav = () => {
           <Img fixed={yelp.sharp.fixed} />
         </StyledA>
       </div>
-    </nav>
+    </footer>
   )
 }
 
-export default Nav
+export default Footer

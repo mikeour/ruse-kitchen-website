@@ -7,7 +7,30 @@ export const globalStyles = css`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    /* font-family: "Playfair Display", serif; */
+    font-family: "Scope One", sans-serif;
+    font-size: 18px;
+  }
+
+  body {
+    background: var(--body);
+  }
+
+  /* :root {
+           --nav: honeydew;
+           --footer: honeydew;
+           --body: honeydew;
+           --section: rgba(255, 251, 229, 1);
+           --navlink: black;
+           --navlink-hover: seagreen;
+         } */
+
+  :root {
+    --nav: white;
+    --footer: white;
+    --body: white;
+    --section: white;
+    --navlink: black;
+    --navlink-hover: seagreen;
   }
 
   /* body {
