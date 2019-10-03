@@ -17,6 +17,26 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     // {
+    //   resolve: "gatsby-plugin-web-font-loader",
+    //   options: {
+    //     google: {
+    //       families: ["Playfair Display"],
+    //     },
+    //   },
+    // },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    {
+      resolve: "gatsby-source-instagram",
+      options: {
+        username: "rusevegankitchen",
+      },
+    },
+    // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {
     //     name: `gatsby-starter-default`,
