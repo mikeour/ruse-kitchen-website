@@ -17,8 +17,8 @@ const ContactPage = () => {
           <form
             name="contact"
             method="post"
+            netlify-honeypot="bot-field"
             data-netlify="true"
-            data-netlify-honeypot="bot-field"
             css={css`
               display: flex;
               flex-direction: column;
@@ -35,6 +35,7 @@ const ContactPage = () => {
               placeholder="Enter message..."
               type="text"
             ></input>
+            <input type="hidden" name="bot-field" />
             <button>Send</button>
           </form>
           <Link to="/">Go back to the homepage</Link>
