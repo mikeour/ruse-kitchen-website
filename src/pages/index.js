@@ -1,15 +1,23 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
-import Layout from "../components/Layout.js"
-import Insta from "../components/Insta.js"
+import Layout from "../components/layout.js"
+import Insta from "../components/insta.js"
+import { css } from "@emotion/core"
 
 const Index = () => {
-  const { image } = useStaticQuery(graphql`
+  const { imageOne, imageTwo } = useStaticQuery(graphql`
     query {
-      image: file(relativePath: { eq: "hmm.jpg" }) {
+      imageOne: file(relativePath: { eq: "hmm.jpg" }) {
         sharp: childImageSharp {
-          fluid {
+          fluid(quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      imageTwo: file(relativePath: { eq: "food.jpg" }) {
+        sharp: childImageSharp {
+          fluid(quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
@@ -20,9 +28,9 @@ const Index = () => {
   return (
     <>
       <Layout>
-        <Img fluid={image.sharp.fluid}>
-          <h1>Here is some text!</h1>
-        </Img>
+        <Img fluid={imageOne.sharp.fluid}></Img>
+        <Img fluid={imageTwo.sharp.fluid}></Img>
+
         {/* <h1>Welcome to Ruse Vegan Kitchen</h1>
         <p>Look at all my content.</p>
         <Link to="/page-2">Go to Page 2</Link> */}

@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
-import Layout from "../components/Layout"
-import WhereWeAre from "../components/WhereWeAre"
+import Layout from "../components/layout"
+import WhereWeAre from "../components/whereWeAre"
 
 import { css } from "@emotion/core"
 
