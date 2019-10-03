@@ -55,17 +55,17 @@ const NavLink = props => (
 )
 
 const Layout = ({ children }) => {
-  const { image } = useStaticQuery(graphql`
-    query {
-      image: file(relativePath: { eq: "instagram-logo.png" }) {
-        sharp: childImageSharp {
-          fixed {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
-  `)
+  // const { image } = useStaticQuery(graphql`
+  //   query {
+  //     image: file(relativePath: { eq: "instagram-logo.png" }) {
+  //       sharp: childImageSharp {
+  //         fixed {
+  //           ...GatsbyImageSharpFixed
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
 
   return (
     <div
@@ -151,14 +151,14 @@ const Layout = ({ children }) => {
 
           <NavLink to="/contact">Contact</NavLink>
 
-          <Img
+          {/* <Img
             css={css`
               color: black;
               position: relative;
               width: 50px;
             `}
             fixed={image.sharp.fixed}
-          ></Img>
+          ></Img> */}
         </nav>
       </header>
 
