@@ -10,6 +10,14 @@ const Insta = () => {
 
   return (
     <Section title="What's new with us?">
+      <p
+        css={css`
+          padding: 1rem;
+        `}
+      >
+        Check out our latest posts and make sure to follow us on Instagram
+        @rusekitchen.
+      </p>
       <div
         css={css`
           /* margin: 5rem 10rem;

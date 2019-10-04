@@ -28,7 +28,7 @@ export const globalStyles = css`
     --nav: white;
     --footer: white;
     --body: white;
-    --section: white;
+    --section: rgb(238, 241, 242);
     --navlink: black;
     --navlink-hover: seagreen;
   }

@@ -2,15 +2,18 @@ import React from "react"
 import { Link } from "gatsby"
 import { css } from "@emotion/core"
 
-const Section = ({ title, children }) => {
+const Section = ({ title, link, children }) => {
   return (
     <div
       css={css`
         padding: 2rem;
-        margin: 5rem 10rem;
+        margin: 7rem 10rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        /* border: 2px solid seagreen; */
+        background: var(--section);
+        border-radius: 10px;
       `}
     >
       {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -29,13 +32,20 @@ const Section = ({ title, children }) => {
         <h1
           css={css`
             padding: 1.5rem;
+            font-family: "Montserrat", serif;
             font-size: 2rem;
           `}
         >
           {title}
         </h1>
-        <div>{children}</div>
-        <Link to="/">Go back to the homepage</Link>
+        <div
+          css={css`
+            padding: 0.5rem 3rem;
+          `}
+        >
+          {children}
+        </div>
+        {link ? <Link to="/">Go back to the homepage</Link> : null}
       </div>
       {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path

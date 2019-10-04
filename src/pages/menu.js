@@ -7,7 +7,7 @@ const MenuPage = () => {
   return (
     <div>
       <Layout>
-        <Section title="Made in house and meticulously spiced">
+        <Section title="Made in House and Meticulously Spiced">
           <MenuItem name="Lamb Gyro" price="8">
             House made vegan lamb with marinated onion, cucumber and tomato.
             Topped with harissa and tahini tzatziki

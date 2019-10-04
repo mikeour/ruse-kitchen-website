@@ -24,13 +24,17 @@ const menuItem = ({ name, price, children }) => {
         <StyledH3
           css={css`
             display: inline-block;
+            padding: 0 2rem;
+            font-size: 1.25rem;
+            font-family: "Montserrat", serif;
           `}
         >
           {name}
         </StyledH3>
+
         <span
           css={css`
-            display: inline-block;
+            color: seagreen;
           `}
         >
           ${price}
@@ -39,7 +43,7 @@ const menuItem = ({ name, price, children }) => {
       <p
         css={css`
           text-align: left;
-          padding: 1rem;
+          padding: 1rem 3rem;
         `}
       >
         {children}

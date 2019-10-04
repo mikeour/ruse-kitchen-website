@@ -21,7 +21,7 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ["Scope One", "Scope One:300,400,700"],
+          families: ["Scope One", "Montserrat", "Scope One:300,400,700"],
         },
       },
     },
