@@ -5,12 +5,12 @@ backend:
 media_folder: static/assets
 
 collections:
-  - name: menu
-    label: Menu
-    folder: menu
-    create: true
-    identifier_field: name
-    fields:
-      - { name: name, label: Name }
-      - { name: price, label: Price }
-      - { name: description, label: Description }
+  - label: "Pages"
+    name: "pages"
+    files:
+      - label: "About Page"
+        name: "about"
+        file: "content/about.md"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Text, name: text, widget: text }
