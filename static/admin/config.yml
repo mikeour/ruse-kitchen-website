@@ -1,0 +1,15 @@
+backend:
+  name: github
+  repo: mikeour/ruse-kitchen-website #replace with your username/repo
+
+media_folder: static/assets
+
+collections:
+  - name: menu
+    label: Menu
+    folder: menu
+    create: true
+    fields:
+      - { name: name, label: Name }
+      - { name: price, label: Price }
+      - { name: description, label: Description }
