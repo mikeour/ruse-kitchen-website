@@ -1,6 +1,7 @@
 import React from "react"
 import { css } from "@emotion/core"
-import Img from "gatsby-image"
+import Image from "gatsby-image"
+import Button from "./button"
 import useSocialMediaLogos from "../hooks/use-social-media-logos"
 import { StyledA } from "./navLink"
 
@@ -18,9 +19,19 @@ const Footer = () => {
         background: var(--footer);
       `}
     >
-      <form>
-        <input type="text"></input>
-        <button>Add me!</button>
+      <form onSubmit={e => e.preventDefault()}>
+        <label>Newsletter?</label>
+        <input
+          css={css`
+            margin: 0 0.5rem;
+            padding-left: 1rem;
+            width: 450px;
+            height: 35px;
+          `}
+          placeholder="Email..."
+          type="text"
+        ></input>
+        <Button size="small">Add me!</Button>
       </form>
 
       <div
@@ -37,7 +48,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Img fixed={instagram.sharp.fixed} />
+          <Image fixed={instagram.sharp.fixed} />
         </StyledA>
 
         <StyledA
@@ -45,7 +56,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Img fixed={facebook.sharp.fixed} />
+          <Image fixed={facebook.sharp.fixed} />
         </StyledA>
 
         <StyledA
@@ -53,7 +64,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Img fixed={yelp.sharp.fixed} />
+          <Image fixed={yelp.sharp.fixed} />
         </StyledA>
       </div>
     </footer>

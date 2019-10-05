@@ -8,6 +8,18 @@ collections:
   - label: "Pages"
     name: "pages"
     files:
+      - label: "Home Page"
+        name: "home"
+        file: "content/home.md"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Text, name: text, widget: text }
+      - label: "Where Page"
+        name: "where"
+        file: "content/where.md"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Text, name: text, widget: text }
       - label: "About Page"
         name: "about"
         file: "content/about.md"

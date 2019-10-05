@@ -1,6 +1,7 @@
 import React from "react"
 import Image from "gatsby-image"
 import Section from "./section"
+import Button from "./button"
 import { css } from "@emotion/core"
 import useInstagram from "../hooks/use-instagram"
 
@@ -44,9 +45,7 @@ const Insta = () => {
                 margin: 1rem;
                 /* max-width: calc(33% - 1rem); */
                 background-image: none;
-
-                width: 400px;
-
+                width: 300px;
                 transition: 200ms box-shadow linear;
 
                 :focus,
@@ -71,9 +70,7 @@ const Insta = () => {
             </a>
           ))}
         </div>
-        <a href={`https://instagram.com/${username}`}>
-          See more on Instagram &rarr;
-        </a>
+        <Button>See more on Instagram &rarr;</Button>
       </div>
     </Section>
   )

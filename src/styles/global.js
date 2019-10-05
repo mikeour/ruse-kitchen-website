@@ -9,6 +9,7 @@ export const globalStyles = css`
     padding: 0;
     font-family: "Scope One", sans-serif;
     font-size: 18px;
+    letter-spacing: 1px;
   }
 
   body {
@@ -25,52 +26,11 @@ export const globalStyles = css`
          } */
 
   :root {
-    --nav: white;
-    --footer: white;
-    --body: white;
-    --section: rgb(238, 241, 242);
+    --nav: #96c5ab;
+    --footer: #96c5ab;
+    --body: #f3eeea;
+    --section: #d5e7dd;
     --navlink: black;
     --navlink-hover: seagreen;
   }
-
-  /* body {
-            background: url("../images/food.webp") no-repeat left top;
-            background-size: cover;
-          } */
-
-  /* html,
-          body {
-            margin: 0;
-            color: #555;
-            font-size: 18px;
-            line-height: 1.4;
-          }
-
-          
-
-          > div {
-            margin-top: 0;
-          }
-
-          h1,
-          h2,
-          h3,
-          h4,
-          h5,
-          h6 {
-            color: #222;
-            line-height: 1.1;
-
-            + * {
-              margin-top: 0.5rem;
-            }
-
-            strong {
-              color: #222;
-            }
-
-            li {
-              margin-top: 0.25rem;
-            }
-          } */
 `

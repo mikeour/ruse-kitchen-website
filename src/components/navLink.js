@@ -12,6 +12,7 @@ const StyledLink = styled(Link)`
   text-shadow: none;
   text-transform: uppercase;
   font-weight: bold;
+  letter-spacing: 2px;
 
   :visited {
     color: var(--navlink);

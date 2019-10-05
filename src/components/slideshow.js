@@ -33,9 +33,25 @@ const Slideshow = () => {
     <div
       css={css`
         position: relative;
+        background: gray;
       `}
     >
-      <Img fluid={current.sharp.fluid}></Img>
+      <Img
+        css={css`
+          animation: fade 750ms ease-in-out;
+
+          @keyframes fade {
+            from {
+              opacity: 0.25;
+            }
+
+            to {
+              opacity: 1;
+            }
+          }
+        `}
+        fluid={current.sharp.fluid}
+      ></Img>
       <div>
         <div
           css={css`

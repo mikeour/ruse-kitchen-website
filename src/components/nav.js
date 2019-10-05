@@ -19,8 +19,9 @@ const Transition = styled.div`
 
 const StyledNav = styled.nav`
   width: 100%;
-  height: 5rem;
+  height: 9rem;
   padding: 0.5rem 3rem;
+  opacity: 0.85;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -32,17 +33,16 @@ const StyledNav = styled.nav`
   transition: all 500ms ease-in;
 `
 
-const initialShowState = {
+const initialNavState = {
   show: true,
   scrollPos: 0,
 }
 
 const Nav = () => {
-  const { instagram, facebook, yelp } = useSocialMediaLogos()
-  const [showState, setShowState] = useState(initialShowState)
+  const [showNavState, setShowNavState] = useState(initialNavState)
 
   const handleScroll = () => {
-    setShowState(prevState => ({
+    setShowNavState(prevState => ({
       scrollPos: document.body.getBoundingClientRect().top,
       show: document.body.getBoundingClientRect().top > prevState.scrollPos,
     }))
@@ -54,9 +54,11 @@ const Nav = () => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const { instagram, facebook, yelp } = useSocialMediaLogos()
+
   return (
     <Transition>
-      <StyledNav className={showState.show ? "active" : "hidden"}>
+      <StyledNav className={showNavState.show ? "active" : "hidden"}>
         <NavLink to="/">Home</NavLink>
 
         <NavLink to="/menu">Menu</NavLink>

@@ -4,14 +4,16 @@ import { css } from "@emotion/core"
 
 const Section = ({ title, link, children }) => {
   return (
-    <div
+    <section
       css={css`
-        padding: 2rem;
+        padding: 2.5rem 1.5rem;
         margin: 7rem 10rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        /* border: 2px solid seagreen; */
+        text-align: center;
+        align-items: center;
+        border: 2px solid var(--nav);
         background: var(--section);
         border-radius: 10px;
       `}
@@ -32,15 +34,43 @@ const Section = ({ title, link, children }) => {
         <h1
           css={css`
             padding: 1.5rem;
-            font-family: "Montserrat", serif;
             font-size: 2rem;
+            width: 100%;
+            display: grid;
+            align-items: center;
+            text-align: center;
+            grid-template-columns: minmax(20px, 1fr) auto minmax(20px, 1fr);
+            grid-gap: 19px;
+            font-style: italic;
+            word-spacing: 2px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            ::before {
+              content: "";
+              border-top: 1px solid #444;
+            }
+            ::after {
+              content: "";
+              border-top: 1px solid #444;
+            }
           `}
         >
           {title}
         </h1>
+
         <div
           css={css`
             padding: 0.5rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+
+            & > * {
+              margin: 1rem;
+            }
           `}
         >
           {children}
@@ -54,7 +84,7 @@ const Section = ({ title, link, children }) => {
           d="M0,288L80,293.3C160,299,320,309,480,293.3C640,277,800,235,960,213.3C1120,192,1280,192,1360,192L1440,192L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"
         ></path>
       </svg> */}
-    </div>
+    </section>
   )
 }
 

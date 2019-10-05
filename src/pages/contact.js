@@ -1,12 +1,16 @@
 import React from "react"
 import Layout from "../components/layout"
 import Section from "../components/section"
-
 import { css } from "@emotion/core"
 
 const ContactPage = () => {
   return (
     <Layout>
+      <div
+        css={css`
+          height: 5rem;
+        `}
+      ></div>
       <Section title="Contact us">
         <div
           css={css`

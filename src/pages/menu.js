@@ -2,12 +2,27 @@ import React from "react"
 import Layout from "../components/layout"
 import Section from "../components/section"
 import MenuItem from "../components/menuItem"
+import Transition from "../components/transition"
+import { css } from "@emotion/core"
 
 const MenuPage = () => {
   return (
     <div>
       <Layout>
-        <Section title="Made in House and Meticulously Spiced">
+        <div
+          css={css`
+            height: 5rem;
+          `}
+        ></div>
+        <Section title="Menu">
+          <p
+            css={css`
+              font-size: 1.1rem;
+              font-style: italic;
+            `}
+          >
+            Made in house and meticulously spiced
+          </p>
           <MenuItem name="Lamb Gyro" price="8">
             House made vegan lamb with marinated onion, cucumber and tomato.
             Topped with harissa and tahini tzatziki
