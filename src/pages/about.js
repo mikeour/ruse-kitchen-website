@@ -1,9 +1,10 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Section from "../components/section"
-import Layout from "../components/layout"
+import SectionContainer from "../components/sectionContainer"
+import FullSection from "../components/fullSection"
 import Button from "../components/button"
 import { css } from "@emotion/core"
+import mq from "../styles/media"
 
 const AboutPage = () => {
   const data = useStaticQuery(graphql`
@@ -31,16 +32,32 @@ const AboutPage = () => {
   } = data.allFile.edges[0].node.childMarkdownRemark.frontmatter
 
   return (
-    <Layout>
+    <>
       <div
         css={css`
           height: 5rem;
         `}
       ></div>
-      <Section title={title}>
-        <p>{text}</p> <Button>Menu</Button>
-      </Section>
-    </Layout>
+      <div
+        css={css`
+          padding: 6rem;
+
+          ${mq("medium")} {
+            padding: 4rem 2rem;
+          }
+
+          ${mq("small")} {
+            padding: 1rem 0.5rem;
+          }
+        `}
+      >
+        <SectionContainer>
+          <FullSection title={title} button="menu">
+            {text}
+          </FullSection>
+        </SectionContainer>
+      </div>
+    </>
   )
 }
 

@@ -1,6 +1,6 @@
 import React from "react"
 import Image from "gatsby-image"
-import Section from "./section"
+import FullSection from "./fullSection"
 import Button from "./button"
 import { css } from "@emotion/core"
 import useInstagram from "../hooks/use-instagram"
@@ -10,7 +10,7 @@ const Insta = () => {
   const { username } = instaPhotos[0]
 
   return (
-    <Section title="What's new with us?">
+    <FullSection title="What's new with us?">
       <p
         css={css`
           padding: 1rem;
@@ -72,7 +72,7 @@ const Insta = () => {
         </div>
         <Button>See more on Instagram &rarr;</Button>
       </div>
-    </Section>
+    </FullSection>
   )
 }
 

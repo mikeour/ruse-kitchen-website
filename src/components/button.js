@@ -5,23 +5,24 @@ const Button = ({ onClick, size = "medium", children }) => (
   <button
     onClick={onClick}
     css={css`
-      padding: ${size === "small" ? "0.25rem 0.75rem" : "0.5rem 1.3rem"};
+      padding: ${size === "small" ? "0.25rem 1rem" : "0.5rem 2.3rem"};
       border: 2px solid seagreen;
       border-radius: 2px;
       color: seagreen;
+      box-shadow: 10px 10px 20px -17px rgba(0, 0, 0, 0.7);
+      transition: all 200ms ease-in-out;
 
       :hover {
         color: white;
         background: seagreen;
+        cursor: pointer;
       }
     `}
   >
     <span
       css={css`
         font-weight: bold;
-        font-weight: 700;
-        font-style: italic;
-        font-size: ${size === "small" ? "0.65rem" : "0.9rem"};
+        font-size: ${size === "small" ? "0.75rem" : "1.1rem"};
         text-transform: uppercase;
         letter-spacing: 2.5px;
       `}

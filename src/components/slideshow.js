@@ -3,11 +3,19 @@ import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import useSlideshow from "../hooks/use-slideshow"
 import { css } from "@emotion/core"
+import mq from "../styles/media"
 
-const Slideshow = () => {
-  const { imageOne, imageTwo } = useStaticQuery(graphql`
+const Slideshow = ({ caption, slides }) => {
+  const {
+    imageOne,
+    imageTwo,
+    imageThree,
+    imageFour,
+    imageFive,
+    imageSix,
+  } = useStaticQuery(graphql`
     query {
-      imageOne: file(relativePath: { eq: "slides/hmm.jpg" }) {
+      imageOne: file(relativePath: { eq: "slides/storefront.jpg" }) {
         sharp: childImageSharp {
           fluid(maxWidth: 1450, maxHeight: 700, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
@@ -21,24 +29,58 @@ const Slideshow = () => {
           }
         }
       }
+      imageThree: file(relativePath: { eq: "slides/hmm.jpg" }) {
+        sharp: childImageSharp {
+          fluid(maxWidth: 1450, maxHeight: 700, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      imageFour: file(relativePath: { eq: "slides/plate.jpg" }) {
+        sharp: childImageSharp {
+          fluid(maxWidth: 1450, maxHeight: 700, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      imageFive: file(relativePath: { eq: "slides/falafel-burger.jpg" }) {
+        sharp: childImageSharp {
+          fluid(maxWidth: 1450, maxHeight: 700, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      imageSix: file(relativePath: { eq: "slides/tacos.jpg" }) {
+        sharp: childImageSharp {
+          fluid(maxWidth: 1450, maxHeight: 700, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
     }
   `)
 
-  const { current, handleNext, handlePrevious } = useSlideshow([
-    imageOne,
-    imageTwo,
-  ])
+  const defaultSlides = [imageFive, imageSix]
+
+  const { current, handleNext, handlePrevious } = useSlideshow(
+    slides || defaultSlides
+  )
 
   return (
     <div
       css={css`
         position: relative;
         background: gray;
+
+        ${mq("small")} {
+          height: 400px;
+        }
       `}
     >
       <Img
         css={css`
           animation: fade 750ms ease-in-out;
+          height: 100%;
 
           @keyframes fade {
             from {
@@ -52,7 +94,37 @@ const Slideshow = () => {
         `}
         fluid={current.sharp.fluid}
       ></Img>
-      <div>
+      <h1
+        css={css`
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: none;
+          font-size: 4.5rem;
+          width: fit-content;
+          font-family: "Montserrat", serif;
+          text-transform: uppercase;
+          opacity: 0.4;
+          /* font-style: italic; */
+          letter-spacing: 10px;
+          text-decoration: underline;
+          text-underline-position: under;
+          background: white;
+          border-top: 10px solid none;
+          border-bottom: 10px solid none;
+          border-radius: 5px;
+          padding: 1.5rem;
+          box-shadow: 10px 10px 20px -17px rgba(0, 0, 0, 0.7);
+
+          ${mq("small")} {
+            font-size: 3rem;
+          }
+        `}
+      >
+        {caption}
+      </h1>
+      {/* <div>
         <div
           css={css`
             position: absolute;
@@ -90,7 +162,7 @@ const Slideshow = () => {
         >
           &rarr;
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

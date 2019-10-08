@@ -8,7 +8,7 @@ export const globalStyles = css`
     margin: 0;
     padding: 0;
     font-family: "Scope One", sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: 1px;
   }
 
@@ -16,21 +16,16 @@ export const globalStyles = css`
     background: var(--body);
   }
 
-  /* :root {
-           --nav: honeydew;
-           --footer: honeydew;
-           --body: honeydew;
-           --section: rgba(255, 251, 229, 1);
-           --navlink: black;
-           --navlink-hover: seagreen;
-         } */
-
   :root {
-    --nav: #96c5ab;
+    --nav: #f9f9f9;
     --footer: #96c5ab;
-    --body: #f3eeea;
-    --section: #d5e7dd;
+    /* --body: #f3eeea; */
+    --body: #efefef;
+    /* --section: #d5e7dd; */
+    --section: white;
     --navlink: black;
     --navlink-hover: seagreen;
+    --button-local: seagreen;
+    --button-outside: #6e9bcc;
   }
 `

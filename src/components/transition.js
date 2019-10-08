@@ -22,11 +22,12 @@ const getTransitionStyles = {
 
 class Transition extends React.PureComponent {
   render() {
-    const { children } = this.props
+    const { children, location } = this.props
 
     return (
       <TransitionGroup>
         <ReactTransition
+          key={location.pathname}
           timeout={{
             enter: timeout,
             exit: timeout,

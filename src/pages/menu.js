@@ -1,20 +1,67 @@
 import React from "react"
-import Layout from "../components/layout"
-import Section from "../components/section"
 import MenuItem from "../components/menuItem"
-import Transition from "../components/transition"
 import { css } from "@emotion/core"
+import mq from "../styles/media"
+import SectionContainer from "../components/sectionContainer"
+import Slideshow from "../components/slideshow"
+import { Link, useStaticQuery, graphql } from "gatsby"
+import styled from "@emotion/styled"
+
+const StyledLink = styled(Link)`
+  color: black;
+  padding: 0.5rem 0;
+
+  :visited {
+    color: black;
+  }
+`
 
 const MenuPage = () => {
+  const { imageThree, imageFour } = useStaticQuery(graphql`
+    query {
+      imageThree: file(relativePath: { eq: "slides/hmm.jpg" }) {
+        sharp: childImageSharp {
+          fluid(maxWidth: 1450, maxHeight: 700, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      imageFour: file(relativePath: { eq: "slides/plate.jpg" }) {
+        sharp: childImageSharp {
+          fluid(maxWidth: 1450, maxHeight: 700, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+    }
+  `)
+
   return (
-    <div>
-      <Layout>
+    <>
+      <div
+        css={css`
+          height: 9rem;
+
+          ${mq("small")} {
+            height: 5rem;
+          }
+        `}
+      ></div>
+      <Slideshow caption="menu" slides={[imageFour, imageThree]} />
+      <SectionContainer>
         <div
           css={css`
-            height: 5rem;
+            padding: 6rem;
+
+            ${mq("medium")} {
+              padding: 4rem 2rem;
+            }
+
+            ${mq("small")} {
+              padding: 1rem 0.5rem;
+            }
           `}
-        ></div>
-        <Section title="Menu">
+        >
           <p
             css={css`
               font-size: 1.1rem;
@@ -54,9 +101,18 @@ const MenuPage = () => {
             Lebanese salad with parsley, mint, radish, tomato, and romaine
             lettuce, topped with pita croutons and a pomegranate vinaigrette.
           </MenuItem>
-        </Section>
-      </Layout>
-    </div>
+          <p
+            css={css`
+              font-size: 1.1rem;
+              font-style: italic;
+            `}
+          >
+            For allergy information, click{" "}
+            <StyledLink to="/allergy">here.</StyledLink>
+          </p>
+        </div>
+      </SectionContainer>
+    </>
   )
 }
 

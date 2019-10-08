@@ -4,6 +4,7 @@ import useSocialMediaLogos from "../hooks/use-social-media-logos"
 import Img from "gatsby-image"
 import { css } from "@emotion/core"
 import styled from "@emotion/styled"
+import mq from "../styles/media"
 
 const Transition = styled.div`
   .active {
@@ -20,17 +21,22 @@ const Transition = styled.div`
 const StyledNav = styled.nav`
   width: 100%;
   height: 9rem;
-  padding: 0.5rem 3rem;
+  padding: 0.5rem 9rem;
   opacity: 0.85;
+  position: fixed;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  position: fixed;
   top: 0;
   left: 0;
   background: var(--nav);
   z-index: 234234;
   transition: all 500ms ease-in;
+
+  ${mq("small")} {
+    height: 5rem;
+    padding: 0.5rem 1rem;
+  }
 `
 
 const initialNavState = {
@@ -40,12 +46,22 @@ const initialNavState = {
 
 const Nav = () => {
   const [showNavState, setShowNavState] = useState(initialNavState)
+  const [showSidebar, setShowSidebar] = useState(false)
 
   const handleScroll = () => {
-    setShowNavState(prevState => ({
-      scrollPos: document.body.getBoundingClientRect().top,
-      show: document.body.getBoundingClientRect().top > prevState.scrollPos,
-    }))
+    setShowNavState(prevState => {
+      if (prevState.scrollPos === 0) {
+        return {
+          scrollPos: document.body.getBoundingClientRect().top,
+          show: true,
+        }
+      } else {
+        return {
+          scrollPos: document.body.getBoundingClientRect().top,
+          show: document.body.getBoundingClientRect().top > prevState.scrollPos,
+        }
+      }
+    })
   }
 
   useEffect(() => {
@@ -54,56 +70,146 @@ const Nav = () => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const { instagram, facebook, yelp } = useSocialMediaLogos()
+  const { instagram, facebook, yelp, menu } = useSocialMediaLogos()
 
   return (
     <Transition>
       <StyledNav className={showNavState.show ? "active" : "hidden"}>
-        <NavLink to="/">Home</NavLink>
-
-        <NavLink to="/menu">Menu</NavLink>
-
-        <NavLink to="/where">Where</NavLink>
-
-        <NavLink to="/calendar">Calendar</NavLink>
-
-        <NavLink to="/contact">Contact</NavLink>
-
-        <NavLink to="/about">About</NavLink>
-
+        {/* Full View */}
         <div
           css={css`
             display: flex;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
-            margin: 0 1rem;
-            padding: 0 1rem;
+            width: 100%;
+
+            ${mq("small")} {
+              display: none;
+            }
           `}
         >
-          <StyledA
-            href="https://www.instagram.com/rusevegankitchen/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Img fixed={instagram.sharp.fixed} />
-          </StyledA>
+          <NavLink to="/">Home</NavLink>
 
-          <StyledA
-            href="https://www.facebook.com/rusevegankitchen/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Img fixed={facebook.sharp.fixed} />
-          </StyledA>
+          <NavLink to="/menu">Menu</NavLink>
 
-          <StyledA
-            href="https://www.yelp.com/biz/ruse-vegan-kitchen-las-vegas"
-            target="_blank"
-            rel="noopener noreferrer"
+          <NavLink to="/where">Where</NavLink>
+
+          <NavLink to="/calendar">Calendar</NavLink>
+
+          <NavLink to="/contact">Contact</NavLink>
+
+          <NavLink to="/about">About</NavLink>
+
+          <div
+            css={css`
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin: 0 1rem;
+              padding: 0 1rem;
+            `}
           >
-            <Img fixed={yelp.sharp.fixed} />
-          </StyledA>
+            <StyledA
+              href="https://www.instagram.com/rusevegankitchen/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Img fixed={instagram.sharp.fixed} />
+            </StyledA>
+
+            <StyledA
+              href="https://www.facebook.com/rusevegankitchen/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Img fixed={facebook.sharp.fixed} />
+            </StyledA>
+
+            <StyledA
+              href="https://www.yelp.com/biz/ruse-vegan-kitchen-las-vegas"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Img fixed={yelp.sharp.fixed} />
+            </StyledA>
+          </div>
         </div>
+        {/* Mobile View */}
+        <div
+          css={css`
+            display: none;
+
+            ${mq("small")} {
+              display: flex;
+              width: 100%;
+              justify-content: flex-end;
+              align-items: center;
+              padding: 0 2rem;
+            }
+          `}
+        >
+          <div
+            css={css``}
+            onClick={() => setShowSidebar(prevState => !prevState)}
+          >
+            <Img fixed={menu.sharp.fixed} />
+          </div>
+        </div>
+
+        {/* Sidebar */}
+        {showSidebar && (
+          <div
+            css={css`
+              display: none;
+              ${mq("small")} {
+                position: absolute;
+                padding: 5rem 1rem;
+                height: 100vh;
+                top: 0;
+                left: 0;
+                width: 80vw;
+                background: var(--nav);
+                display: flex;
+                flex-direction: column;
+                animation: fun 500ms ease-in-out;
+
+                > div {
+                  margin: 1.5rem 0;
+                }
+
+                @keyframes fun {
+                  from {
+                    transform: translateX(-100%);
+                    opacity: 0.3;
+                  }
+                  to {
+                    transform: translateX(0);
+                    opacity: 1;
+                  }
+                }
+              }
+            `}
+          >
+            <div>
+              <NavLink to="/">Home</NavLink>
+            </div>
+            <div>
+              <NavLink to="/menu">Menu</NavLink>
+            </div>
+            <div>
+              <NavLink to="/where">Where</NavLink>
+            </div>
+            <div>
+              <NavLink to="/calendar">Calendar</NavLink>
+            </div>
+            <div>
+              <NavLink to="/contact">Contact</NavLink>
+            </div>
+            <div>
+              <NavLink to="/about">About</NavLink>
+            </div>
+          </div>
+        )}
       </StyledNav>
     </Transition>
   )

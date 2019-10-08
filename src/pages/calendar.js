@@ -1,18 +1,74 @@
 import React from "react"
-import Section from "../components/section"
-import Layout from "../components/layout"
+import FullSection from "../components/fullSection"
+import Slideshow from "../components/slideshow"
 import { css } from "@emotion/core"
+import PopUpSpotlight from "../components/popUpSpotlight"
+import mq from "../styles/media"
 
 const CalendarPage = () => {
   return (
-    <Layout>
+    <>
       <div
         css={css`
-          height: 5rem;
+          height: 9rem;
+          background: var(--nav);
+
+          ${mq("small")} {
+            height: 5rem;
+          }
         `}
       ></div>
-      <Section title="Calendar">Heres where we will be.</Section>
-    </Layout>
+      <Slideshow caption="calendar" />
+
+      <div
+        css={css`
+          padding: 6rem;
+
+          ${mq("medium")} {
+            padding: 4rem 2rem;
+          }
+
+          ${mq("small")} {
+            padding: 1rem 0.5rem;
+          }
+        `}
+      >
+        <p
+          css={css`
+            font-size: 1.1rem;
+            font-style: italic;
+            margin: 1rem;
+          `}
+        >
+          We add new pop-ups every week, so check back often!
+        </p>
+        <h1
+          css={css`
+            font-size: 2.5rem;
+
+            letter-spacing: 3px;
+            text-transform: uppercase;
+          `}
+        >
+          October
+        </h1>
+        <PopUpSpotlight button="map"></PopUpSpotlight>
+        <PopUpSpotlight button="map"></PopUpSpotlight>
+        <PopUpSpotlight button="map"></PopUpSpotlight>
+        <h1
+          css={css`
+            font-size: 2rem;
+            margin: 3rem 0;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+          `}
+        >
+          November
+        </h1>
+        <PopUpSpotlight button="map"></PopUpSpotlight>
+        <PopUpSpotlight button="map"></PopUpSpotlight>
+      </div>
+    </>
   )
 }
 
