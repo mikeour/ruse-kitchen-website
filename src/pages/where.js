@@ -39,7 +39,7 @@ const WherePage = () => {
           }
         `}
       ></div>
-      <Slideshow caption="locations" slides={slides} />
+      <Slideshow caption="where can i buy ruse?" slides={slides} />
       <div
         css={css`
           padding: 6rem;

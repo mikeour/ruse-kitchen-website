@@ -18,7 +18,33 @@ const messageStyles = css`
   height: 400px;
 `
 
+function encode(data) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&")
+}
+
 const ContactPage = () => {
+  const [state, setState] = React.useState({})
+
+  const handleChange = e => {
+    setState({ ...state, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    const form = e.target
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": form.getAttribute("name"),
+        ...state,
+      }),
+    })
+      .then(() => navigate(form.getAttribute("action")))
+      .catch(error => alert(error))
+  }
   return (
     <>
       <div
@@ -52,160 +78,63 @@ const ContactPage = () => {
             `}
           >
             <p>Questions? Feel free to reach out to us here!</p>
-            <Formik
-              initialValues={{ email: "", name: "", message: "" }}
-              onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                  alert(JSON.stringify(values, null, 2))
-                  setSubmitting(false)
-                  // navigate("/")
-                }, 500)
-              }}
-              validationSchema={Yup.object().shape({
-                email: Yup.string().email(),
-                // .required("Required"),
-                name: Yup.string().required("Required"),
-                message: Yup.string().required("Required"),
-              })}
-            >
-              {props => {
-                const {
-                  values,
-                  touched,
-                  errors,
-                  dirty,
-                  isSubmitting,
-                  handleChange,
-                  handleBlur,
-                  handleSubmit,
-                  handleReset,
-                } = props
-                return (
-                  <form
-                    css={css`
-                      width: 100%;
-                      display: flex;
-                      flex-direction: column;
-                      justify-content: center;
 
-                      > * {
-                        margin: 1rem 0;
-                      }
-                    `}
-                    onSubmit={handleSubmit}
-                    name="contact"
-                    method="post"
-                    data-netlify="true"
-                    data-netlify-honeypot="bot-field"
-                  >
-                    <label htmlFor="email">Email</label>
-                    <input
-                      id="email"
-                      placeholder="Enter your email"
-                      type="text"
-                      value={values.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      css={inputStyles}
-                    />
-                    {errors.email && touched.email && (
-                      <div
-                        css={css`
-                          color: red;
-                        `}
-                      >
-                        {errors.email}
-                      </div>
-                    )}
-
-                    <label htmlFor="name">Name</label>
-                    <input
-                      id="name"
-                      placeholder="Enter your name"
-                      type="text"
-                      value={values.name}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      css={inputStyles}
-                    />
-                    {errors.name && touched.name && (
-                      <div
-                        css={css`
-                          color: red;
-                        `}
-                      >
-                        {errors.name}
-                      </div>
-                    )}
-
-                    <label htmlFor="message">Message</label>
-                    <textarea
-                      id="message"
-                      placeholder="Enter your message"
-                      type="text"
-                      value={values.message}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      css={messageStyles}
-                    />
-                    {errors.message && touched.message && (
-                      <div
-                        css={css`
-                          color: red;
-                        `}
-                      >
-                        {errors.message}
-                      </div>
-                    )}
-                    <input type="hidden" name="form-name" value="contact" />
-                    <div
-                      css={css`
-                        display: flex;
-                        justify-content: space-around;
-                        padding: 1rem;
-                      `}
-                    >
-                      <button
-                        type="button"
-                        onClick={handleReset}
-                        disabled={!dirty || isSubmitting}
-                      >
-                        Reset
-                      </button>
-                      <button type="submit" disabled={isSubmitting}>
-                        Submit
-                      </button>
-                    </div>
-                  </form>
-                )
-              }}
-            </Formik>
-            {/*             
             <form
+              css={css`
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                > * {
+                  margin: 1rem 0;
+                }
+              `}
+              onSubmit={handleSubmit}
               name="contact"
               method="post"
-              netlify-honeypot="bot-field"
+              action="/menu"
               data-netlify="true"
-              css={css``}
+              data-netlify-honeypot="bot-field"
             >
-              <input
-                name="name"
-                placeholder="Enter name..."
-                type="text "
-              ></input>
+              <input type="hidden" name="form-name" value="contact" />
+              <label htmlFor="email">Email</label>
               <input
                 name="email"
-                placeholder="Enter email..."
+                placeholder="Enter your email"
                 type="text"
-              ></input>
+                onChange={handleChange}
+                css={inputStyles}
+              />
+
+              <label htmlFor="name">Name</label>
               <input
-                name="message"
-                placeholder="Enter message..."
+                name="name"
+                placeholder="Enter your name"
                 type="text"
-              ></input>
-              <input type="hidden" name="bot-field" />
-              <button type="submit">Send</button>
-            </form> */}
+                onChange={handleChange}
+                css={inputStyles}
+              />
+
+              <label htmlFor="message">Message</label>
+              <textarea
+                name="message"
+                placeholder="Enter your message"
+                type="text"
+                onChange={handleChange}
+                css={messageStyles}
+              />
+
+              <div
+                css={css`
+                  display: flex;
+                  justify-content: space-around;
+                  padding: 1rem;
+                `}
+              >
+                <button type="submit">Submit</button>
+              </div>
+            </form>
           </div>
         </FullSection>
       </div>

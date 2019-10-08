@@ -18,7 +18,7 @@ const CalendarPage = () => {
           }
         `}
       ></div>
-      <Slideshow caption="calendar" />
+      <Slideshow caption="upcoming events" />
 
       <div
         css={css`
