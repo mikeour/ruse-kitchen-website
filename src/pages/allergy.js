@@ -1,5 +1,5 @@
 import React from "react"
-import AllergyItem from "../components/allergyitem"
+import AllergyItem from "../components/allergyItem"
 import Slideshow from "../components/slideshow"
 import { css } from "@emotion/core"
 import SectionContainer from "../components/sectionContainer"
