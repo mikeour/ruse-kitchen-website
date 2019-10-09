@@ -38,7 +38,7 @@ const MenuPage = () => {
 
   return (
     <>
-      <div
+      {/* <div
         css={css`
           height: 9rem;
 
@@ -46,7 +46,7 @@ const MenuPage = () => {
             height: 5rem;
           }
         `}
-      ></div>
+      ></div> */}
       <Slideshow caption="menu" slides={[imageFour, imageThree]} />
       <SectionContainer>
         <div

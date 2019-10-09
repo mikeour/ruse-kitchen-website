@@ -1,19 +1,39 @@
 import React from "react"
 import { css } from "@emotion/core"
-import Image from "gatsby-image"
-import Button from "./button"
-import useSocialMediaLogos from "../hooks/use-social-media-logos"
-import { StyledA } from "./navLink"
 import mq from "../styles/media"
+import addToMailchimp from "gatsby-plugin-mailchimp"
+import ButtonLink from "./buttonLink"
+import { navigate } from "gatsby"
 
 const Footer = () => {
-  const { instagram, facebook, yelp } = useSocialMediaLogos()
+  const [email, setEmail] = React.useState("")
+  const [subscribeMsg, setSubscribeMsg] = React.useState("Subscribe")
+
+  const handleSubmit = e => {
+    e.preventDefault()
+
+    addToMailchimp(email)
+      .then(data => {
+        setSubscribeMsg("Subscribed")
+        navigate("/thanks")
+      })
+      .catch(error => {
+        // Errors in here are client side
+        // Mailchimp always returns a 200
+        alert("Error! ", error)
+      })
+  }
+
+  const handleEmailChange = e => {
+    setEmail(e.currentTarget.value)
+  }
+
   return (
     <footer
       css={css`
         width: 100%;
-        height: 5rem;
-        padding: 0.5rem 5rem;
+        height: max-content;
+        padding: 2rem 5rem;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
@@ -21,6 +41,7 @@ const Footer = () => {
 
         ${mq("small")} {
           padding: 0 1rem;
+          flex-direction: column;
         }
       `}
     >
@@ -29,10 +50,22 @@ const Footer = () => {
           width: 100%;
           text-align: left;
           align-items: left;
+
+          ${mq("small")} {
+            padding: 1rem 1rem;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+
+            > * {
+              margin: 1rem 0;
+            }
+          }
         `}
-        onSubmit={e => e.preventDefault()}
+        onSubmit={handleSubmit}
       >
-        <label
+        {/* <label
           css={css`
             ${mq("small")} {
               display: none;
@@ -40,7 +73,7 @@ const Footer = () => {
           `}
         >
           Newsletter?
-        </label>
+        </label> */}
         <input
           css={css`
             margin: 0 0.5rem;
@@ -48,7 +81,7 @@ const Footer = () => {
             padding: 0.5rem 1rem;
             width: 450px;
             height: 40px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             outline-color: var(--nav);
 
             ${mq("small")} {
@@ -56,9 +89,34 @@ const Footer = () => {
             }
           `}
           placeholder="Email..."
+          name="email"
           type="text"
+          onChange={handleEmailChange}
         ></input>
-        {/* <Button size="small">Add me!</Button> */}
+        <button
+          css={css`
+            padding: 0.5rem 2.3rem;
+            border: 2px solid var(--button-outside);
+            border-radius: 5px;
+            color: var(--button-outside);
+            box-shadow: 10px 10px 20px -17px rgba(0, 0, 0, 0.7);
+            transition: all 200ms ease-in-out;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            text-decoration: none;
+
+            :hover {
+              color: white;
+              background: var(--button-outside);
+              cursor: pointer;
+            }
+          `}
+          type="submit"
+        >
+          {subscribeMsg}
+        </button>
       </form>
 
       <div
@@ -70,33 +128,20 @@ const Footer = () => {
           padding: 0 1rem;
 
           ${mq("small")} {
-            display: none;
+            padding: 1rem 1rem;
+            flex-direction: column;
           }
         `}
       >
-        <StyledA
-          href="https://www.instagram.com/rusevegankitchen/"
-          target="_blank"
-          rel="noopener noreferrer"
+        <p
+          css={css`
+            padding: 0.5rem 1rem;
+            width: max-content;
+          `}
         >
-          <Image fixed={instagram.sharp.fixed} />
-        </StyledA>
-
-        <StyledA
-          href="https://www.facebook.com/rusevegankitchen/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image fixed={facebook.sharp.fixed} />
-        </StyledA>
-
-        <StyledA
-          href="https://www.yelp.com/biz/ruse-vegan-kitchen-las-vegas"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image fixed={yelp.sharp.fixed} />
-        </StyledA>
+          Questions? Get in touch!
+        </p>
+        <ButtonLink to="/contact">Contact</ButtonLink>
       </div>
     </footer>
   )

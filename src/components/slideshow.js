@@ -94,19 +94,19 @@ const Slideshow = ({ caption, slides }) => {
         `}
         fluid={current.sharp.fluid}
       ></Img>
-      <h1
+      {/* <h1
         css={css`
           position: absolute;
-          top: 50%;
+          top: 65%;
           left: 50%;
-          transform: translate(-50%, -50%);
+          transform: translate(-50%, -35%);
           color: none;
           font-size: 4.5rem;
           width: fit-content;
           font-family: "Montserrat", serif;
           text-transform: uppercase;
           opacity: 0.4;
-          /* font-style: italic; */
+          font-style: italic;
           letter-spacing: 10px;
           text-decoration: underline;
           text-underline-position: under;
@@ -123,7 +123,7 @@ const Slideshow = ({ caption, slides }) => {
         `}
       >
         {caption}
-      </h1>
+      </h1> */}
       {/* <div>
         <div
           css={css`

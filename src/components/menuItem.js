@@ -3,17 +3,11 @@ import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 import mq from "../styles/media"
 
-const StyledH3 = styled.h3`
-  margin: 0;
-`
-
 const menuItem = ({ name, price, children }) => (
   <div
     css={css`
       padding: 1rem 2rem;
       width: 100%;
-      /* border-left: 1.5px solid seagreen; */
-      /* border-right: 1.5px solid seagreen; */
       margin-bottom: 1.5rem;
 
       ${mq("small")} {
@@ -31,7 +25,7 @@ const menuItem = ({ name, price, children }) => (
         padding: 0.5rem 0.5rem 0 0.5rem;
       `}
     >
-      <StyledH3
+      <h3
         css={css`
           display: inline-block;
           padding: 0 2rem;
@@ -48,7 +42,7 @@ const menuItem = ({ name, price, children }) => (
         `}
       >
         {name}
-      </StyledH3>
+      </h3>
       <span
         css={css`
           color: seagreen;

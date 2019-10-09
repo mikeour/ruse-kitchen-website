@@ -5,6 +5,7 @@ import Img from "gatsby-image"
 import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 import mq from "../styles/media"
+import { useStaticQuery, graphql } from "gatsby"
 
 const Transition = styled.div`
   .active {
@@ -20,7 +21,7 @@ const Transition = styled.div`
 
 const StyledNav = styled.nav`
   width: 100%;
-  height: 9rem;
+  height: 11rem;
   padding: 0.5rem 9rem;
   opacity: 0.85;
   position: fixed;
@@ -72,6 +73,18 @@ const Nav = () => {
 
   const { instagram, facebook, yelp, menu } = useSocialMediaLogos()
 
+  const { logo } = useStaticQuery(graphql`
+    query {
+      logo: file(relativePath: { eq: "logos/ruse_circle_logo.png" }) {
+        sharp: childImageSharp {
+          fixed(width: 150, height: 150) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `)
+
   return (
     <Transition>
       <StyledNav className={showNavState.show ? "active" : "hidden"}>
@@ -88,7 +101,15 @@ const Nav = () => {
             }
           `}
         >
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/">
+            <div
+              css={css`
+                width: 100%;
+              `}
+            >
+              <Img fixed={logo.sharp.fixed} />
+            </div>
+          </NavLink>
 
           <NavLink to="/menu">Menu</NavLink>
 
@@ -171,13 +192,13 @@ const Nav = () => {
                 background: var(--nav);
                 display: flex;
                 flex-direction: column;
-                animation: fun 500ms ease-in-out;
+                animation: slideIn 500ms ease-in-out;
 
                 > div {
                   margin: 1.5rem 0;
                 }
 
-                @keyframes fun {
+                @keyframes slideIn {
                   from {
                     transform: translateX(-100%);
                     opacity: 0.3;

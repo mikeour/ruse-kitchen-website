@@ -8,7 +8,7 @@ import mq from "../styles/media"
 const CalendarPage = () => {
   return (
     <>
-      <div
+      {/* <div
         css={css`
           height: 9rem;
           background: var(--nav);
@@ -17,7 +17,7 @@ const CalendarPage = () => {
             height: 5rem;
           }
         `}
-      ></div>
+      ></div> */}
       <Slideshow caption="upcoming events" />
 
       <div

@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import styled from "@emotion/styled"
 
-const buttonLink = styled(Link)`
+const ButtonLink = styled(Link)`
   padding: 0.5rem 2.3rem;
   border: 2px solid var(--button-local);
   border-radius: 5px;
@@ -13,6 +13,7 @@ const buttonLink = styled(Link)`
   text-transform: uppercase;
   letter-spacing: 2.5px;
   text-decoration: none;
+  background: white;
 
   :hover {
     color: white;
@@ -41,4 +42,4 @@ export const ButtonLinkRedirect = styled.a`
   }
 `
 
-export default buttonLink
+export default ButtonLink

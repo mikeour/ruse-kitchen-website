@@ -7,20 +7,22 @@ import HalfSection from "../components/halfSection"
 import { css } from "@emotion/core"
 import mq from "../styles/media"
 import PopUpSpotlight from "../components/popUpSpotlight"
+import { useStaticQuery, graphql } from "gatsby"
+import Image from "gatsby-image"
 
 const Index = () => {
   return (
     <>
-      <div
+      {/* <div
         css={css`
-          height: 9rem;
+          height: 11rem;
           background: var(--nav);
           transition: all 400ms ease-in-out;
           ${mq("small")} {
             height: 5rem;
           }
         `}
-      ></div>
+      ></div> */}
       <Slideshow caption="ruse vegan kitchen" />
       <SectionContainer>
         <FullSection title="Eat Well. Be Kind." button="menu">
@@ -36,6 +38,7 @@ const Index = () => {
           kale arugula melon sierra leone bologi rutabaga tigernut.
         </FullSection>
       </SectionContainer>
+
       <SectionContainer>
         <PopUpSpotlight button="map"></PopUpSpotlight>
         <HalfSection title="Who We Are" button="about">
@@ -47,7 +50,7 @@ const Index = () => {
           bean.
         </HalfSection>
       </SectionContainer>
-      <Slideshow caption="about" />
+      {/* <Slideshow caption="about" />
       <SectionContainer>
         <FullSection title="Eat Even Weller. Be Kinder-ish." button="About">
           At Ruse's Kitchen we’re passionate about sourcing and serving the best
@@ -55,7 +58,7 @@ const Index = () => {
           foods made in house to specialty homewares & hostess gifts from the
           island and beyond. We are here to enhance your Vineyard experience.
         </FullSection>
-      </SectionContainer>
+      </SectionContainer> */}
       <Slideshow caption="Instagram" />
       <SectionContainer>
         <Insta />

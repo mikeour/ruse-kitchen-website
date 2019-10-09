@@ -10,7 +10,7 @@ const SectionContainer = ({ children }) => {
         display: flex;
 
         ${mq("small")} {
-          margin: 1rem 0.5rem;
+          margin: 1rem 0.1rem;
           flex-direction: column;
         }
       `}

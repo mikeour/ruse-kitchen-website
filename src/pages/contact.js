@@ -2,16 +2,32 @@ import React from "react"
 import FullSection from "../components/fullSection"
 import { css } from "@emotion/core"
 import mq from "../styles/media"
-import { Formik } from "formik"
-import * as Yup from "yup"
 import { ButtonLinkRedirect } from "../components/buttonLink"
 import { navigate } from "gatsby"
+
+const labelStyles = css`
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  width: 100%;
+  padding: 0 7rem;
+  text-align: left;
+
+  ${mq("medium")} {
+    padding: 0 5.5rem;
+  }
+
+  ${mq("small")} {
+    text-align: center;
+    padding: 0 4.5rem;
+  }
+`
 
 const inputStyles = css`
   padding: 1rem;
   width: 80%;
   border-radius: 4px;
   border: 1px solid #ccc;
+  outline: none;
 `
 const messageStyles = css`
   ${inputStyles};
@@ -47,37 +63,44 @@ const ContactPage = () => {
   }
   return (
     <>
-      <div
+      {/* <div
         css={css`
           height: 5rem;
         `}
-      ></div>
+      ></div> */}
       <div
         css={css`
-          padding: 6rem;
+          /* padding: 12rem 6rem 8rem 6rem; */
+          padding: 12rem 12rem;
 
           ${mq("medium")} {
             padding: 4rem 2rem;
           }
 
           ${mq("small")} {
-            padding: 1rem 0.5rem;
+            padding: 5rem 0.5rem;
           }
         `}
       >
         <FullSection title="Contact us">
           <div
             css={css`
-              padding: 5rem;
+              /* padding: 5rem; */
               width: 100%;
               display: flex;
               flex-direction: column;
               justify-content: center;
               align-items: center;
-              height: 100%;
+              /* border: 3px solid red; */
+              > p {
+                margin-bottom: 2rem;
+              }
             `}
           >
-            <p>Questions? Feel free to reach out to us here!</p>
+            <p>
+              Questions? Comments? Feel free to reach out to us here! We love to
+              hear from everyone.
+            </p>
 
             <form
               css={css`
@@ -85,6 +108,8 @@ const ContactPage = () => {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                text-align: center;
+                align-items: center;
 
                 > * {
                   margin: 1rem 0;
@@ -93,21 +118,15 @@ const ContactPage = () => {
               onSubmit={handleSubmit}
               name="contact"
               method="post"
-              action="/menu"
+              action="/thanks"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
             >
               <input type="hidden" name="form-name" value="contact" />
-              <label htmlFor="email">Email</label>
-              <input
-                name="email"
-                placeholder="Enter your email"
-                type="text"
-                onChange={handleChange}
-                css={inputStyles}
-              />
 
-              <label htmlFor="name">Name</label>
+              <label css={labelStyles} htmlFor="name">
+                Name
+              </label>
               <input
                 name="name"
                 placeholder="Enter your name"
@@ -116,7 +135,20 @@ const ContactPage = () => {
                 css={inputStyles}
               />
 
-              <label htmlFor="message">Message</label>
+              <label css={labelStyles} htmlFor="email">
+                Email
+              </label>
+              <input
+                name="email"
+                placeholder="Enter your email"
+                type="text"
+                onChange={handleChange}
+                css={inputStyles}
+              />
+
+              <label css={labelStyles} htmlFor="message">
+                Message
+              </label>
               <textarea
                 name="message"
                 placeholder="Enter your message"
@@ -132,7 +164,30 @@ const ContactPage = () => {
                   padding: 1rem;
                 `}
               >
-                <button type="submit">Submit</button>
+                <button
+                  css={css`
+                    padding: 0.5rem 2.3rem;
+                    border: 2px solid var(--button-outside);
+                    border-radius: 5px;
+                    color: var(--button-outside);
+                    box-shadow: 10px 10px 20px -17px rgba(0, 0, 0, 0.7);
+                    transition: all 200ms ease-in-out;
+                    font-weight: bold;
+                    font-size: 1.1rem;
+                    text-transform: uppercase;
+                    letter-spacing: 2.5px;
+                    text-decoration: none;
+
+                    :hover {
+                      color: white;
+                      background: var(--button-outside);
+                      cursor: pointer;
+                    }
+                  `}
+                  type="submit"
+                >
+                  Submit
+                </button>
               </div>
             </form>
           </div>

@@ -30,7 +30,7 @@ const WherePage = () => {
 
   return (
     <>
-      <div
+      {/* <div
         css={css`
           height: 9rem;
 
@@ -38,8 +38,8 @@ const WherePage = () => {
             height: 5rem;
           }
         `}
-      ></div>
-      <Slideshow caption="where can i buy ruse?" slides={slides} />
+      ></div> */}
+      <Slideshow caption="where is ruse sold?" slides={slides} />
       <div
         css={css`
           padding: 6rem;

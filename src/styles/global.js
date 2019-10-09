@@ -14,6 +14,7 @@ export const globalStyles = css`
 
   body {
     background: var(--body);
+    min-height: 100vh;
   }
 
   :root {

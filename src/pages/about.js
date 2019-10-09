@@ -41,6 +41,7 @@ const AboutPage = () => {
       <div
         css={css`
           padding: 6rem;
+          height: calc(100vh - 10rem);
 
           ${mq("medium")} {
             padding: 4rem 2rem;

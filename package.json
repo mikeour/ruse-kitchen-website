@@ -7,11 +7,11 @@
   "dependencies": {
     "@emotion/core": "^10.0.17",
     "@emotion/styled": "^10.0.17",
-    "formik": "^1.5.8",
     "gatsby": "^2.15.28",
     "gatsby-image": "^2.2.23",
     "gatsby-plugin-emotion": "^4.1.9",
     "gatsby-plugin-layout": "^1.1.10",
+    "gatsby-plugin-mailchimp": "^5.1.2",
     "gatsby-plugin-manifest": "^2.2.20",
     "gatsby-plugin-netlify-cms": "^4.1.22",
     "gatsby-plugin-offline": "^3.0.11",
@@ -29,8 +29,7 @@
     "react-transition-group": "^4.3.0",
     "typeface-montserrat": "0.0.75",
     "typeface-scope-one": "0.0.71",
-    "typeface-vesper-libre": "0.0.72",
-    "yup": "^0.27.0"
+    "typeface-vesper-libre": "0.0.72"
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^16.9.0",
@@ -39,7 +38,6 @@
   "keywords": [
     "gatsby"
   ],
-  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",

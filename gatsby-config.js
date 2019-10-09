@@ -32,6 +32,13 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-mailchimp",
+      options: {
+        endpoint:
+          "https://rusekitchen.us19.list-manage.com/subscribe/post?u=f8d5448d113bcf93e5ea91295&amp;id=5b0a9d6c0d",
+      },
+    },
+    {
       resolve: "gatsby-source-instagram",
       options: {
         username: "rusevegankitchen",
