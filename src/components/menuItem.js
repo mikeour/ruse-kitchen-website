@@ -43,7 +43,7 @@ const menuItem = ({ name, price, children }) => (
       >
         {name}
       </h3>
-      <span
+      {/* <span
         css={css`
           color: seagreen;
           font-size: 1.4rem;
@@ -51,7 +51,7 @@ const menuItem = ({ name, price, children }) => (
         `}
       >
         ${price}
-      </span>
+      </span> */}
     </div>
     <p
       css={css`

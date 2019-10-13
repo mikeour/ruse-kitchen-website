@@ -73,11 +73,18 @@ const Nav = () => {
 
   const { instagram, facebook, yelp, menu } = useSocialMediaLogos()
 
-  const { logo } = useStaticQuery(graphql`
+  const { logo, expand } = useStaticQuery(graphql`
     query {
       logo: file(relativePath: { eq: "logos/ruse_circle_logo.png" }) {
         sharp: childImageSharp {
           fixed(width: 150, height: 150) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      expand: file(relativePath: { eq: "logos/expand.png" }) {
+        sharp: childImageSharp {
+          fixed(width: 18, height: 18) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -102,24 +109,94 @@ const Nav = () => {
           `}
         >
           <NavLink to="/">
+            <Img fixed={logo.sharp.fixed} />
+          </NavLink>
+
+          <div
+            css={css`
+              position: relative;
+              width: max-content;
+              white-space: nowrap;
+
+              :hover {
+                > div {
+                  display: flex;
+                  transition: all 1000ms ease-in-out;
+                }
+              }
+            `}
+          >
+            <NavLink to="/find">
+              Find Us{" "}
+              <Img
+                imgStyle={{ display: "inline-block" }}
+                fixed={expand.sharp.fixed}
+              />
+            </NavLink>
+
             <div
               css={css`
-                width: 100%;
+                padding: 1.25rem;
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translate(-50%, 0);
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                width: max-content;
+                background: white;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                border-radius: 5px;
+                animation: open 400ms ease-in-out;
+
+                @keyframes open {
+                  0% {
+                    opacity: 0;
+                    visibility: hidden;
+                  }
+                  100% {
+                    opacity: 1;
+                    visibility: visible;
+                  }
+                }
+
+                > * {
+                  margin: 0.25rem 0;
+                }
               `}
             >
-              <Img fixed={logo.sharp.fixed} />
+              <NavLink
+                css={css`
+                  font-size: 1.2rem;
+                `}
+                to="/popups"
+              >
+                Pop-Up events
+              </NavLink>
+              <NavLink
+                css={css`
+                  font-size: 1.2rem;
+                `}
+                to="/partners"
+              >
+                Partners
+              </NavLink>
             </div>
-          </NavLink>
+          </div>
 
           <NavLink to="/menu">Menu</NavLink>
 
-          <NavLink to="/where">Where</NavLink>
+          {/* <NavLink to="/where">Where</NavLink>
 
-          <NavLink to="/calendar">Calendar</NavLink>
+          <NavLink to="/calendar">Calendar</NavLink> */}
 
           <NavLink to="/contact">Contact</NavLink>
 
           <NavLink to="/about">About</NavLink>
+
+          {/* <NavLink to="/about">Distribution</NavLink> */}
 
           <div
             css={css`

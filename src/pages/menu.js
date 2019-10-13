@@ -6,6 +6,7 @@ import SectionContainer from "../components/sectionContainer"
 import Slideshow from "../components/slideshow"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import styled from "@emotion/styled"
+import Image from "gatsby-image"
 
 const StyledLink = styled(Link)`
   color: black;
@@ -17,7 +18,7 @@ const StyledLink = styled(Link)`
 `
 
 const MenuPage = () => {
-  const { imageThree, imageFour } = useStaticQuery(graphql`
+  const { imageThree, imageFour, plant } = useStaticQuery(graphql`
     query {
       imageThree: file(relativePath: { eq: "slides/hmm.jpg" }) {
         sharp: childImageSharp {
@@ -30,6 +31,13 @@ const MenuPage = () => {
         sharp: childImageSharp {
           fluid(maxWidth: 1450, maxHeight: 700, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      plant: file(relativePath: { eq: "logos/ruse_branch.png" }) {
+        sharp: childImageSharp {
+          fixed(width: 100, height: 100) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
@@ -51,21 +59,33 @@ const MenuPage = () => {
       <SectionContainer>
         <div
           css={css`
-            padding: 6rem;
+            padding: 4rem 6rem;
+            margin: 0 7rem;
+            border-radius: 5px;
+            background: white;
 
             ${mq("medium")} {
               padding: 4rem 2rem;
+              margin: 0;
             }
 
             ${mq("small")} {
               padding: 1rem 0.5rem;
+              margin: 0;
             }
           `}
         >
+          <Image
+            css={css`
+              transform: scaleX(-1);
+            `}
+            fixed={plant.sharp.fixed}
+          />
           <p
             css={css`
               font-size: 1.1rem;
               font-style: italic;
+              padding: 1rem 1rem;
             `}
           >
             Made in house and meticulously spiced
@@ -105,11 +125,13 @@ const MenuPage = () => {
             css={css`
               font-size: 1.1rem;
               font-style: italic;
+              padding: 1rem 1rem;
             `}
           >
             For allergy information, click{" "}
             <StyledLink to="/allergy">here.</StyledLink>
           </p>
+          <Image fixed={plant.sharp.fixed} />
         </div>
       </SectionContainer>
     </>

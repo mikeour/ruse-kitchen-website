@@ -22,14 +22,20 @@ const AllergyPage = () => {
       <SectionContainer>
         <div
           css={css`
-            padding: 6rem;
+            padding: 4rem 6rem;
+            width: 100%;
+            margin: 0 7rem;
+            border-radius: 5px;
+            background: white;
 
             ${mq("medium")} {
               padding: 4rem 2rem;
+              margin: 0;
             }
 
             ${mq("small")} {
               padding: 1rem 0.5rem;
+              margin: 0;
             }
           `}
         >
