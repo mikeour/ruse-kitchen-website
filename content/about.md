@@ -1,5 +1,5 @@
 ---
-title: About Page
+title: About Us
 text: >-
   Ruse began in 2018 with the vision of redefining vegan food. Instead of buying
   pre-packaged
