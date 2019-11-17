@@ -11,5 +11,6 @@ description: >-
   fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber
   earthnut pea peanut soko zucchini.
 map_url: 'https://goo.gl/maps/ermQabhDLXQkG7Dr9'
+position: 3
 ---
 
