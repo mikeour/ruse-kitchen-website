@@ -18,5 +18,6 @@ description: >-
   _A whole wheat pita pocket stuffed with our charbroiled steak, sauteed peppers
   and onions and a zesty pesto sauce_
 map_url: 'https://www.google.com'
+position: 4
 ---
 
