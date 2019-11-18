@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 
-const useSlideshow = images => {
+const slideDuration = 6000
+
+function useSlideshow(images) {
   const length = images.length - 1
   const [index, setIndex] = useState(0)
 
@@ -14,7 +16,7 @@ const useSlideshow = images => {
       setIndex(prevIndex => {
         return prevIndex === length ? 0 : prevIndex + 1
       })
-    }, 6000)
+    }, slideDuration)
 
     return () => clearInterval(pictureInterval)
   }, [])

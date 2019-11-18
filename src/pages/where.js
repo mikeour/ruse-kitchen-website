@@ -1,8 +1,7 @@
 import React from "react"
-
 import { css } from "@emotion/core"
-import mq from "../styles/media"
-import Slideshow from "../components/slideshow"
+import { mq } from "../styles"
+import { Slideshow } from "../components/shared"
 import { useStaticQuery, graphql } from "gatsby"
 import LocationCard from "../components/location"
 
@@ -42,14 +41,14 @@ const WherePage = () => {
       <Slideshow caption="where is ruse sold?" slides={slides} />
       <div
         css={css`
-          padding: 6rem;
+          padding: 10%;
 
           ${mq("medium")} {
-            padding: 4rem 2rem;
+            padding: 7.5%;
           }
 
           ${mq("small")} {
-            padding: 1rem 0.5rem;
+            padding: 5%;
           }
         `}
       >

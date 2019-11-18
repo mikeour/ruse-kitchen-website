@@ -8,25 +8,33 @@ export const globalStyles = css`
     margin: 0;
     padding: 0;
     font-family: "Scope One", sans-serif;
-    font-size: 16px;
     letter-spacing: 1px;
+  }
+
+  html {
+    font-size: 16px;
   }
 
   body {
     background: var(--body);
+    max-width: 100vw;
     min-height: 100vh;
   }
 
   :root {
     --nav: #f9f9f9;
     --footer: #96c5ab;
+    --body: white;
     /* --body: #f3eeea; */
-    --body: #efefef;
+    /* --body: #efefef; */
     /* --section: #d5e7dd; */
     --section: white;
     --navlink: black;
     --navlink-hover: seagreen;
     --button-local: seagreen;
     --button-outside: #6e9bcc;
+
+    --nav-height-large: 26vh;
+    --nav-height-small: 12.5vh;
   }
 `

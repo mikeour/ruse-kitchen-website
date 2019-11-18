@@ -1,30 +1,52 @@
-import React from "react"
-import Nav from "../components/nav"
-import Footer from "../components/footer"
-import Transition from "../components/transition"
-import { css, Global } from "@emotion/core"
-import { globalStyles } from "../styles/global"
+import React, { useState } from "react"
+import { Global } from "@emotion/core"
+import styled from "@emotion/styled"
+import { globalStyles, flexMixin } from "../styles"
+import { motion, AnimatePresence } from "framer-motion"
 
-const Layout = ({ children, location }) => (
-  <div
-    css={css`
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-    `}
-  >
-    <Global styles={globalStyles} />
-    <header>
-      <Nav />
-    </header>
+import Nav from "../components/nav/nav"
+import Footer from "../components/footer/footer"
+import Sidebar from "../components/sidebar/sidebar"
 
-    <Transition location={location}>
-      <main>{children}</main>
-    </Transition>
+function Layout({ children, location }) {
+  const [showSidebar, setShowSidebar] = useState(false)
 
-    <Footer />
-  </div>
-)
+  return (
+    <Wrapper>
+      <Global styles={globalStyles} />
+
+      <Nav showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+
+      <AnimatePresence exitBeforeEnter>
+        <MainContent
+          key={location.pathname}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+          exit={{ opacity: 0 }}
+        >
+          {children}
+        </MainContent>
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showSidebar && <Sidebar setShowSidebar={setShowSidebar} />}
+      </AnimatePresence>
+
+      <Footer />
+    </Wrapper>
+  )
+}
 
 export default Layout
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+  min-height: 100vh;
+`
+
+const MainContent = styled(motion.main)`
+  width: 100%;
+`

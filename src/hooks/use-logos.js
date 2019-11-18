@@ -1,7 +1,14 @@
 import { useStaticQuery, graphql } from "gatsby"
 
-const useSocialMediaLogos = () => {
-  const { instagram, facebook, yelp, menu } = useStaticQuery(graphql`
+const useLogos = () => {
+  const {
+    instagram,
+    facebook,
+    yelp,
+    menu,
+    logo,
+    expand,
+  } = useStaticQuery(graphql`
     query {
       instagram: file(
         relativePath: { eq: "social-media-logos/instagram-logo.png" }
@@ -37,10 +44,25 @@ const useSocialMediaLogos = () => {
           }
         }
       }
+
+      logo: file(relativePath: { eq: "logos/ruse_circle_logo.png" }) {
+        sharp: childImageSharp {
+          fixed(width: 150, height: 150) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      expand: file(relativePath: { eq: "logos/expand.png" }) {
+        sharp: childImageSharp {
+          fixed(width: 18, height: 18) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
     }
   `)
 
-  return { instagram, facebook, yelp, menu }
+  return { instagram, facebook, yelp, menu, logo, expand }
 }
 
-export default useSocialMediaLogos
+export default useLogos

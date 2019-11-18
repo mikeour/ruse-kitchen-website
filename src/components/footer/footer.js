@@ -1,11 +1,12 @@
 import React from "react"
-import { css } from "@emotion/core"
-import mq from "../styles/media"
-import addToMailchimp from "gatsby-plugin-mailchimp"
-import ButtonLink from "./buttonLink"
 import { navigate } from "gatsby"
+import { css } from "@emotion/core"
+import addToMailchimp from "gatsby-plugin-mailchimp"
+import { mq } from "../../styles"
 
-const Footer = () => {
+import { ButtonLink } from "../shared"
+
+function Footer() {
   const [email, setEmail] = React.useState("")
   const [subscribeMsg, setSubscribeMsg] = React.useState("Subscribe")
 

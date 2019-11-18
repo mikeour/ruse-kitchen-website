@@ -1,9 +1,9 @@
 import React from "react"
 import FullSection from "../components/fullSection"
-import Slideshow from "../components/slideshow"
+import { Slideshow } from "../components/shared"
 import { css } from "@emotion/core"
 import PopUpSpotlight from "../components/popUpSpotlight"
-import mq from "../styles/media"
+import { mq } from "../styles"
 
 const CalendarPage = () => {
   return (
@@ -45,7 +45,6 @@ const CalendarPage = () => {
         <h1
           css={css`
             font-size: 2.5rem;
-
             letter-spacing: 3px;
             text-transform: uppercase;
           `}

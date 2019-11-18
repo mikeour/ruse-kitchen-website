@@ -3,7 +3,7 @@ import Image from "gatsby-image"
 import FullSection from "./fullSection"
 import Button from "./button"
 import { css } from "@emotion/core"
-import useInstagram from "../hooks/use-instagram"
+import { useInstagram } from "../hooks"
 
 const Insta = () => {
   const instaPhotos = useInstagram()
@@ -47,7 +47,6 @@ const Insta = () => {
                 background-image: none;
                 width: 300px;
                 transition: 200ms box-shadow linear;
-
                 :focus,
                 :hover {
                   box-shadow: 0 2px 14px #22222244;
@@ -59,7 +58,6 @@ const Insta = () => {
                 key={photo.id}
                 css={css`
                   width: 100%;
-
                   * {
                     margin-top: 0;
                   }

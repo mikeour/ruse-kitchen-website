@@ -1,62 +1,65 @@
 import React from "react"
-import Slideshow from "../components/slideshow"
+import { useStaticQuery, graphql } from "gatsby"
 import { css } from "@emotion/core"
-import PopUpSpotlight from "../components/popUpSpotlight"
-import mq from "../styles/media"
+import { mq } from "../styles"
 
-const PopupsPage = () => {
+import { Slideshow, PageContainer } from "../components/shared"
+import { PopUp, PopUpHeader, PopUpWrapper } from "../components/popups-page"
+
+function renderPopups(popups) {
   return (
     <>
-      <Slideshow caption="pop-ups" />
+      {popups &&
+        popups.map(eventInfo => (
+          <PopUp key={eventInfo.map_url} {...eventInfo} />
+        ))}
+    </>
+  )
+}
 
-      <div
-        css={css`
-          padding: 6rem;
-
-          ${mq("medium")} {
-            padding: 4rem 2rem;
+function PopupsPage() {
+  const { popups } = useStaticQuery(graphql`
+    query {
+      popups: allFile(
+        filter: {
+          sourceInstanceName: { regex: "/content/" }
+          relativeDirectory: { eq: "pop-up-events" }
+        }
+        sort: {
+          fields: childMarkdownRemark___frontmatter___position
+          order: ASC
+        }
+      ) {
+        edges {
+          node {
+            childMarkdownRemark {
+              frontmatter {
+                description
+                title
+                day
+                date
+                address
+                time
+                map_url
+              }
+            }
           }
+        }
+      }
+    }
+  `)
 
-          ${mq("small")} {
-            padding: 1rem 0.5rem;
-          }
-        `}
-      >
-        <p
-          css={css`
-            font-size: 1.1rem;
-            font-style: italic;
-            margin: 1rem;
-          `}
-        >
-          We add new pop-ups every week, so check back often!
-        </p>
-        <h1
-          css={css`
-            font-size: 2.5rem;
+  const events = popups.edges.map(
+    popup => popup.node.childMarkdownRemark.frontmatter
+  )
 
-            letter-spacing: 3px;
-            text-transform: uppercase;
-          `}
-        >
-          October
-        </h1>
-        <PopUpSpotlight button="map"></PopUpSpotlight>
-        <PopUpSpotlight button="map"></PopUpSpotlight>
-        <PopUpSpotlight button="map"></PopUpSpotlight>
-        <h1
-          css={css`
-            font-size: 2rem;
-            margin: 3rem 0;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-          `}
-        >
-          November
-        </h1>
-        <PopUpSpotlight button="map"></PopUpSpotlight>
-        <PopUpSpotlight button="map"></PopUpSpotlight>
-      </div>
+  return (
+    <>
+      <Slideshow />
+      <PageContainer>
+        <PopUpHeader />
+        <PopUpWrapper>{renderPopups(events)}</PopUpWrapper>
+      </PageContainer>
     </>
   )
 }

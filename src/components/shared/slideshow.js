@@ -1,11 +1,13 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
-import useSlideshow from "../hooks/use-slideshow"
-import { css } from "@emotion/core"
-import mq from "../styles/media"
+import { motion } from "framer-motion"
 
-const Slideshow = ({ caption, slides }) => {
+import { useSlideshow } from "../../hooks"
+import { css } from "@emotion/core"
+import { mq } from "../../styles"
+
+function Slideshow({ caption, slides }) {
   const {
     imageOne,
     imageTwo,
@@ -13,6 +15,7 @@ const Slideshow = ({ caption, slides }) => {
     imageFour,
     imageFive,
     imageSix,
+    logo,
   } = useStaticQuery(graphql`
     query {
       imageOne: file(relativePath: { eq: "slides/storefront.jpg" }) {
@@ -57,6 +60,13 @@ const Slideshow = ({ caption, slides }) => {
           }
         }
       }
+      logo: file(relativePath: { eq: "logos/ruse_circle_logo.png" }) {
+        sharp: childImageSharp {
+          fixed(width: 650, height: 650) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
     }
   `)
 
@@ -67,10 +77,14 @@ const Slideshow = ({ caption, slides }) => {
   )
 
   return (
-    <div
+    <motion.div
+      // initial={{ opacity: 0, scale: 0 }}
+      // animate={{ opacity: 1, scale: 1 }}
+      // transition={{ duration: 0.5 }}
       css={css`
         position: relative;
         background: gray;
+        height: 100vh;
 
         ${mq("small")} {
           height: 400px;
@@ -79,14 +93,12 @@ const Slideshow = ({ caption, slides }) => {
     >
       <Img
         css={css`
-          animation: fade 750ms ease-in-out;
+          animation: fade 1000ms ease-in-out;
           height: 100%;
-
           @keyframes fade {
             from {
               opacity: 0.25;
             }
-
             to {
               opacity: 1;
             }
@@ -94,6 +106,20 @@ const Slideshow = ({ caption, slides }) => {
         `}
         fluid={current.sharp.fluid}
       ></Img>
+      {/* <div
+        css={css`
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          opacity: 0.5;
+          transform: translate(-50%, -50%);
+          filter: invert(97%) sepia(2%) saturate(2%) hue-rotate(265deg)
+            brightness(116%) contrast(100%);
+        `}
+      >
+        <Img fixed={logo.sharp.fixed} />
+      </div> */}
+
       {/* <h1
         css={css`
           position: absolute;
@@ -163,7 +189,7 @@ const Slideshow = ({ caption, slides }) => {
           &rarr;
         </div>
       </div> */}
-    </div>
+    </motion.div>
   )
 }
 

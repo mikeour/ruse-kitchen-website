@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: mikeour/ruse-kitchen-website #replace with your username/repo
+  repo: mikeour/ruse-kitchen-website
 
 media_folder: static/assets
 
@@ -26,11 +26,72 @@ collections:
         fields:
           - { label: Title, name: title, widget: string }
           - { label: Text, name: text, widget: text }
- - label: "Menu"
-   name: "menu"
-   folder: "content/menu-items"
-   create: true
-   fields: 
-    - {label: "Item Name", name: "name", widget: "string"}
-    - {label: "Item Description", name: "description", widget: "string"}
 
+  - label: "Menu Items"
+    name: "menu"
+    label_singular: "Menu Item"
+    description: >
+      Create menu items here! Each listing here will add a new item to your menu page.
+    folder: "content/menu-items"
+    create: true
+    fields:
+      - { label: "Item Name", name: "title", widget: "string" }
+      - { label: "Item Description", name: "description", widget: "string" }
+      - { label: "Item Position", name: "position", widget: "number" }
+
+  - label: "Pop Up Events"
+    name: "popups"
+    label_singular: "Pop Up Event"
+    description: >
+      Create pop-up events here! Each event here will add a new event to your pop-up page.
+    folder: "content/pop-up-events"
+    create: true
+    fields:
+      - {
+          label: "Event Position",
+          name: "position",
+          widget: "number",
+          hint: "Where this will be positioned in order, the higher the number the later it will be.",
+        }
+      - {
+          label: "Event Name",
+          name: "title",
+          widget: "string",
+          hint: "eg: Floyd Lamb Park ",
+        }
+      - {
+          label: "Event Day",
+          name: "day",
+          widget: "string",
+          hint: "eg: Friday",
+        }
+      - {
+          label: "Event Date",
+          name: "date",
+          widget: "string",
+          hint: "eg: September 21",
+        }
+      - {
+          label: "Event Address",
+          name: "address",
+          widget: "string",
+          hint: "eg: 1234 Sunset Road",
+        }
+      - {
+          label: "Event Time",
+          name: "time",
+          widget: "string",
+          hint: "eg: 12pm - 4pm",
+        }
+      - {
+          label: "Event Description",
+          name: "description",
+          widget: "markdown",
+          hint: "Whatever important information you wanna include! Written in Markdown",
+        }
+      - {
+          label: "Event Map URL",
+          name: "map_url",
+          widget: "string",
+          hint: "Just a normal Google Maps link!",
+        }

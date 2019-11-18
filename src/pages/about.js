@@ -4,7 +4,7 @@ import SectionContainer from "../components/sectionContainer"
 import FullSection from "../components/fullSection"
 import Button from "../components/button"
 import { css } from "@emotion/core"
-import mq from "../styles/media"
+import { mq } from "../styles"
 
 const AboutPage = () => {
   const data = useStaticQuery(graphql`

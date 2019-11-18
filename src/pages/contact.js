@@ -1,15 +1,17 @@
 import React from "react"
-import FullSection from "../components/fullSection"
-import { css } from "@emotion/core"
-import mq from "../styles/media"
-import { ButtonLinkRedirect } from "../components/buttonLink"
 import { navigate } from "gatsby"
+import { motion } from "framer-motion"
+import { css } from "@emotion/core"
+import { mq } from "../styles"
+
+import FullSection from "../components/fullSection"
+import { ButtonLink } from "../components/shared"
 
 const labelStyles = css`
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   letter-spacing: 2px;
   width: 100%;
-  padding: 0 7rem;
+  padding: 0 5rem;
   text-align: left;
 
   ${mq("medium")} {
@@ -40,7 +42,7 @@ function encode(data) {
     .join("&")
 }
 
-const ContactPage = () => {
+function ContactPage() {
   const [state, setState] = React.useState({})
 
   const handleChange = e => {
@@ -61,17 +63,14 @@ const ContactPage = () => {
       .then(() => navigate(form.getAttribute("action")))
       .catch(error => alert(error))
   }
+
   return (
     <>
-      {/* <div
-        css={css`
-          height: 5rem;
-        `}
-      ></div> */}
-      <div
+      <motion.div
+        key="contact"
         css={css`
           /* padding: 12rem 6rem 8rem 6rem; */
-          padding: 12rem 12rem;
+          padding: 12rem 12rem 0 12rem;
 
           ${mq("medium")} {
             padding: 4rem 2rem;
@@ -82,7 +81,37 @@ const ContactPage = () => {
           }
         `}
       >
-        <FullSection title="Contact us">
+        <div
+          css={css`
+            padding: 2rem 4rem;
+            margin: 0 1rem 1rem 1rem;
+            position: relative;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 10px 10px 20px -17px rgba(0, 0, 0, 0.7);
+
+            .btn {
+              margin: 0 2rem;
+            }
+          `}
+        >
+          <h1
+            css={css`
+              font-size: 1.5rem;
+              letter-spacing: 1.5px;
+              align-items: center;
+              vertical-align: middle;
+              display: inline-block;
+            `}
+          >
+            Have a business inquiry?
+          </h1>
+
+          <ButtonLink className="btn" to="/business">
+            Business
+          </ButtonLink>
+        </div>
+        <FullSection title="Contact Ruse">
           <div
             css={css`
               /* padding: 5rem; */
@@ -98,8 +127,8 @@ const ContactPage = () => {
             `}
           >
             <p>
-              Questions? Comments? Feel free to reach out to us here! We love to
-              hear from everyone.
+              Feel free to send us your questions, comments or suggestions. We
+              love to hear from everyone!
             </p>
 
             <form
@@ -114,6 +143,11 @@ const ContactPage = () => {
                 > * {
                   margin: 1rem 0;
                 }
+
+                input,
+                textarea {
+                  outline: 2px solid var(--footer);
+                }
               `}
               onSubmit={handleSubmit}
               name="contact"
@@ -125,7 +159,14 @@ const ContactPage = () => {
               <input type="hidden" name="form-name" value="contact" />
 
               <label css={labelStyles} htmlFor="name">
-                Name
+                Name{" "}
+                <span
+                  css={css`
+                    font-size: 0.75rem;
+                  `}
+                >
+                  (whatever you'd like to be called!)
+                </span>
               </label>
               <input
                 name="name"
@@ -136,7 +177,14 @@ const ContactPage = () => {
               />
 
               <label css={labelStyles} htmlFor="email">
-                Email
+                Email{" "}
+                <span
+                  css={css`
+                    font-size: 0.75rem;
+                  `}
+                >
+                  (so we can get back to you!)
+                </span>
               </label>
               <input
                 name="email"
@@ -192,7 +240,7 @@ const ContactPage = () => {
             </form>
           </div>
         </FullSection>
-      </div>
+      </motion.div>
     </>
   )
 }

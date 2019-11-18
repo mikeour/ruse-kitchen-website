@@ -1,13 +1,13 @@
 import React from "react"
-import ButtonLink from "./buttonLink"
+import { ButtonLink } from "./shared"
 import { css } from "@emotion/core"
-import mq from "../styles/media"
+import { mq } from "../styles"
 
 const FullSection = ({ title, button, children }) => {
   return (
     <section
       css={css`
-        padding: 1rem 1.5rem;
+        padding: 1rem 1.5rem 0 1.5rem;
         margin: 1rem;
         display: grid;
         grid-template-areas:

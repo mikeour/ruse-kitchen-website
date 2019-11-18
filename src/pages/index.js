@@ -1,70 +1,93 @@
 import React from "react"
-import Slideshow from "../components/slideshow"
-import SectionContainer from "../components/sectionContainer"
-import FullSection from "../components/fullSection"
-import Insta from "../components/insta"
-import HalfSection from "../components/halfSection"
-import { css } from "@emotion/core"
-import mq from "../styles/media"
-import PopUpSpotlight from "../components/popUpSpotlight"
 import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+import styled from "@emotion/styled"
 
-const Index = () => {
-  return (
-    <>
-      {/* <div
-        css={css`
-          height: 11rem;
-          background: var(--nav);
-          transition: all 400ms ease-in-out;
-          ${mq("small")} {
-            height: 5rem;
+import { Slideshow } from "../components/shared"
+import { Banner } from "../components/home-page"
+
+const IndexWrapper = styled.div`
+  position: relative;
+`
+
+function IndexPage() {
+  const {
+    imageOne,
+    imageTwo,
+    imageThree,
+    imageFour,
+    imageFive,
+    imageSix,
+    imageSeven,
+  } = useStaticQuery(graphql`
+    query {
+      imageOne: file(relativePath: { eq: "slides/chili-1.jpg" }) {
+        sharp: childImageSharp {
+          fluid(maxWidth: 1450, maxHeight: 700, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
           }
-        `}
-      ></div> */}
-      <Slideshow caption="ruse vegan kitchen" />
-      <SectionContainer>
-        <FullSection title="Eat Well. Be Kind." button="menu">
-          Beetroot water spinach okra water chestnut ricebean pea catsear
-          courgette summer purslane. Water spinach arugula pea tatsoi aubergine
-          spring onion bush tomato kale radicchio turnip chicory salsify pea
-          sprouts fava bean. Dandelion zucchini burdock yarrow chickpea
-          dandelion sorrel courgette turnip greens tigernut soybean radish
-          artichoke wattle seed endive groundnut broccoli arugula. Soko
-          radicchio bunya nuts gram dulse silver beet parsnip napa cabbage lotus
-          root sea lettuce brussels sprout cabbage. Catsear cauliflower garbanzo
-          yarrow salsify chicory garlic bell pepper napa cabbage lettuce tomato
-          kale arugula melon sierra leone bologi rutabaga tigernut.
-        </FullSection>
-      </SectionContainer>
+        }
+      }
+      imageTwo: file(relativePath: { eq: "slides/burrito-2.jpg" }) {
+        sharp: childImageSharp {
+          fluid(maxWidth: 1800, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      imageThree: file(relativePath: { eq: "slides/waffle-3.jpg" }) {
+        sharp: childImageSharp {
+          fluid(maxWidth: 1450, maxHeight: 700, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      imageFour: file(relativePath: { eq: "slides/thai-soup.jpg" }) {
+        sharp: childImageSharp {
+          fluid(maxWidth: 1800, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      imageFive: file(relativePath: { eq: "slides/chili-7.jpg" }) {
+        sharp: childImageSharp {
+          fluid(maxWidth: 1450, maxHeight: 700, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      imageSix: file(relativePath: { eq: "slides/chili-5.jpg" }) {
+        sharp: childImageSharp {
+          fluid(maxWidth: 1450, maxHeight: 700, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      imageSeven: file(relativePath: { eq: "slides/burrito.jpg" }) {
+        sharp: childImageSharp {
+          fluid(maxWidth: 300, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+    }
+  `)
 
-      <SectionContainer>
-        <PopUpSpotlight button="map"></PopUpSpotlight>
-        <HalfSection title="Who We Are" button="about">
-          Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot
-          courgette tatsoi pea sprouts fava bean collard greens dandelion okra
-          wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
-          Pea horseradish azuki bean lettuce avocado asparagus okra. Kohlrabi
-          radish okra azuki bean corn fava bean mustard tigernut jícama green
-          bean.
-        </HalfSection>
-      </SectionContainer>
-      {/* <Slideshow caption="about" />
-      <SectionContainer>
-        <FullSection title="Eat Even Weller. Be Kinder-ish." button="About">
-          At Ruse's Kitchen we’re passionate about sourcing and serving the best
-          food products & gifts possible - from fresh baked goods & prepared
-          foods made in house to specialty homewares & hostess gifts from the
-          island and beyond. We are here to enhance your Vineyard experience.
-        </FullSection>
-      </SectionContainer> */}
-      <Slideshow caption="Instagram" />
-      <SectionContainer>
-        <Insta />
-      </SectionContainer>
-    </>
+  return (
+    <IndexWrapper>
+      <Slideshow
+        slides={[
+          imageThree,
+          // imageSix,
+          // imageFive,
+          // imageOne,
+          // imageTwo,
+          // imageFour,
+        ]}
+      />
+
+      <Banner />
+    </IndexWrapper>
   )
 }
 
-export default Index
+export default IndexPage

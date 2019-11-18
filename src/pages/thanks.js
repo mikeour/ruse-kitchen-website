@@ -1,8 +1,8 @@
 import React from "react"
-import ButtonLink from "../components/buttonLink"
+import { ButtonLink } from "../components/shared"
 import { css } from "@emotion/core"
 import PopUpSpotlight from "../components/popUpSpotlight"
-import mq from "../styles/media"
+import { mq } from "../styles"
 
 const ThanksPage = () => {
   return (

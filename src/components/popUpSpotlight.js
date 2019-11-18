@@ -1,6 +1,6 @@
 import React from "react"
-import mq from "../styles/media"
-import { ButtonLinkRedirect } from "../components/buttonLink"
+import { mq } from "../styles"
+import { ButtonLinkRedirect } from "./shared"
 import { css } from "@emotion/core"
 
 const PopUpSpotlight = ({ button }) => {

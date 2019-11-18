@@ -7,6 +7,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.17",
     "@emotion/styled": "^10.0.17",
+    "framer-motion": "^1.6.15",
     "gatsby": "^2.15.28",
     "gatsby-image": "^2.2.23",
     "gatsby-plugin-emotion": "^4.1.9",
@@ -19,14 +20,13 @@
     "gatsby-plugin-sharp": "^2.2.27",
     "gatsby-source-filesystem": "^2.1.28",
     "gatsby-source-instagram": "^0.5.1",
-    "gatsby-transformer-remark": "^2.6.27",
+    "gatsby-transformer-remark": "^2.6.30",
     "gatsby-transformer-sharp": "^2.2.19",
     "netlify-cms-app": "^2.9.7",
     "prop-types": "^15.7.2",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-helmet": "^5.2.1",
-    "react-transition-group": "^4.3.0",
     "typeface-montserrat": "0.0.75",
     "typeface-scope-one": "0.0.71",
     "typeface-vesper-libre": "0.0.72"

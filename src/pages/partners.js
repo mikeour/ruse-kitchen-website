@@ -1,22 +1,15 @@
 import React from "react"
 
-import { css } from "@emotion/core"
+import { PageContainer, Slideshow } from "../components/shared"
+import { PartnersHeader } from "../components/partners-page"
 
-const PartnersPage = () => {
+function PartnersPage() {
   return (
     <>
-      <div
-        css={css`
-          height: 11rem;
-        `}
-      ></div>
-      <div
-        css={css`
-          height: 100vh;
-        `}
-      >
-        Partners
-      </div>
+      {/* <Slideshow /> */}
+      <PageContainer noSlideshow>
+        <PartnersHeader />
+      </PageContainer>
     </>
   )
 }
