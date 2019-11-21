@@ -9,7 +9,7 @@ import { ButtonLinkRedirect } from "../shared"
 
 const Header = styled(motion.header)`
   padding: 1rem 10%;
-  z-index: 20;
+  z-index: 9;
   display: grid;
   align-items: center;
   grid-template-areas: "date place info";

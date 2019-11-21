@@ -19,7 +19,7 @@ const NavBarWrapper = styled(motion.nav)`
   justify-content: space-evenly;
   align-items: center;
   background: var(--nav);
-  z-index: 5;
+  z-index: 10;
 
   ${mq("small")} {
     height: var(--nav-height-small);
