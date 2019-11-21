@@ -27,6 +27,7 @@
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-helmet": "^5.2.1",
+    "react-hook-form": "^3.28.2",
     "typeface-montserrat": "0.0.75",
     "typeface-scope-one": "0.0.71",
     "typeface-vesper-libre": "0.0.72"
