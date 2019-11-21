@@ -7,7 +7,6 @@ const Container = styled.div`
   padding: 0 5% 5% 5%;
   height: 100%;
   width: 100%;
-  /* border: 4px solid royalblue; */
 
   ${mq("medium")} {
     padding: 0;
@@ -21,7 +20,6 @@ const Container = styled.div`
 const SlideshowFiller = styled.div`
   height: var(--nav-height-large);
   width: 100%;
-  /* border: 3px solid red; */
 
   ${mq("small")} {
     height: var(--nav-height-small);

@@ -6,6 +6,10 @@ const Wrapper = styled.div`
   ${flexMixin};
   width: 100%;
   margin: 1rem 5rem;
+
+  ${mq("small")} {
+    overflow: hidden;
+  }
 `
 
 function PopUpWrapper({ children }) {

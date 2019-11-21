@@ -6,6 +6,7 @@ import styled from "@emotion/styled"
 import { motion, AnimatePresence } from "framer-motion"
 
 import { ButtonLinkRedirect } from "../shared"
+import { mq, flexMixin } from "../../styles"
 
 const Header = styled(motion.header)`
   padding: 1rem 10%;
@@ -22,6 +23,11 @@ const Header = styled(motion.header)`
   :hover {
     background: seagreen;
     color: white;
+  }
+
+  ${mq("small")} {
+    padding: 1rem 5%;
+    grid-template-columns: 1fr 2fr auto;
   }
 `
 
@@ -57,16 +63,31 @@ function Popup({ description, title, day, date, address, time, map_url }) {
         }}
         onClick={toggleExtended}
       >
-        <motion.span
+        <motion.div
           css={css`
             font-size: 1.75rem;
+            display: flex;
             text-align: left;
             grid-area: date;
             white-space: nowrap;
+
+            ${mq("small")} {
+              font-size: 1.25rem;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+
+              span {
+                display: block;
+                width: 100%;
+              }
+            }
           `}
         >
-          {day} {date}
-        </motion.span>
+          <motion.span>{day}</motion.span>
+          <motion.span>{date}</motion.span>
+        </motion.div>
 
         <motion.span
           css={css`
@@ -75,6 +96,13 @@ function Popup({ description, title, day, date, address, time, map_url }) {
             grid-area: place;
             justify-content: center;
             text-align: left;
+
+            ${mq("small")} {
+              padding: 0;
+              font-size: 1.25rem;
+              align-items: center;
+              text-align: center;
+            }
           `}
         >
           {title}
@@ -86,6 +114,12 @@ function Popup({ description, title, day, date, address, time, map_url }) {
             display: flex;
             text-align: right;
             justify-content: right;
+
+            ${mq("small")} {
+              justify-content: center;
+              text-align: center;
+              align-items: center;
+            }
           `}
         >
           <Image
@@ -107,6 +141,10 @@ function Popup({ description, title, day, date, address, time, map_url }) {
               font-size: 1.1rem;
               padding: 0 1rem;
               text-transform: uppercase;
+
+              ${mq("small")} {
+                display: none;
+              }
             `}
           >
             {extended ? "Less" : "More"}
@@ -148,6 +186,17 @@ function Popup({ description, title, day, date, address, time, map_url }) {
                 text-align: center;
                 align-items: center;
                 transform-origin: top center;
+
+                ${mq("small")} {
+                  padding: 1rem 5%;
+                  grid-template-areas:
+                    "address"
+                    "time"
+                    "desc"
+                    "link";
+                  grid-template-columns: 1fr;
+                  grid-template-rows: auto;
+                }
               `}
             >
               <motion.div

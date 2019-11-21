@@ -5,7 +5,7 @@ import styled from "@emotion/styled"
 import { motion, AnimatePresence } from "framer-motion"
 import { mq } from "../../styles"
 
-import { useLogos } from "../../hooks"
+import { useLogos, useOnClickOutside } from "../../hooks"
 import NavLink from "./nav-link"
 
 const Wrapper = styled.div`
@@ -92,11 +92,15 @@ const links = {
 }
 
 function ExpandingNavLinkMobile({ name, additionalLinks, handleClick }) {
-  const [showExpanding, setShowExpanding] = React.useState(false)
-
-  const toggleExpanding = () => setShowExpanding(prevState => !prevState)
+  const [showExpanding, setExpanding] = React.useState(false)
+  const toggleExpanding = React.useCallback(() =>
+    setExpanding(prevState => !prevState)
+  )
+  const ref = React.useRef()
 
   const { expand } = useLogos()
+
+  useOnClickOutside(ref, toggleExpanding)
 
   return (
     <>
@@ -120,6 +124,7 @@ function ExpandingNavLinkMobile({ name, additionalLinks, handleClick }) {
               closed: { opacity: 0, height: 0 },
             }}
             transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
+            ref={ref}
           >
             <motion.ul
               initial="closed"

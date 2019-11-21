@@ -2,7 +2,7 @@ import React from "react"
 import styled from "@emotion/styled"
 
 import { ButtonLink } from "../shared"
-import { flexMixin } from "../../styles"
+import { mq, flexMixin } from "../../styles"
 
 const Header = styled.div`
   ${flexMixin}
@@ -24,6 +24,16 @@ const Header = styled.div`
   a {
     margin-top: 1.5rem;
   }
+
+  ${mq("small")} {
+    h1 {
+      padding: 1rem 2.5%;
+    }
+
+    h3 {
+      padding: 0 5%;
+    }
+  }
 `
 
 function PartnersHeader() {
@@ -31,7 +41,7 @@ function PartnersHeader() {
     <Header>
       <h1>Looking to take some Ruse home with you?</h1>
       <h3>Here are our partners whom stock Ruse products daily!</h3>
-      <ButtonLink to="/popups">Pop-ups</ButtonLink>
+      {/* <ButtonLink to="/popups">Pop-ups</ButtonLink> */}
     </Header>
   )
 }

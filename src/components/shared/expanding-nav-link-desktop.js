@@ -2,10 +2,10 @@ import React from "react"
 import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 import Image from "gatsby-image"
-import { motion, AnimatePresence, useCycle } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 
 import NavLink from "./nav-link"
-import { useLogos } from "../../hooks"
+import { useLogos, useOnClickOutside } from "../../hooks"
 
 const Wrapper = styled(motion.div)`
   position: relative;
@@ -81,9 +81,6 @@ const items = {
     scale: 0,
     transition: {
       duration: 0.1,
-      // when: "afterChildren",
-      // staggerChildren: 0.25,
-      // staggerDirection: -1,
     },
   },
   open: {
@@ -112,16 +109,19 @@ const links = {
 }
 
 function ExpandingNavLinkDesktop({ name, additionalLinks }) {
-  const [showExpanding, toggleExpanding] = useCycle(false, true)
+  const [showExpanding, setExpanding] = React.useState(false)
+  const toggleExpanding = React.useCallback(() =>
+    setExpanding(prevState => !prevState)
+  )
+  const ref = React.useRef()
+
   const { expand } = useLogos()
+
+  useOnClickOutside(ref, toggleExpanding)
 
   return (
     <Wrapper onClick={toggleExpanding}>
-      <Text
-        animate={{
-          color: showExpanding ? "rgb(46,139,87)" : "rgb(0,0,0)",
-        }}
-      >
+      <Text>
         <span>{name}</span>
         <span>
           <Image fixed={expand.sharp.fixed} />
@@ -135,6 +135,7 @@ function ExpandingNavLinkDesktop({ name, additionalLinks }) {
             animate="open"
             variants={variants}
             exit="closed"
+            ref={ref}
           >
             <motion.div
               css={css`
@@ -149,7 +150,7 @@ function ExpandingNavLinkDesktop({ name, additionalLinks }) {
             >
               {additionalLinks.map(link => {
                 return (
-                  <motion.div variants={links} exit="closed">
+                  <motion.div key={link.to} variants={links} exit="closed">
                     <NavLink to={link.to}>{link.name}</NavLink>
                   </motion.div>
                 )
@@ -163,163 +164,3 @@ function ExpandingNavLinkDesktop({ name, additionalLinks }) {
 }
 
 export default ExpandingNavLinkDesktop
-
-/*
-
-
-
-<NavLink to="/menu">Menu</NavLink>
-
-      <div
-        css={css`
-          position: relative;
-          width: max-content;
-          white-space: nowrap;
-
-          :hover {
-            > div {
-              display: flex;
-              transition: all 1000ms ease-in-out;
-            }
-          }
-        `}
-      >
-        <NavLink to="/find">
-          Find Us{" "}
-          <Img
-            // imgStyle={{ display: "inline-block" }}
-            fixed={expand.sharp.fixed}
-          />
-        </NavLink>
-
-        <div
-          css={css`
-            padding: 1.25rem 2rem;
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translate(-50%, 0);
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-            width: max-content;
-            background: white;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-            animation: open 400ms ease-in-out;
-
-            @keyframes open {
-              0% {
-                opacity: 0;
-                visibility: hidden;
-              }
-              100% {
-                opacity: 1;
-                visibility: visible;
-              }
-            }
-
-            > * {
-              margin: 0.25rem 0;
-            }
-          `}
-        >
-          <NavLink
-            css={css`
-              font-size: 1.2rem;
-            `}
-            to="/popups"
-          >
-            Pop-Up events
-          </NavLink>
-          <NavLink
-            css={css`
-              font-size: 1.2rem;
-            `}
-            to="/partners"
-          >
-            Partners
-          </NavLink>
-        </div>
-      </div>
-
-      <div
-        css={css`
-          position: relative;
-          width: max-content;
-          white-space: nowrap;
-
-          :hover {
-            > div {
-              display: flex;
-              transition: all 1000ms ease-in-out;
-            }
-          }
-        `}
-      >
-        <NavLink to="/contact">
-          Contact us{" "}
-          <Img
-            // imgStyle={{ display: "inline-block" }}
-            fixed={expand.sharp.fixed}
-          />
-        </NavLink>
-
-        <div
-          css={css`
-            padding: 1.25rem 2rem;
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translate(-50%, 0);
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-            width: max-content;
-            background: white;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-            animation: open 400ms ease-in-out;
-
-            @keyframes open {
-              0% {
-                opacity: 0;
-                visibility: hidden;
-              }
-              100% {
-                opacity: 1;
-                visibility: visible;
-              }
-            }
-
-            > * {
-              margin: 0.25rem 0;
-            }
-          `}
-        >
-          <NavLink
-            css={css`
-              font-size: 1.2rem;
-            `}
-            to="/contact"
-          >
-            General
-          </NavLink>
-          <NavLink
-            css={css`
-              font-size: 1.2rem;
-            `}
-            to="/business"
-          >
-            Business
-          </NavLink>
-        </div>
-      </div>
-
-      <NavLink to="/about">About</NavLink>
-
-
-      
-*/

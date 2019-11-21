@@ -24,6 +24,16 @@ const Header = styled.div`
   a {
     margin-top: 1.5rem;
   }
+
+  ${mq("small")} {
+    h1 {
+      padding: 1rem 2.5%;
+    }
+
+    h3 {
+      padding: 0 5%;
+    }
+  }
 `
 
 function PopUpHeader() {
