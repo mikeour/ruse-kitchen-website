@@ -3,14 +3,17 @@ import { navigate } from "gatsby"
 import styled from "@emotion/styled"
 import useForm from "react-hook-form"
 
-import { mq, flexMixin } from "../../styles"
+import { mq, flexMixin } from "../../styles/"
 
-function ContactForm() {
-  const [state, setState] = React.useState({})
+function BusinessForm() {
+  const [formState, setFormState] = React.useState({})
   const { handleSubmit: formHandler, register, errors } = useForm()
 
   function handleChange(e) {
-    setState({ ...state, [e.target.name]: e.target.value })
+    setFormState(prevState => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }))
   }
 
   function handleSubmit(e) {
@@ -21,7 +24,7 @@ function ContactForm() {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
         "form-name": form.getAttribute("name"),
-        ...state,
+        ...formState,
       }),
     })
       .then(() => navigate("/thanks"))
@@ -31,20 +34,23 @@ function ContactForm() {
   return (
     <Wrapper>
       <p>
-        Feel free to send us your questions, comments or suggestions. We love to
-        hear from everyone!
+        We provide our plant-based gyro, steak and sausage meat as well as our
+        composed dishes to restaurants and coffee shops throughout Las Vegas. We
+        can adjust all of our dishes to fit the needs of any business! If your
+        business is interested in incorporating Ruse into their menu, send us a
+        message below!
       </p>
 
       <Form
         onSubmit={formHandler(handleSubmit)}
-        name="contact"
+        name="business"
         method="post"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
-        <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="form-name" value="business" />
 
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">Name of contact</label>
         <input
           name="name"
           placeholder="Enter your name"
@@ -52,7 +58,15 @@ function ContactForm() {
           onChange={handleChange}
         />
 
-        <label htmlFor="email">Email</label>
+        <label htmlFor="name">What is the name of your business?</label>
+        <input
+          name="business"
+          placeholder="Enter your business name"
+          type="text"
+          onChange={handleChange}
+        />
+
+        <label htmlFor="email">Email Address</label>
         <input
           name="email"
           placeholder="Enter your email"
@@ -68,10 +82,18 @@ function ContactForm() {
         />
         {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
 
+        <label htmlFor="name">What products are you interested in?</label>
+        <input
+          name="business"
+          placeholder="Lamb Gyro, Falafel Burger, etc"
+          type="text"
+          onChange={handleChange}
+        />
+
         <label htmlFor="message">Message</label>
         <textarea
           name="message"
-          placeholder="Enter your message"
+          placeholder="Anything else you'd like us to know"
           type="text"
           onChange={handleChange}
         />
@@ -84,7 +106,7 @@ function ContactForm() {
   )
 }
 
-export default ContactForm
+export default BusinessForm
 
 // Styles
 
@@ -96,7 +118,13 @@ const Wrapper = styled.div`
   align-items: center;
 
   p {
+    padding: 0 15%;
+    font-size: 1.25rem;
     margin-bottom: 2rem;
+
+    ${mq("small")} {
+      padding: 0 5%;
+    }
   }
 `
 
