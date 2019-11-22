@@ -3,7 +3,7 @@ import { navigate } from "gatsby"
 import styled from "@emotion/styled"
 import useForm from "react-hook-form"
 
-import { mq, flexMixin } from "../../styles/"
+import { mq, flexMixin } from "../../styles"
 
 function BusinessForm() {
   const { handleSubmit, register, errors } = useForm()
@@ -73,7 +73,7 @@ function BusinessForm() {
 
         <label htmlFor="name">What products are you interested in?</label>
         <input
-          name="business"
+          name="product"
           placeholder="Lamb Gyro, Falafel Burger, etc"
           type="text"
           ref={register}
@@ -149,6 +149,7 @@ const Form = styled.form`
   input,
   textarea {
     padding: 1rem;
+    font-size: 1rem;
     width: 85%;
     border-radius: 4px;
     border: 1px solid #ccc;

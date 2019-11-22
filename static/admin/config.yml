@@ -1,5 +1,5 @@
 backend:
-  name: github
+  name: git-gateway
   repo: mikeour/ruse-kitchen-website
 
 media_folder: static/assets
