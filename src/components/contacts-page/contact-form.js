@@ -35,7 +35,7 @@ function ContactForm() {
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
-        <input type="hidden" name="contact" value="contact" />
+        <input type="hidden" name="form-name" value="Contact Form" />
 
         <label htmlFor="name">Name</label>
         <input
@@ -124,6 +124,7 @@ const Form = styled.form`
   input,
   textarea {
     padding: 1rem;
+    font-size: 1rem;
     width: 85%;
     border-radius: 4px;
     border: 1px solid #ccc;

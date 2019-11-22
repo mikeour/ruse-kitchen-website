@@ -71,6 +71,10 @@ function Popup({ description, title, day, date, address, time, map_url }) {
             grid-area: date;
             white-space: nowrap;
 
+            span {
+              margin: 0 1%;
+            }
+
             ${mq("small")} {
               font-size: 1.25rem;
               flex-direction: column;

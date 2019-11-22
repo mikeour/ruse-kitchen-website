@@ -1,7 +1,5 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { css } from "@emotion/core"
-import { mq } from "../styles"
 
 import { Slideshow, PageContainer } from "../components/shared"
 import { PopUp, PopUpHeader, PopUpWrapper } from "../components/popups-page"
@@ -25,10 +23,6 @@ function PopupsPage() {
           sourceInstanceName: { regex: "/content/" }
           relativeDirectory: { eq: "pop-up-events" }
         }
-        sort: {
-          fields: childMarkdownRemark___frontmatter___position
-          order: ASC
-        }
       ) {
         edges {
           node {
@@ -41,6 +35,7 @@ function PopupsPage() {
                 address
                 time
                 map_url
+                position
               }
             }
           }
@@ -49,9 +44,9 @@ function PopupsPage() {
     }
   `)
 
-  const events = popups.edges.map(
-    popup => popup.node.childMarkdownRemark.frontmatter
-  )
+  const events = popups.edges
+    .map(popup => popup.node.childMarkdownRemark.frontmatter)
+    .sort((a, b) => a.position - b.position)
 
   return (
     <>

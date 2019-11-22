@@ -38,7 +38,7 @@ function BusinessForm() {
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
-        <input type="hidden" name="business" value="business" />
+        <input type="hidden" name="form-name" value="Business Form" />
 
         <label htmlFor="name">Name of contact</label>
         <input
