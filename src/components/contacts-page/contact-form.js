@@ -36,13 +36,13 @@ function ContactForm() {
       </p>
 
       <Form
-        onSubmit={formHandler(handleSubmit)}
-        name="contact"
+        onSubmit={e => formHandler(handleSubmit(e))}
+        name="Contact Form"
         method="post"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
-        <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="contact" value="contact" />
 
         <label htmlFor="name">Name</label>
         <input

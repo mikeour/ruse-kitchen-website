@@ -10,10 +10,10 @@ function BusinessForm() {
   const { handleSubmit: formHandler, register, errors } = useForm()
 
   function handleChange(e) {
-    setFormState(prevState => ({
-      ...prevState,
+    setFormState({
+      ...formState,
       [e.target.name]: e.target.value,
-    }))
+    })
   }
 
   function handleSubmit(e) {
@@ -42,13 +42,13 @@ function BusinessForm() {
       </p>
 
       <Form
-        onSubmit={formHandler(handleSubmit)}
-        name="business"
+        onSubmit={e => formHandler(handleSubmit(e))}
+        name="Business Form"
         method="post"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
-        <input type="hidden" name="form-name" value="business" />
+        <input type="hidden" name="business" value="business" />
 
         <label htmlFor="name">Name of contact</label>
         <input
