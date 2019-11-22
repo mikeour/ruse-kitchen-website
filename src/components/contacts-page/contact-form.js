@@ -6,22 +6,15 @@ import useForm from "react-hook-form"
 import { mq, flexMixin } from "../../styles"
 
 function ContactForm() {
-  const [state, setState] = React.useState({})
-  const { handleSubmit: formHandler, register, errors } = useForm()
+  const { handleSubmit, register, errors } = useForm()
 
-  function handleChange(e) {
-    setState({ ...state, [e.target.name]: e.target.value })
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault()
-    const form = e.target
+  function onSubmit(values) {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
-        "form-name": form.getAttribute("name"),
-        ...state,
+        "form-name": "Contact Form",
+        ...values,
       }),
     })
       .then(() => navigate("/thanks"))
@@ -36,7 +29,7 @@ function ContactForm() {
       </p>
 
       <Form
-        onSubmit={e => formHandler(handleSubmit(e))}
+        onSubmit={handleSubmit(onSubmit)}
         name="Contact Form"
         method="post"
         data-netlify="true"
@@ -49,7 +42,7 @@ function ContactForm() {
           name="name"
           placeholder="Enter your name"
           type="text"
-          onChange={handleChange}
+          ref={register}
         />
 
         <label htmlFor="email">Email</label>
@@ -57,7 +50,6 @@ function ContactForm() {
           name="email"
           placeholder="Enter your email"
           type="text"
-          onChange={handleChange}
           ref={register({
             required: "Required",
             pattern: {
@@ -73,7 +65,7 @@ function ContactForm() {
           name="message"
           placeholder="Enter your message"
           type="text"
-          onChange={handleChange}
+          ref={register}
         />
 
         <ButtonWrapper>
