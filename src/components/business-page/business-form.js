@@ -6,25 +6,15 @@ import useForm from "react-hook-form"
 import { mq, flexMixin } from "../../styles/"
 
 function BusinessForm() {
-  const [formState, setFormState] = React.useState({})
-  const { handleSubmit: formHandler, register, errors } = useForm()
+  const { handleSubmit, register, errors } = useForm()
 
-  function handleChange(e) {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value,
-    })
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault()
-    const form = e.target
+  function onSubmit(values) {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
-        "form-name": form.getAttribute("name"),
-        ...formState,
+        "form-name": "Business Form",
+        ...values,
       }),
     })
       .then(() => navigate("/thanks"))
@@ -42,7 +32,7 @@ function BusinessForm() {
       </p>
 
       <Form
-        onSubmit={e => formHandler(handleSubmit(e))}
+        onSubmit={handleSubmit(onSubmit)}
         name="Business Form"
         method="post"
         data-netlify="true"
@@ -55,7 +45,7 @@ function BusinessForm() {
           name="name"
           placeholder="Enter your name"
           type="text"
-          onChange={handleChange}
+          ref={register}
         />
 
         <label htmlFor="name">What is the name of your business?</label>
@@ -63,7 +53,7 @@ function BusinessForm() {
           name="business"
           placeholder="Enter your business name"
           type="text"
-          onChange={handleChange}
+          ref={register}
         />
 
         <label htmlFor="email">Email Address</label>
@@ -71,7 +61,6 @@ function BusinessForm() {
           name="email"
           placeholder="Enter your email"
           type="text"
-          onChange={handleChange}
           ref={register({
             required: "Required",
             pattern: {
@@ -87,7 +76,7 @@ function BusinessForm() {
           name="business"
           placeholder="Lamb Gyro, Falafel Burger, etc"
           type="text"
-          onChange={handleChange}
+          ref={register}
         />
 
         <label htmlFor="message">Message</label>
@@ -95,7 +84,7 @@ function BusinessForm() {
           name="message"
           placeholder="Anything else you'd like us to know"
           type="text"
-          onChange={handleChange}
+          ref={register}
         />
 
         <ButtonWrapper>
