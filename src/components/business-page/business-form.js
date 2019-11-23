@@ -1,12 +1,12 @@
-import React from "react"
-import { navigate } from "gatsby"
-import styled from "@emotion/styled"
-import useForm from "react-hook-form"
+import React from "react";
+import { navigate } from "gatsby";
+import styled from "@emotion/styled";
+import useForm from "react-hook-form";
 
-import { mq, flexMixin } from "../../styles"
+import { mq, flexMixin } from "../../styles";
 
 function BusinessForm() {
-  const { handleSubmit, register, errors } = useForm()
+  const { handleSubmit, register, errors } = useForm();
 
   function onSubmit(values) {
     fetch("/", {
@@ -14,11 +14,11 @@ function BusinessForm() {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
         "form-name": "Business Form",
-        ...values,
-      }),
+        ...values
+      })
     })
       .then(() => navigate("/thanks"))
-      .catch(error => alert(error))
+      .catch(error => alert(error));
   }
 
   return (
@@ -65,8 +65,8 @@ function BusinessForm() {
             required: "Required",
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-              message: "Invalid email address, please fix and submit again.",
-            },
+              message: "Invalid email address, please fix and submit again."
+            }
           })}
         />
         {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
@@ -92,10 +92,10 @@ function BusinessForm() {
         </ButtonWrapper>
       </Form>
     </Wrapper>
-  )
+  );
 }
 
-export default BusinessForm
+export default BusinessForm;
 
 // Styles
 
@@ -107,7 +107,7 @@ const Wrapper = styled.div`
   align-items: center;
 
   p {
-    padding: 0 15%;
+    padding: 0 20%;
     font-size: 1.25rem;
     margin-bottom: 2rem;
 
@@ -115,10 +115,10 @@ const Wrapper = styled.div`
       padding: 0 5%;
     }
   }
-`
+`;
 
 const Form = styled.form`
-  width: 80%;
+  width: 60%;
   ${flexMixin}
 
   > * {
@@ -157,20 +157,28 @@ const Form = styled.form`
   }
 
   textarea {
-    height: 400px;
+    height: 250px;
+
+    ${mq("medium")} {
+      height: 200px;
+    }
+
+    ${mq("small")} {
+      height: 150px;
+    }
   }
-`
+`;
 
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   padding: 1rem;
-`
+`;
 const SubmitButton = styled.button`
   padding: 0.5rem 2.3rem;
-  border: 2px solid var(--button-outside);
   border-radius: 5px;
-  color: var(--button-outside);
+  color: white;
+  background: var(--button-outside);
   box-shadow: 10px 10px 20px -17px rgba(0, 0, 0, 0.7);
   transition: all 200ms ease-in-out;
   font-weight: bold;
@@ -180,22 +188,21 @@ const SubmitButton = styled.button`
   text-decoration: none;
 
   :hover {
-    color: white;
-    background: var(--button-outside);
+    background: var(--button-outside-hover);
     cursor: pointer;
   }
-`
+`;
 
 const ErrorMessage = styled.div`
   color: crimson;
   font-size: 1.5rem;
   padding: 1rem;
-`
+`;
 
 // Utility
 
 function encode(data) {
   return Object.keys(data)
     .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&")
+    .join("&");
 }

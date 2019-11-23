@@ -1,4 +1,4 @@
-import { css } from "@emotion/core"
+import { css } from "@emotion/core";
 
 export const globalStyles = css`
   *::after,
@@ -32,9 +32,10 @@ export const globalStyles = css`
     --navlink: black;
     --navlink-hover: seagreen;
     --button-local: seagreen;
-    --button-outside: #6e9bcc;
-
+    --button-local-hover: #3bb16f;
+    --button-outside: #4881bf;
+    --button-outside-hover: #6e9bcc;
     --nav-height-large: 26vh;
     --nav-height-small: 12.5vh;
   }
-`
+`;

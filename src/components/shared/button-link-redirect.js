@@ -1,8 +1,7 @@
-import styled from "@emotion/styled"
+import styled from "@emotion/styled";
 
 const ButtonLinkRedirect = styled.a`
   padding: 0.5rem 2.3rem;
-  border: 2px solid var(--button-outside);
   border-radius: 5px;
   color: white;
   background: var(--button-outside);
@@ -16,9 +15,9 @@ const ButtonLinkRedirect = styled.a`
 
   :hover {
     color: white;
-    background: #496ecd;
+    background: var(--button-outside-hover);
     cursor: pointer;
   }
-`
+`;
 
-export default ButtonLinkRedirect
+export default ButtonLinkRedirect;

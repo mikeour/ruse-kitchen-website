@@ -1,9 +1,8 @@
-import { Link } from "gatsby"
-import styled from "@emotion/styled"
+import { Link } from "gatsby";
+import styled from "@emotion/styled";
 
 const ButtonLink = styled(Link)`
   padding: 0.5rem 2rem;
-  border: 2px solid var(--button-local);
   border-radius: 5px;
   color: white;
   background: var(--button-local);
@@ -19,9 +18,9 @@ const ButtonLink = styled(Link)`
 
   :hover {
     color: white;
-    background: #1a9478;
+    background: var(--button-local-hover);
     cursor: pointer;
   }
-`
+`;
 
-export default ButtonLink
+export default ButtonLink;

@@ -1,33 +1,33 @@
-import React from "react"
-import { navigate } from "gatsby"
-import { css } from "@emotion/core"
-import addToMailchimp from "gatsby-plugin-mailchimp"
-import { mq } from "../../styles"
+import React from "react";
+import { navigate } from "gatsby";
+import { css } from "@emotion/core";
+import addToMailchimp from "gatsby-plugin-mailchimp";
+import { mq } from "../../styles";
 
-import { ButtonLink } from "../shared"
+import { ButtonLink } from "../shared";
 
 function Footer() {
-  const [email, setEmail] = React.useState("")
-  const [subscribeMsg, setSubscribeMsg] = React.useState("Subscribe")
+  const [email, setEmail] = React.useState("");
+  const [subscribeMsg, setSubscribeMsg] = React.useState("Subscribe");
 
   const handleSubmit = e => {
-    e.preventDefault()
+    e.preventDefault();
 
     addToMailchimp(email)
       .then(data => {
-        setSubscribeMsg("Subscribed")
-        navigate("/thanks")
+        setSubscribeMsg("Subscribed");
+        navigate("/thanks");
       })
       .catch(error => {
         // Errors in here are client side
         // Mailchimp always returns a 200
-        alert("Error! ", error)
-      })
-  }
+        alert("Error! ", error);
+      });
+  };
 
   const handleEmailChange = e => {
-    setEmail(e.currentTarget.value)
-  }
+    setEmail(e.currentTarget.value);
+  };
 
   return (
     <footer
@@ -66,15 +66,6 @@ function Footer() {
         `}
         onSubmit={handleSubmit}
       >
-        {/* <label
-          css={css`
-            ${mq("small")} {
-              display: none;
-            }
-          `}
-        >
-          Newsletter?
-        </label> */}
         <input
           css={css`
             margin: 0 0.5rem;
@@ -97,9 +88,9 @@ function Footer() {
         <button
           css={css`
             padding: 0.5rem 2.3rem;
-            border: 2px solid var(--button-outside);
             border-radius: 5px;
-            color: var(--button-outside);
+            color: white;
+            background: var(--button-outside);
             box-shadow: 10px 10px 20px -17px rgba(0, 0, 0, 0.7);
             transition: all 200ms ease-in-out;
             font-weight: bold;
@@ -107,11 +98,11 @@ function Footer() {
             text-transform: uppercase;
             letter-spacing: 2.5px;
             text-decoration: none;
+            border: none;
 
             :hover {
-              color: white;
-              background: var(--button-outside);
               cursor: pointer;
+              background: var(--button-outside-hover);
             }
           `}
           type="submit"
@@ -145,7 +136,7 @@ function Footer() {
         <ButtonLink to="/contact">Contact</ButtonLink>
       </div>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;
