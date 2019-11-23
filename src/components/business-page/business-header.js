@@ -1,8 +1,8 @@
-import React from "react"
-import styled from "@emotion/styled"
+import React from "react";
+import styled from "@emotion/styled";
 
-import { mq } from "../../styles/"
-import { ButtonLink } from "../shared"
+import { mq } from "../../styles/";
+import { ButtonLink } from "../shared";
 
 function BusinessHeader() {
   return (
@@ -13,10 +13,10 @@ function BusinessHeader() {
         General
       </ButtonLink>
     </Wrapper>
-  )
+  );
 }
 
-export default BusinessHeader
+export default BusinessHeader;
 
 // Styles
 
@@ -38,12 +38,12 @@ const Wrapper = styled.div`
   ${mq("small")} {
     flex-direction: column;
   }
-`
+`;
 
-const Text = styled.p`
+const Text = styled.h1`
   font-size: 1.5rem;
   letter-spacing: 1.5px;
   align-items: center;
   vertical-align: middle;
   display: inline-block;
-`
+`;

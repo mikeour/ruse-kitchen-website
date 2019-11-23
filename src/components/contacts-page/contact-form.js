@@ -42,7 +42,7 @@ function ContactForm() {
           name="name"
           placeholder="Enter your name"
           type="text"
-          ref={register}
+          ref={register({ required: true })}
         />
 
         <label htmlFor="email">Email</label>
@@ -65,7 +65,7 @@ function ContactForm() {
           name="message"
           placeholder="Enter your message"
           type="text"
-          ref={register}
+          ref={register({ required: true })}
         />
 
         <ButtonWrapper>
@@ -134,7 +134,7 @@ const Form = styled.form`
   textarea {
     height: 250px;
 
-    ${mq('medium')} {
+    ${mq("medium")} {
       height: 200px;
     }
 
