@@ -23,7 +23,7 @@ export const globalStyles = css`
 
   :root {
     --nav: #f9f9f9;
-    --footer: #96c5ab;
+    --footer: whitesmoke;
     --body: white;
     /* --body: #f3eeea; */
     /* --body: #efefef; */

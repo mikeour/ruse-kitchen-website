@@ -1,44 +1,58 @@
-import React from "react"
-import styled from "@emotion/styled"
+import React from "react";
+import Image from "gatsby-image";
+import styled from "@emotion/styled";
 
-import { mq } from "../../styles"
-import { ButtonLink } from "../shared"
+import { mq } from "../../styles";
+import { ButtonLink } from "../shared";
+import { useLogos } from "../../hooks";
 
 function ContactHeader() {
+  const { business } = useLogos();
+
   return (
     <Wrapper>
-      <Text>Have a business inquiry?</Text>
-
-      <ButtonLink className="btn" to="/business">
-        Business
-      </ButtonLink>
+      <Text>Would you like to stock Ruse in your store?</Text>
+      <p>Use this form instead.</p>
+      <StyledButtonLink className="btn" to="/business">
+        <Icon fixed={business.sharp.fixed} /> Business
+      </StyledButtonLink>
     </Wrapper>
-  )
+  );
 }
 
-export default ContactHeader
+export default ContactHeader;
 
 // Styles
 
 const Wrapper = styled.div`
-  padding: 2rem 4rem;
-  margin: 0 1rem 1rem 1rem;
-  position: relative;
+  grid-area: info;
+  max-width: 300px;
+  width: 100%;
+  padding: 2.5rem 2.5rem 2.5rem 1rem;
+  position: sticky;
+  top: 25%;
   background: white;
   border-radius: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
 
-  .btn {
-    margin: 0 2rem;
+  h1 {
+    padding: 0 0 1rem 0;
   }
 
-  ${mq("small")} {
-    flex-direction: column;
+  p {
+    padding: 1rem 0;
   }
-`
+
+  ${mq("medium")} {
+    position: relative;
+    top: 0;
+    max-width: 100%;
+  }
+`;
 
 const Text = styled.h1`
   font-size: 1.5rem;
@@ -46,4 +60,19 @@ const Text = styled.h1`
   align-items: center;
   vertical-align: middle;
   display: inline-block;
-`
+`;
+
+const StyledButtonLink = styled(ButtonLink)`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+`;
+
+const Icon = styled(Image)`
+  margin: 0 10px 0 0;
+  width: 20px;
+  height: 20px;
+  filter: invert(91%) sepia(94%) saturate(34%) hue-rotate(250deg)
+    brightness(106%) contrast(100%);
+`;

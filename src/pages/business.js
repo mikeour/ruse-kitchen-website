@@ -1,15 +1,21 @@
-import React from "react"
+import React from "react";
 
-import { PageContainer } from "../components/shared"
-import { BusinessHeader, BusinessForm } from "../components/business-page"
+import { PageContainer } from "../components/shared";
+import {
+  BusinessHeader,
+  BusinessForm,
+  BusinessWrapper
+} from "../components/business-page";
 
 function BusinessPage() {
   return (
     <PageContainer noSlideshow>
-      <BusinessHeader />
-      <BusinessForm />
+      <BusinessWrapper>
+        <BusinessHeader />
+        <BusinessForm />
+      </BusinessWrapper>
     </PageContainer>
-  )
+  );
 }
 
-export default BusinessPage
+export default BusinessPage;

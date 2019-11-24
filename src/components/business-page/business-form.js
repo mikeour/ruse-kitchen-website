@@ -23,14 +23,6 @@ function BusinessForm() {
 
   return (
     <Wrapper>
-      <p>
-        We provide our plant-based gyro, steak and sausage meat as well as our
-        composed dishes to restaurants and coffee shops throughout Las Vegas. We
-        can adjust all of our dishes to fit the needs of any business! If your
-        business is interested in incorporating Ruse into their menu, send us a
-        message below!
-      </p>
-
       <Form
         onSubmit={handleSubmit(onSubmit)}
         name="Business Form"
@@ -39,6 +31,14 @@ function BusinessForm() {
         data-netlify-honeypot="bot-field"
       >
         <input type="hidden" name="form-name" value="Business Form" />
+
+        <p>
+          We provide our plant-based gyro, steak and sausage meat as well as our
+          composed dishes to restaurants and coffee shops throughout Las Vegas.
+          We can adjust all of our dishes to fit the needs of any business! If
+          your business is interested in incorporating Ruse into their menu,
+          send us a message below!
+        </p>
 
         <label htmlFor="name">Name of contact</label>
         <input
@@ -101,39 +101,35 @@ export default BusinessForm;
 
 const Wrapper = styled.div`
   width: 100%;
+  padding: 5% 0;
+  grid-area: form;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  p {
-    padding: 0 20%;
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-
-    ${mq("small")} {
-      padding: 0 5%;
-    }
-  }
 `;
 
 const Form = styled.form`
-  width: 60%;
+  width: 100%;
   ${flexMixin}
-
-  > * {
-    margin: 1rem 0;
-  }
+  border-radius: 10px;
+  border-right: 3px solid seagreen;
 
   ${mq("small")} {
     width: 100%;
   }
 
+  p {
+    font-size: 1.25rem;
+    padding: 2.5% 10%;
+    margin-bottom: 5rem;
+  }
+
   label {
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     letter-spacing: 2px;
     width: 100%;
-    padding: 0 5rem;
+    padding: 0 5rem 0.5rem 5rem;
     text-align: left;
 
     ${mq("medium")} {
@@ -148,6 +144,7 @@ const Form = styled.form`
 
   input,
   textarea {
+    margin-bottom: 1rem;
     padding: 1rem;
     font-size: 1rem;
     width: 85%;
@@ -174,6 +171,7 @@ const ButtonWrapper = styled.div`
   justify-content: space-around;
   padding: 1rem;
 `;
+
 const SubmitButton = styled.button`
   padding: 0.5rem 2.3rem;
   border-radius: 5px;

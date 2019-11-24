@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { Slideshow, PageContainer } from "../components/shared";
 import { Menu, MenuHeader } from "../components/menu-page";
 
-const MenuPage = () => {
+function MenuPage() {
   const { imageOne, imageTwo, items, branch } = useStaticQuery(graphql`
     query {
       imageOne: file(relativePath: { eq: "slides/waffle-3.jpg" }) {

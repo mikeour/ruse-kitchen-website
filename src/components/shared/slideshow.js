@@ -1,11 +1,11 @@
-import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
-import { motion } from "framer-motion"
+import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
+import Img from "gatsby-image";
+import { motion } from "framer-motion";
 
-import { useSlideshow } from "../../hooks"
-import { css } from "@emotion/core"
-import { mq } from "../../styles"
+import { useSlideshow } from "../../hooks";
+import { css } from "@emotion/core";
+import { mq } from "../../styles";
 
 function Slideshow({ caption, slides }) {
   const {
@@ -15,7 +15,7 @@ function Slideshow({ caption, slides }) {
     imageFour,
     imageFive,
     imageSix,
-    logo,
+    logo
   } = useStaticQuery(graphql`
     query {
       imageOne: file(relativePath: { eq: "slides/storefront.jpg" }) {
@@ -68,13 +68,13 @@ function Slideshow({ caption, slides }) {
         }
       }
     }
-  `)
+  `);
 
-  const defaultSlides = [imageFive, imageSix]
+  const defaultSlides = [imageFive, imageSix];
 
   const { current, handleNext, handlePrevious } = useSlideshow(
     slides || defaultSlides
-  )
+  );
 
   return (
     <motion.div
@@ -83,7 +83,7 @@ function Slideshow({ caption, slides }) {
       // transition={{ duration: 0.5 }}
       css={css`
         position: relative;
-        background: gray;
+        background: var(--footer);
         height: 100vh;
 
         ${mq("small")} {
@@ -190,7 +190,7 @@ function Slideshow({ caption, slides }) {
         </div>
       </div> */}
     </motion.div>
-  )
+  );
 }
 
-export default Slideshow
+export default Slideshow;

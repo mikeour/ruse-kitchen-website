@@ -1,10 +1,10 @@
-import React from "react"
-import styled from "@emotion/styled"
-import { motion } from "framer-motion"
+import React from "react";
+import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 
-import { NavLink, ExpandingNavLinkMobile } from "../shared"
-import { useLockBodyScroll } from "../../hooks"
-import { mq } from "../../styles"
+import { NavLink, ExpandingNavLinkMobile } from "../shared";
+import { useLockBodyScroll } from "../../hooks";
+import { mq } from "../../styles";
 
 const SidebarWrapper = styled(motion.div)`
   display: none;
@@ -20,7 +20,7 @@ const SidebarWrapper = styled(motion.div)`
     background: var(--nav);
     display: block;
   }
-`
+`;
 const LinksWrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
@@ -29,18 +29,18 @@ const LinksWrapper = styled(motion.div)`
   > div {
     margin: 1.5rem 0;
   }
-`
+`;
 
-const NavLinkWrapper = styled(motion.div)``
+const NavLinkWrapper = styled(motion.div)``;
 
 const links = [
   {
     to: "/",
-    name: "Home",
+    name: "Home"
   },
   {
     to: "/menu",
-    name: "Menu",
+    name: "Menu"
   },
   {
     to: null,
@@ -48,13 +48,13 @@ const links = [
     additionalLinks: [
       {
         to: "/popups",
-        name: "Pop-up Events",
+        name: "Pop-up Events"
       },
       {
         to: "/partners",
-        name: "Partners",
-      },
-    ],
+        name: "Partners"
+      }
+    ]
   },
   {
     to: null,
@@ -62,19 +62,19 @@ const links = [
     additionalLinks: [
       {
         to: "/contact",
-        name: "General",
+        name: "General"
       },
       {
         to: "/business",
-        name: "Business",
-      },
-    ],
+        name: "Business"
+      }
+    ]
   },
   {
-    to: "/about",
-    name: "About",
-  },
-]
+    to: "/order",
+    name: "Order"
+  }
+];
 
 const variants = {
   hidden: { opacity: 0 },
@@ -84,20 +84,20 @@ const variants = {
       delay: 0.25,
       when: "beforeChildren",
       staggerChildren: 0.05,
-      duration: 0.5,
-    },
-  },
-}
+      duration: 0.5
+    }
+  }
+};
 
 const item = {
   hidden: { y: 20, opacity: 0 },
-  show: { y: 0, opacity: 1 },
-}
+  show: { y: 0, opacity: 1 }
+};
 
 function Sidebar({ setShowSidebar }) {
-  const handleClick = () => setShowSidebar(prevState => !prevState)
+  const handleClick = () => setShowSidebar(prevState => !prevState);
 
-  useLockBodyScroll()
+  useLockBodyScroll();
 
   return (
     <SidebarWrapper
@@ -115,7 +115,7 @@ function Sidebar({ setShowSidebar }) {
                   {name}
                 </NavLink>
               </NavLinkWrapper>
-            )
+            );
           } else {
             return (
               <NavLinkWrapper variants={item} key={i}>
@@ -125,12 +125,12 @@ function Sidebar({ setShowSidebar }) {
                   handleClick={handleClick}
                 />
               </NavLinkWrapper>
-            )
+            );
           }
         })}
       </LinksWrapper>
     </SidebarWrapper>
-  )
+  );
 }
 
-export default Sidebar
+export default Sidebar;

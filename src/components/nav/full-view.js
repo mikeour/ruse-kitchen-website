@@ -1,16 +1,16 @@
-import React from "react"
-import Img from "gatsby-image"
-import { motion } from "framer-motion"
-import { css } from "@emotion/core"
-import styled from "@emotion/styled"
-import { mq } from "../../styles"
+import React from "react";
+import Img from "gatsby-image";
+import { motion } from "framer-motion";
+import { css } from "@emotion/core";
+import styled from "@emotion/styled";
+import { mq } from "../../styles";
 
-import { NavLink, NavLinkLogo, ExpandingNavLinkDesktop } from "../shared"
+import { NavLink, NavLinkLogo, ExpandingNavLinkDesktop } from "../shared";
 
 const links = [
   {
     to: "/menu",
-    name: "Menu",
+    name: "Menu"
   },
   {
     to: null,
@@ -18,13 +18,13 @@ const links = [
     additionalLinks: [
       {
         to: "/popups",
-        name: "Pop-up Events",
+        name: "Pop-up Events"
       },
       {
         to: "/partners",
-        name: "Partners",
-      },
-    ],
+        name: "Partners"
+      }
+    ]
   },
   {
     to: null,
@@ -32,19 +32,19 @@ const links = [
     additionalLinks: [
       {
         to: "/contact",
-        name: "General",
+        name: "General"
       },
       {
         to: "/business",
-        name: "Business",
-      },
-    ],
+        name: "Business"
+      }
+    ]
   },
   {
-    to: "/about",
-    name: "About",
-  },
-]
+    to: "/order",
+    name: "Order"
+  }
+];
 
 const FullViewWrapper = styled(motion.div)`
   display: flex;
@@ -56,7 +56,7 @@ const FullViewWrapper = styled(motion.div)`
     display: none;
     visibility: hidden;
   }
-`
+`;
 
 export default function FullView({ instagram, facebook, yelp, logo, expand }) {
   return (
@@ -67,14 +67,14 @@ export default function FullView({ instagram, facebook, yelp, logo, expand }) {
 
       {links.map((link, i) => {
         if (link.to) {
-          return <NavLink to={link.to}>{link.name}</NavLink>
+          return <NavLink to={link.to}>{link.name}</NavLink>;
         } else {
           return (
             <ExpandingNavLinkDesktop
               name={link.name}
               additionalLinks={link.additionalLinks}
             />
-          )
+          );
         }
       })}
 
@@ -112,5 +112,5 @@ export default function FullView({ instagram, facebook, yelp, logo, expand }) {
         </NavLinkLogo>
       </div>
     </FullViewWrapper>
-  )
+  );
 }

@@ -1,4 +1,5 @@
-import BusinessHeader from "./business-header"
-import BusinessForm from "./business-form"
+import BusinessHeader from "./business-header";
+import BusinessForm from "./business-form";
+import BusinessWrapper from "./business-wrapper";
 
-export { BusinessHeader, BusinessForm }
+export { BusinessHeader, BusinessForm, BusinessWrapper };
