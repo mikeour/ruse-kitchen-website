@@ -4,10 +4,10 @@ import styled from "@emotion/styled";
 
 import { mq } from "../../styles";
 import { ButtonLink } from "../shared";
-import { useLogos } from "../../hooks";
+import { useIcons } from "../../hooks";
 
 function ContactHeader() {
-  const { business } = useLogos();
+  const { business } = useIcons();
 
   return (
     <Wrapper>

@@ -5,7 +5,7 @@ import styled from "@emotion/styled"
 import { motion, AnimatePresence } from "framer-motion"
 import { mq } from "../../styles"
 
-import { useLogos, useOnClickOutside } from "../../hooks"
+import { useIcons, useOnClickOutside } from "../../hooks"
 import NavLink from "./nav-link"
 
 const Wrapper = styled.div`
@@ -98,7 +98,7 @@ function ExpandingNavLinkMobile({ name, additionalLinks, handleClick }) {
   )
   const ref = React.useRef()
 
-  const { expand } = useLogos()
+  const { expand } = useIcons()
 
   useOnClickOutside(ref, toggleExpanding)
 

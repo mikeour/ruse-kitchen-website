@@ -5,7 +5,7 @@ import Image from "gatsby-image"
 import { motion, AnimatePresence } from "framer-motion"
 
 import NavLink from "./nav-link"
-import { useLogos, useOnClickOutside } from "../../hooks"
+import { useIcons, useOnClickOutside } from "../../hooks"
 
 const Wrapper = styled(motion.div)`
   position: relative;
@@ -115,7 +115,7 @@ function ExpandingNavLinkDesktop({ name, additionalLinks }) {
   )
   const ref = React.useRef()
 
-  const { expand } = useLogos()
+  const { expand } = useIcons()
 
   useOnClickOutside(ref, toggleExpanding)
 

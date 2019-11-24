@@ -5,12 +5,12 @@ import styled from "@emotion/styled";
 import useForm from "react-hook-form";
 
 import ContactSocialMediaLinks from "./contact-social-media-links";
-import { useLogos } from "../../hooks";
+import { useIcons } from "../../hooks";
 import { mq, flexMixin } from "../../styles";
 
 function ContactForm() {
   const { handleSubmit, register, errors } = useForm();
-  const { send } = useLogos();
+  const { send } = useIcons();
 
   function onSubmit(values) {
     fetch("/", {

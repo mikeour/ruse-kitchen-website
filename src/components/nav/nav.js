@@ -5,7 +5,7 @@ import { mq } from "../../styles"
 
 import FullView from "./full-view"
 import MobileView from "./mobile-view"
-import { useLogos, useWindowSize } from "../../hooks"
+import { useIcons, useWindowSize } from "../../hooks"
 
 const NavBarWrapper = styled(motion.nav)`
   width: 100%;
@@ -66,7 +66,7 @@ function Nav({ showSidebar, setShowSidebar }) {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const { instagram, facebook, yelp, logo } = useLogos()
+  const { instagram, facebook, yelp, logo } = useIcons()
 
   const size = useWindowSize()
 

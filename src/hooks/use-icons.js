@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from "gatsby";
 
-const useLogos = () => {
+function useIcons() {
   const {
     instagram,
     facebook,
@@ -94,6 +94,6 @@ const useLogos = () => {
     send,
     business
   };
-};
+}
 
-export default useLogos;
+export default useIcons;

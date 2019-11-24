@@ -3,10 +3,10 @@ import Image from "gatsby-image";
 import styled from "@emotion/styled";
 import { mq, flexMixin } from "../../styles";
 
-import { useLogos } from "../../hooks";
+import { useIcons } from "../../hooks";
 
 function ContactSocialMediaLinks() {
-  const { instagram, facebook } = useLogos();
+  const { instagram, facebook } = useIcons();
 
   return (
     <Wrapper>

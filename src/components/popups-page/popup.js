@@ -6,13 +6,13 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { ButtonLinkRedirect } from "../shared";
 import { mq, flexMixin } from "../../styles";
-import { useLogos } from "../../hooks";
+import { useIcons } from "../../hooks";
 
 function Popup({ description, title, day, date, address, time, map_url }) {
   const [extended, setExtended] = useState(false);
   const toggleExtended = () => setExtended(prevState => !prevState);
 
-  const { collapse, expand } = useLogos();
+  const { collapse, expand } = useIcons();
 
   return (
     <>
