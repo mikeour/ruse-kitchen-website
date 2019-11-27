@@ -13,7 +13,7 @@ function ContactHeader() {
     <Wrapper>
       <Text>Would you like to stock Ruse in your store?</Text>
       <p>Use this form instead.</p>
-      <StyledButtonLink className="btn" to="/business">
+      <StyledButtonLink to="/business">
         <Icon fixed={business.sharp.fixed} /> Business
       </StyledButtonLink>
     </Wrapper>

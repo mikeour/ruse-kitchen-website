@@ -190,10 +190,6 @@ const Break = styled.div`
 `;
 
 const ButtonWrapper = styled.div`
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: space-between;
   padding: 1rem;
 `;
 

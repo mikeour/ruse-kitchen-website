@@ -1,8 +1,13 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
 
-import { Slideshow, PageContainer } from "../components/shared"
-import { PopUp, PopUpHeader, PopUpWrapper } from "../components/popups-page"
+import { Slideshow, PageContainer } from "../components/shared";
+import {
+  PopUp,
+  PopUps,
+  PopUpHeader,
+  PopUpWrapper
+} from "../components/popups-page";
 
 function renderPopups(popups) {
   return (
@@ -12,7 +17,7 @@ function renderPopups(popups) {
           <PopUp key={eventInfo.map_url} {...eventInfo} />
         ))}
     </>
-  )
+  );
 }
 
 function PopupsPage() {
@@ -42,21 +47,23 @@ function PopupsPage() {
         }
       }
     }
-  `)
+  `);
 
   const events = popups.edges
     .map(popup => popup.node.childMarkdownRemark.frontmatter)
-    .sort((a, b) => a.position - b.position)
+    .sort((a, b) => a.position - b.position);
 
   return (
     <>
       <Slideshow />
       <PageContainer>
-        <PopUpHeader />
-        <PopUpWrapper>{renderPopups(events)}</PopUpWrapper>
+        <PopUpWrapper>
+          <PopUpHeader />
+          <PopUps>{renderPopups(events)}</PopUps>
+        </PopUpWrapper>
       </PageContainer>
     </>
-  )
+  );
 }
 
-export default PopupsPage
+export default PopupsPage;

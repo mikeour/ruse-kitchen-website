@@ -1,5 +1,6 @@
-import PopUp from "./popup"
-import PopUpWrapper from "./popup-wrapper"
-import PopUpHeader from "./popup-header"
+import PopUp from "./popup";
+import PopUps from "./popups";
+import PopUpWrapper from "./popup-wrapper";
+import PopUpHeader from "./popup-header";
 
-export { PopUp, PopUpHeader, PopUpWrapper }
+export { PopUp, PopUps, PopUpHeader, PopUpWrapper };

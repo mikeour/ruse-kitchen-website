@@ -5,6 +5,7 @@ function useIcons() {
     instagram,
     facebook,
     yelp,
+    google,
     menu,
     logo,
     expand,
@@ -31,6 +32,14 @@ function useIcons() {
       yelp: file(relativePath: { eq: "icons/yelp-logo.png" }) {
         sharp: childImageSharp {
           fixed(width: 25, height: 25) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+
+      google: file(relativePath: { eq: "icons/google.png" }) {
+        sharp: childImageSharp {
+          fixed(width: 20, height: 20) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -87,6 +96,7 @@ function useIcons() {
     instagram,
     facebook,
     yelp,
+    google,
     menu,
     logo,
     expand,

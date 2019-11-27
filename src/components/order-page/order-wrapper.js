@@ -1,19 +1,20 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { mq, flexMixin } from "../../styles";
+import { mq } from "../../styles";
 
-function PopUpWrapper({ children }) {
+function OrderWrapper({ children }) {
   return <Wrapper>{children}</Wrapper>;
 }
 
-export default PopUpWrapper;
+export default OrderWrapper;
+
+// Styles
 
 const Wrapper = styled.div`
-  /* border: 4px solid crimson; */
   width: 100%;
   display: grid;
   grid-template-areas:
-    ". form"
+    "info form"
     "info form"
     ". form";
   grid-template-columns: auto 1fr;

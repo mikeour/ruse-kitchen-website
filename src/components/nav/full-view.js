@@ -67,10 +67,15 @@ export default function FullView({ instagram, facebook, yelp, logo, expand }) {
 
       {links.map((link, i) => {
         if (link.to) {
-          return <NavLink to={link.to}>{link.name}</NavLink>;
+          return (
+            <NavLink key={i} to={link.to}>
+              {link.name}
+            </NavLink>
+          );
         } else {
           return (
             <ExpandingNavLinkDesktop
+              key={i}
               name={link.name}
               additionalLinks={link.additionalLinks}
             />

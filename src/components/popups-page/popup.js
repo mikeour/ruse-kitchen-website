@@ -4,7 +4,7 @@ import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { ButtonLinkRedirect } from "../shared";
+import { ButtonLinkRedirect, ButtonLink } from "../shared";
 import { mq, flexMixin } from "../../styles";
 import { useIcons } from "../../hooks";
 
@@ -12,20 +12,25 @@ function Popup({ description, title, day, date, address, time, map_url }) {
   const [extended, setExtended] = useState(false);
   const toggleExtended = () => setExtended(prevState => !prevState);
 
-  const { collapse, expand } = useIcons();
+  const { collapse, expand, google } = useIcons();
 
   return (
     <>
       <Header
-        animate={{
-          backgroundColor: extended ? "seagreen" : "white",
-          color: extended ? "white" : "black"
-        }}
+        // animate={{
+        //   backgroundColor: extended ? "seagreen" : "white",
+        //   color: extended ? "white" : "black"
+        // }}
         onClick={toggleExtended}
+        whileHover={{
+          backgroundColor: "seagreen",
+          color: "white"
+        }}
+        transition={{ duration: 2 }}
       >
         <EventDayAndDate>
-          <motion.span>{day}</motion.span>
-          <motion.span>{date}</motion.span>
+          <motion.div>{day}</motion.div>
+          <motion.div>{date}</motion.div>
         </EventDayAndDate>
 
         <EventTitle>{title}</EventTitle>
@@ -57,64 +62,24 @@ function Popup({ description, title, day, date, address, time, map_url }) {
               }}
               transition={{ duration: 0.8 }}
             >
-              <motion.div
-                css={css`
-                  grid-area: address;
-                `}
-              >
-                Address:{" "}
-                <motion.span
-                  css={css`
-                    font-size: 1.25rem;
-                  `}
-                >
-                  {address}
-                </motion.span>
-              </motion.div>
-              <motion.div
-                css={css`
-                  grid-area: time;
-                `}
-              >
-                From:{" "}
-                <motion.span
-                  css={css`
-                    font-size: 1.25rem;
-                  `}
-                >
-                  {time}
-                </motion.span>
-              </motion.div>
-              <motion.div
-                css={css`
-                  grid-area: desc;
-                `}
-              >
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.25 }}
-                  exit={{ opacity: 0 }}
-                  css={css`
-                    font-size: 1.25rem;
-                  `}
-                >
-                  {description}
-                </motion.span>
-              </motion.div>
-              <motion.div
-                css={css`
-                  grid-area: link;
-                `}
-              >
-                <ButtonLinkRedirect
+              <AddressGrid>
+                Address: <motion.span>{address}</motion.span>
+              </AddressGrid>
+              <TimeGrid>
+                From: <motion.span>{time}</motion.span>
+              </TimeGrid>
+              <DescriptionGrid>
+                <motion.span>{description}</motion.span>
+              </DescriptionGrid>
+              <LinkGrid>
+                <GoogleMapsLink
                   href={map_url}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Google Maps
-                </ButtonLinkRedirect>
-              </motion.div>
+                  <GoogleIcon fixed={google.sharp.fixed} /> Google Maps
+                </GoogleMapsLink>
+              </LinkGrid>
             </AdditionalInfoWrapper>
           </motion.section>
         )}
@@ -128,12 +93,12 @@ export default Popup;
 // Styles
 
 const Header = styled(motion.header)`
-  padding: 1rem 10%;
-  z-index: 9;
+  padding: 5%;
+  z-index: 10;
   display: grid;
   align-items: center;
   grid-template-areas: "date place info";
-  grid-template-columns: 1fr 1.5fr auto;
+  grid-template-columns: 1fr 1.5fr 1fr;
   grid-gap: 1rem;
   border-radius: 4px;
   width: 100%;
@@ -153,17 +118,12 @@ const Header = styled(motion.header)`
 const EventDayAndDate = styled(motion.div)`
   font-size: 1.25rem;
   display: flex;
+  flex-direction: column;
   grid-area: date;
   white-space: nowrap;
-  text-align: right;
-  align-items: right;
-  align-content: right;
-  align-self: right;
-  justify-content: right;
-  justify-items: right;
-  justify-self: right;
+  text-align: center;
 
-  span {
+  div {
     margin: 0 1%;
   }
 
@@ -173,11 +133,6 @@ const EventDayAndDate = styled(motion.div)`
     justify-content: center;
     align-items: center;
     text-align: center;
-
-    span {
-      display: block;
-      width: 100%;
-    }
   }
 `;
 
@@ -203,12 +158,6 @@ const EventMoreOrLess = styled(motion.div)`
   justify-content: center;
   text-align: center;
   align-items: center;
-
-  ${mq("small")} {
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-  }
 `;
 
 const MoreOrLessIcon = styled(Image)`
@@ -216,6 +165,22 @@ const MoreOrLessIcon = styled(Image)`
     props.extended
       ? "invert(91%) sepia(94%) saturate(34%) hue-rotate(250deg) brightness(106%) contrast(100%)"
       : "none"};
+`;
+
+const GoogleMapsLink = styled(ButtonLinkRedirect)`
+  padding: 1rem;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  white-space: nowrap;
+`;
+
+const GoogleIcon = styled(Image)`
+  filter: invert(91%) sepia(94%) saturate(34%) hue-rotate(250deg)
+    brightness(106%) contrast(100%);
+  margin-right: 1rem;
 `;
 
 const MoreOrLessText = styled(motion.span)`
@@ -239,9 +204,9 @@ const AdditionalInfoWrapper = styled(motion.div)`
     "desc address"
     "desc time"
     "desc link";
-  grid-template-columns: 1.5fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-gap: 2rem;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr 1fr auto;
+  grid-gap: 1rem;
   justify-content: center;
   text-align: center;
   align-items: center;
@@ -257,4 +222,34 @@ const AdditionalInfoWrapper = styled(motion.div)`
     grid-template-columns: 1fr;
     grid-template-rows: auto;
   }
+`;
+
+const AddressGrid = styled(motion.div)`
+  grid-area: address;
+
+  span {
+    font-size: 1.25rem;
+  }
+`;
+
+const TimeGrid = styled(motion.div)`
+  grid-area: time;
+
+  span {
+    font-size: 1.25rem;
+  }
+`;
+
+const DescriptionGrid = styled(motion.div)`
+  grid-area: desc;
+  text-align: left;
+
+  span {
+    font-size: 1.25rem;
+  }
+`;
+
+const LinkGrid = styled(motion.div)`
+  grid-area: link;
+  margin: 0 auto;
 `;

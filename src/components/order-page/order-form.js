@@ -1,43 +1,105 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import useForm from "react-hook-form";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
 import { mq, flexMixin } from "../../styles";
 
-const food = [
-  { value: "Lamb Gyro", name: "Lamb Gyro" },
-  { value: "Falafel Burger", name: "Falafel Burger" },
-  { value: "Potato Tacos", name: "Potato Tacos" }
-];
+const animatedComponents = makeAnimated();
 
-function OrderForm() {
-  const { register, handleSubmit, errors } = useForm();
-  const onSubmit = data => console.log(data);
+function OrderForm({ options }) {
+  const { register, handleSubmit, setValue, errors } = useForm();
+
+  const [values, setReactSelect] = useState({ selectedOption: [] });
+
+  const handleMultiChange = selectedOption => {
+    setValue("items", formatItems(selectedOption));
+    setReactSelect({ selectedOption });
+  };
+
+  const onSubmit = data => console.log({ data: encode(data) });
 
   return (
     <Wrapper>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          name="name"
-          ref={register}
-          placeholder="Your Name"
-        ></input>
+        <Title>Order Form</Title>
+        <InputDiv>
+          <div>
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              name="name"
+              ref={register}
+              placeholder="Name"
+            ></input>
+          </div>
+
+          <div>
+            <label htmlFor="address">Address</label>
+            <input
+              type="text"
+              name="address"
+              ref={register}
+              placeholder="Delivery Address"
+            ></input>
+          </div>
+        </InputDiv>
+
+        <InputDiv>
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              name="email"
+              ref={register}
+              placeholder="Your Email"
+            ></input>
+          </div>
+
+          <div>
+            <label htmlFor="phone">Phone Number</label>
+            <input
+              type="text"
+              name="phone"
+              ref={register}
+              placeholder="10-Digit Phone Number"
+            ></input>
+          </div>
+        </InputDiv>
 
         <label htmlFor="items">Items</label>
-        <select name="items" ref={register}>
-          {food.map(item => (
-            <option value={item.value}>{item.name}</option>
-          ))}
-        </select>
+        <Dropdown
+          components={animatedComponents}
+          name="items"
+          placeholder="Items to purchase"
+          value={values.selectedOption}
+          options={options}
+          onChange={handleMultiChange}
+          ref={() =>
+            register(
+              { name: "items" },
+              {
+                validate: value => {
+                  // need to validate if it is undefined or empty array
+                  return Array.isArray(value) ? value.length > 0 : !!value;
+                }
+              }
+            )
+          }
+          isMulti
+        />
+        <NoteText>
+          NOTE: If you'd like to order more than one of an item, let us know in
+          the message! Thanks.
+        </NoteText>
 
-        <label htmlFor="email">Email</label>
-        <input
+        <label htmlFor="message">Message</label>
+        <textarea
           type="text"
-          name="email"
+          name="message"
           ref={register}
-          placeholder="Your Email"
-        ></input>
+          placeholder="(Optional)"
+        ></textarea>
 
         <ButtonWrapper>
           <SubmitButton type="submit">Submit</SubmitButton>
@@ -53,6 +115,8 @@ export default OrderForm;
 
 const Wrapper = styled.div`
   width: 100%;
+  padding: 5% 0;
+  grid-area: form;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,58 +124,76 @@ const Wrapper = styled.div`
 `;
 
 const Form = styled.form`
-  padding: 5% 0;
-  width: 60%;
-  ${flexMixin}
+  width: 100%;
+  padding: 5% 10%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  border-left: 3px solid seagreen;
 
-  ${mq("small")} {
-    width: 100%;
+  ${mq("medium")} {
+    border-left: none;
+    border-radius: 0;
   }
 
   label {
     font-size: 1.5rem;
     letter-spacing: 2px;
     width: 100%;
-    padding: 0 5rem 0.5rem 5rem;
+
     text-align: left;
 
     ${mq("medium")} {
-      padding: 0 5.5rem;
     }
 
     ${mq("small")} {
       text-align: center;
-      padding: 0 4.5rem;
     }
   }
 
-  input {
+  input,
+  textarea {
     margin-bottom: 1rem;
     padding: 1rem;
     font-size: 1rem;
-    width: 85%;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    outline: none;
-  }
-
-  select {
-    align-self: flex-start;
-    padding: 1rem;
-    margin-left: 9%;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-    width: 25%;
+    width: 100%;
     border-radius: 4px;
     border: 1px solid #ccc;
     outline: none;
   }
 `;
 
+const Title = styled.h1`
+  padding: 0 0 5% 0;
+`;
+
+const InputDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  div {
+    width: 47.5%;
+    text-align: left;
+  }
+`;
+
+const Dropdown = styled(Select)`
+  align-self: flex-start;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  width: 100%;
+  outline: none;
+`;
+
+const NoteText = styled.p`
+  font-style: italic;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+`;
+
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-around;
-  padding: 1rem;
 `;
 
 const SubmitButton = styled.button`
@@ -132,3 +214,19 @@ const SubmitButton = styled.button`
     cursor: pointer;
   }
 `;
+
+// Utility
+
+function encode(data) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+}
+
+function formatItems(items) {
+  let formattedItems = [];
+  if (Array.isArray(items) && items.length > 0) {
+    formattedItems = [...items].map(option => option.value).join(", ");
+  }
+  return formattedItems;
+}

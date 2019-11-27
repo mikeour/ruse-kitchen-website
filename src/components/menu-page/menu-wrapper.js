@@ -2,29 +2,26 @@ import React from "react";
 import styled from "@emotion/styled";
 import { mq } from "../../styles";
 
-function BusinessWrapper({ children }) {
+function MenuWrapper({ children }) {
   return <Wrapper>{children}</Wrapper>;
 }
 
-export default BusinessWrapper;
+export default MenuWrapper;
 
 // Styles
 
 const Wrapper = styled.div`
   width: 100%;
   display: grid;
-  grid-template-areas:
-    "form ."
-    "form info"
-    "form .";
-  grid-template-columns: 1fr auto;
-  grid-template-rows: 10rem auto 1fr;
+  grid-template-areas: "images menu";
+  grid-template-columns: 400px 1fr;
+  grid-template-rows: 1fr;
 
   ${mq("medium")} {
     grid-template-areas:
-      "form"
-      "info";
+      "menu"
+      "images";
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto;
   }
 `;

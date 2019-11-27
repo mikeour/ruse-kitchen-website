@@ -1,5 +1,6 @@
-import MenuItem from "./menu-item"
-import MenuHeader from "./menu-header"
-import Menu from "./menu"
+import MenuItem from "./menu-item";
+import MenuImages from "./menu-images";
+import Menu from "./menu";
+import MenuWrapper from "./menu-wrapper";
 
-export { MenuItem, MenuHeader, Menu }
+export { MenuItem, MenuImages, Menu, MenuWrapper };

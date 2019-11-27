@@ -44,12 +44,10 @@ const Wrapper = styled.div`
     padding: 1rem 0;
   }
 
-  .btn {
-    margin: 0 2rem;
-  }
-
-  ${mq("small")} {
-    flex-direction: column;
+  ${mq("medium")} {
+    position: relative;
+    top: 0;
+    max-width: 100%;
   }
 `;
 

@@ -2,10 +2,17 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
 import { Slideshow, PageContainer } from "../components/shared";
-import { Menu, MenuHeader } from "../components/menu-page";
+import { Menu, MenuImages, MenuWrapper } from "../components/menu-page";
 
 function MenuPage() {
-  const { imageOne, imageTwo, items, branch } = useStaticQuery(graphql`
+  const {
+    imageOne,
+    imageTwo,
+    imageThree,
+    imageFour,
+    items,
+    branch
+  } = useStaticQuery(graphql`
     query {
       imageOne: file(relativePath: { eq: "slides/waffle-3.jpg" }) {
         sharp: childImageSharp {
@@ -17,6 +24,21 @@ function MenuPage() {
       imageTwo: file(relativePath: { eq: "slides/thai-soup.jpg" }) {
         sharp: childImageSharp {
           fluid(maxWidth: 1800, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+
+      imageThree: file(relativePath: { eq: "slides/burrito.jpg" }) {
+        sharp: childImageSharp {
+          fluid(maxWidth: 350, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      imageFour: file(relativePath: { eq: "slides/tofu-satay.jpg" }) {
+        sharp: childImageSharp {
+          fluid(maxWidth: 350, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
@@ -58,11 +80,13 @@ function MenuPage() {
     <>
       <Slideshow slides={[imageOne, imageTwo]} />
       <PageContainer>
-        <MenuHeader />
-        <Menu menuItems={menuItems} branch={branch} />
+        <MenuWrapper>
+          <MenuImages images={[imageThree, imageFour]} />
+          <Menu menuItems={menuItems} branch={branch} image={imageThree} />
+        </MenuWrapper>
       </PageContainer>
     </>
   );
-};
+}
 
 export default MenuPage;
