@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { navigate } from "gatsby";
 import styled from "@emotion/styled";
 import useForm from "react-hook-form";
 import Select from "react-select";
@@ -12,18 +13,37 @@ function OrderForm({ options }) {
 
   const [values, setReactSelect] = useState({ selectedOption: [] });
 
-  const handleMultiChange = selectedOption => {
+  function handleMultiChange(selectedOption) {
     setValue("items", formatItems(selectedOption));
     setReactSelect({ selectedOption });
-  };
+  }
 
-  const onSubmit = data => console.log({ data: encode(data) });
+  function onSubmit(values) {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": "Order Form",
+        ...values
+      })
+    })
+      .then(() => navigate("/thanks"))
+      .catch(error => alert(error));
+  }
 
   return (
     <Wrapper>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <Title>Order Form</Title>
+      <Form
+        onSubmit={handleSubmit(onSubmit)}
+        name="Contact Form"
+        method="post"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+      >
+        {/* <Title>Order Form</Title> */}
         <InputDiv>
+          <input type="hidden" name="form-name" value="Order Form" />
+
           <div>
             <label htmlFor="name">Name</label>
             <input
@@ -47,22 +67,22 @@ function OrderForm({ options }) {
 
         <InputDiv>
           <div>
-            <label htmlFor="email">Email</label>
-            <input
-              type="text"
-              name="email"
-              ref={register}
-              placeholder="Your Email"
-            ></input>
-          </div>
-
-          <div>
             <label htmlFor="phone">Phone Number</label>
             <input
               type="text"
               name="phone"
               ref={register}
               placeholder="10-Digit Phone Number"
+            ></input>
+          </div>
+
+          <div>
+            <label htmlFor="delivery-time">Delivery Time</label>
+            <input
+              type="text"
+              name="delivery-time"
+              ref={register}
+              placeholder="eg: 2pm-5pm"
             ></input>
           </div>
         </InputDiv>
@@ -90,13 +110,13 @@ function OrderForm({ options }) {
         />
         <NoteText>
           NOTE: If you'd like to order more than one of an item, let us know in
-          the message! Thanks.
+          the Special Instructions! Thanks.
         </NoteText>
 
-        <label htmlFor="message">Message</label>
+        <label htmlFor="special-instructions">Special Instructions</label>
         <textarea
           type="text"
-          name="message"
+          name="special-instructions"
           ref={register}
           placeholder="(Optional)"
         ></textarea>
@@ -134,6 +154,7 @@ const Form = styled.form`
   ${mq("medium")} {
     border-left: none;
     border-radius: 0;
+    padding: 4%;
   }
 
   label {

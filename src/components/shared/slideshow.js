@@ -87,7 +87,7 @@ function Slideshow({ caption, slides }) {
         height: 100vh;
 
         ${mq("small")} {
-          height: 400px;
+          height: 500px;
         }
       `}
     >

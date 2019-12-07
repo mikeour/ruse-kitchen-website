@@ -17,10 +17,10 @@ function Popup({ description, title, day, date, address, time, map_url }) {
   return (
     <>
       <Header
-        // animate={{
-        //   backgroundColor: extended ? "seagreen" : "white",
-        //   color: extended ? "white" : "black"
-        // }}
+        animate={{
+          backgroundColor: extended ? "seagreen" : "white",
+          color: extended ? "white" : "black"
+        }}
         onClick={toggleExtended}
         whileHover={{
           backgroundColor: "seagreen",
@@ -45,7 +45,7 @@ function Popup({ description, title, day, date, address, time, map_url }) {
       </Header>
       <AnimatePresence>
         {extended && (
-          <motion.section
+          <AnimatedSection
             initial="collapsed"
             animate="open"
             exit="collapsed"
@@ -81,7 +81,7 @@ function Popup({ description, title, day, date, address, time, map_url }) {
                 </GoogleMapsLink>
               </LinkGrid>
             </AdditionalInfoWrapper>
-          </motion.section>
+          </AnimatedSection>
         )}
       </AnimatePresence>
     </>
@@ -93,8 +93,9 @@ export default Popup;
 // Styles
 
 const Header = styled(motion.header)`
-  padding: 5%;
-  z-index: 10;
+  padding: 2.5%;
+  position: relative;
+  z-index: 9;
   display: grid;
   align-items: center;
   grid-template-areas: "date place info";
@@ -103,6 +104,7 @@ const Header = styled(motion.header)`
   border-radius: 4px;
   width: 100%;
   cursor: pointer;
+  background: white;
 
   :hover {
     background: seagreen;
@@ -167,6 +169,8 @@ const MoreOrLessIcon = styled(Image)`
       : "none"};
 `;
 
+const AnimatedSection = styled(motion.section)``;
+
 const GoogleMapsLink = styled(ButtonLinkRedirect)`
   padding: 1rem;
   width: auto;
@@ -195,10 +199,11 @@ const MoreOrLessText = styled(motion.span)`
 `;
 
 const AdditionalInfoWrapper = styled(motion.div)`
-  padding: 2rem 4rem;
+  padding: 3%;
   background: white;
   border-radius: 4px;
-  margin: 1rem;
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-areas:
     "desc address"

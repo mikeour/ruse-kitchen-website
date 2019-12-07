@@ -11,45 +11,31 @@ import {
 
 const data = [
   {
-    value: "Lamb Gyro",
-    label: "Lamb Gyro",
+    value: "Gyro Kit",
+    label: "Gyro Kit",
     description:
-      "Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo",
-    position: 5
+      "Plant based gyro with harissa, tzatiziki, marinated cucumbers, tomatoes and onions all on a folded pita",
+    price: 25,
+    serves: 3,
+    position: 1
   },
 
   {
-    value: "Falafel Burger",
-    label: "Falafel Burger",
+    value: "Steak Pesto Ciabatta Kit",
+    label: "Steak Pesto Ciabatta Kit",
     description:
-      "Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi",
-    position: 4
-  },
-  {
-    value: "Potato Tacos",
-    label: "Potato Tacos",
-    description:
-      "Sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea",
-    position: 6
-  },
-  {
-    value: "Tofu Satay Taco",
-    label: "Tofu Satay Taco",
-    description: "Turnip greens yarrow ricebean rutabaga endive cauliflower",
-    position: 1
-  },
-  {
-    value: "Fattoush Salad",
-    label: "Fattoush Salad",
-    description: "Celery potato scallion desert raisin horseradish",
-    position: 3
-  },
-  {
-    value: "Thai Chili",
-    label: "Thai Chili",
-    description:
-      "Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea.",
+      "Charbroiled plant-based steak with sautéed peppers and onions and house made pesto with ciabatta rolls.",
+    price: 25,
+    serves: 3,
     position: 2
+  },
+  {
+    value: "Spicy Italian Sausage",
+    label: "Spicy Italian Sausage",
+    description:
+      "Plant-based sausage with hot and sweet peppers with a garlic mustard and served on a hoagie roll.",
+    price: 18,
+    position: 3
   }
 ];
 
@@ -63,7 +49,7 @@ function OrderPage() {
         <OrderForm options={options} />
         <OrderInfo options={options} />
       </OrderWrapper>
-      <OrderFooter />
+      {/* <OrderFooter /> */}
     </PageContainer>
   );
 }

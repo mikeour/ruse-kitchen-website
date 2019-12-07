@@ -9,7 +9,6 @@ function PopUpWrapper({ children }) {
 export default PopUpWrapper;
 
 const Wrapper = styled.div`
-  /* border: 4px solid crimson; */
   width: 100%;
   display: grid;
   grid-template-areas:
@@ -17,12 +16,12 @@ const Wrapper = styled.div`
     "info form"
     ". form";
   grid-template-columns: auto 1fr;
-  grid-template-rows: 10rem auto 1fr;
+  grid-template-rows: 5rem auto 1fr;
 
   ${mq("medium")} {
     grid-template-areas:
-      "form"
-      "info";
+      "info"
+      "form";
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
   }

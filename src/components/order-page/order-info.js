@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { mq } from "../../styles";
 
 function OrderInfo({ options }) {
   return (
@@ -10,6 +11,8 @@ function OrderInfo({ options }) {
             <ItemWrapper>
               <ItemName>{option.value}</ItemName>
               <ItemDescription>{option.description}</ItemDescription>
+              <ItemPrice>${option.price}</ItemPrice>
+              {option.serves && <ItemServes>Serves {option.serves}</ItemServes>}
             </ItemWrapper>
           ))}
         </ul>
@@ -28,7 +31,11 @@ const Wrapper = styled.div`
   width: 100%;
   padding: 2.5rem 2.5rem 2.5rem 1rem;
   position: sticky;
-  top: 0;
+  top: 15%;
+
+  ${mq("small")} {
+    padding: 2.5%;
+  }
 `;
 
 const Text = styled.h1`
@@ -39,6 +46,9 @@ const ItemWrapper = styled.div`
   padding: 1% 10%;
   width: 100%;
   margin-bottom: 1.5rem;
+  * {
+    margin: 1% 0;
+  }
 `;
 
 const ItemName = styled.h3`
@@ -53,4 +63,16 @@ const ItemName = styled.h3`
 const ItemDescription = styled.p`
   font-size: 1rem;
   text-align: left;
+`;
+
+const ItemPrice = styled.p`
+  font-size: 1rem;
+  text-align: left;
+  font-style: italic;
+`;
+
+const ItemServes = styled.p`
+  font-size: 1rem;
+  text-align: left;
+  font-style: italic;
 `;
