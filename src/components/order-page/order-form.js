@@ -35,7 +35,7 @@ function OrderForm({ options }) {
     <Wrapper>
       <Form
         onSubmit={handleSubmit(onSubmit)}
-        name="Contact Form"
+        name="Order Form"
         method="post"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
