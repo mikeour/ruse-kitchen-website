@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import { mq, flexMixin } from "../../styles";
+import { mq, flexMixin } from "@styles";
 
 const Wrapper = styled.div`
   ${flexMixin}

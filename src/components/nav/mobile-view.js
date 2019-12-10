@@ -1,8 +1,8 @@
-import React from "react"
-import styled from "@emotion/styled"
-import { mq } from "../../styles"
+import React from "react";
+import styled from "@emotion/styled";
+import { mq } from "@styles";
 
-import SidebarToggle from "./sidebar-toggle"
+import SidebarToggle from "./sidebar-toggle";
 
 const MobileViewWrapper = styled.div`
   display: none;
@@ -13,7 +13,7 @@ const MobileViewWrapper = styled.div`
     justify-content: flex-end;
     align-items: center;
   }
-`
+`;
 
 export default function MobileView({ showSidebar, setShowSidebar }) {
   return (
@@ -23,5 +23,5 @@ export default function MobileView({ showSidebar, setShowSidebar }) {
         setShowSidebar={setShowSidebar}
       />
     </MobileViewWrapper>
-  )
+  );
 }

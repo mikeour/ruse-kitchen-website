@@ -1,11 +1,11 @@
 import React from "react";
 
-import { PageContainer } from "../components/shared";
+import { PageContainer } from "@components/shared";
 import {
   ContactWrapper,
   ContactHeader,
   ContactForm
-} from "../components/contacts-page";
+} from "@components/contacts-page";
 
 function ContactPage() {
   return (

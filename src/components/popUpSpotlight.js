@@ -1,7 +1,7 @@
-import React from "react"
-import { mq } from "../styles"
-import { ButtonLinkRedirect } from "./shared"
-import { css } from "@emotion/core"
+import React from "react";
+import { mq } from "../styles";
+import { ButtonLinkRedirect } from "@components/shared";
+import { css } from "@emotion/core";
 
 const PopUpSpotlight = ({ button }) => {
   return (
@@ -160,7 +160,7 @@ const PopUpSpotlight = ({ button }) => {
         Grape silver beet watercress potato tigernut corn groundnut.
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PopUpSpotlight
+export default PopUpSpotlight;

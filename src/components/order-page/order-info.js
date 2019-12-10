@@ -1,21 +1,19 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { mq } from "../../styles";
+import { mq } from "@styles";
 
 function OrderInfo({ options }) {
   return (
     <Wrapper>
       <Text>
-        <ul>
-          {options.map(option => (
-            <ItemWrapper>
-              <ItemName>{option.value}</ItemName>
-              <ItemDescription>{option.description}</ItemDescription>
-              <ItemPrice>${option.price}</ItemPrice>
-              {option.serves && <ItemServes>Serves {option.serves}</ItemServes>}
-            </ItemWrapper>
-          ))}
-        </ul>
+        {options.map(option => (
+          <ItemWrapper>
+            <ItemName>{option.value}</ItemName>
+            <ItemDescription>{option.description}</ItemDescription>
+            <ItemPrice>${option.price}</ItemPrice>
+            {option.serves && <ItemServes>Serves {option.serves}</ItemServes>}
+          </ItemWrapper>
+        ))}
       </Text>
     </Wrapper>
   );
@@ -31,15 +29,26 @@ const Wrapper = styled.div`
   width: 100%;
   padding: 2.5rem 2.5rem 2.5rem 1rem;
   position: sticky;
-  top: 15%;
+  top: 10%;
+
+  ${mq("medium")} {
+    padding: 2.5%;
+    max-width: 100%;
+  }
 
   ${mq("small")} {
-    padding: 2.5%;
+    padding: 2.5% 1%;
+    position: static;
+    top: 0;
   }
 `;
 
 const Text = styled.h1`
-  width: 500px;
+  max-width: 500px;
+
+  ${mq("medium")} {
+    max-width: 100%;
+  }
 `;
 
 const ItemWrapper = styled.div`

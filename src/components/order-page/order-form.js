@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import useForm from "react-hook-form";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import { mq, flexMixin } from "../../styles";
+import { mq, flexMixin } from "@styles";
 
 const animatedComponents = makeAnimated();
 
@@ -50,29 +50,51 @@ function OrderForm({ options }) {
               type="text"
               name="name"
               ref={register}
-              placeholder="Name"
+              // placeholder="Name"
             ></input>
           </div>
 
           <div>
-            <label htmlFor="address">Address</label>
+            <label htmlFor="email">Email</label>
             <input
               type="text"
-              name="address"
+              name="email"
               ref={register}
-              placeholder="Delivery Address"
+              // placeholder="Your email address"
             ></input>
           </div>
         </InputDiv>
 
         <InputDiv>
           <div>
+            <label htmlFor="address">Address</label>
+            <input
+              type="text"
+              name="address"
+              ref={register}
+              // placeholder="Delivery Address"
+            ></input>
+          </div>
+
+          <div>
             <label htmlFor="phone">Phone Number</label>
             <input
               type="text"
               name="phone"
               ref={register}
-              placeholder="10-Digit Phone Number"
+              // placeholder="10-Digit Phone Number"
+            ></input>
+          </div>
+        </InputDiv>
+
+        <InputDiv>
+          <div>
+            <label htmlFor="delivery-day">Delivery Day</label>
+            <input
+              type="text"
+              name="delivery-day"
+              ref={register}
+              // placeholder="Your delivery day"
             ></input>
           </div>
 
@@ -82,7 +104,7 @@ function OrderForm({ options }) {
               type="text"
               name="delivery-time"
               ref={register}
-              placeholder="eg: 2pm-5pm"
+              // placeholder="Your delivery time"
             ></input>
           </div>
         </InputDiv>
@@ -91,7 +113,7 @@ function OrderForm({ options }) {
         <Dropdown
           components={animatedComponents}
           name="items"
-          placeholder="Items to purchase"
+          // placeholder="Items to purchase"
           value={values.selectedOption}
           options={options}
           onChange={handleMultiChange}
@@ -118,11 +140,11 @@ function OrderForm({ options }) {
           type="text"
           name="special-instructions"
           ref={register}
-          placeholder="(Optional)"
+          // placeholder="(Optional)"
         ></textarea>
 
         <ButtonWrapper>
-          <SubmitButton type="submit">Submit</SubmitButton>
+          <SubmitButton type="submit">Submit Order</SubmitButton>
         </ButtonWrapper>
       </Form>
     </Wrapper>
@@ -141,6 +163,14 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  ${mq("medium")} {
+    padding: 2.5%;
+  }
+
+  ${mq("small")} {
+    padding: 1%;
+  }
 `;
 
 const Form = styled.form`
@@ -157,18 +187,23 @@ const Form = styled.form`
     padding: 4%;
   }
 
-  label {
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    width: 100%;
+  ${mq("small")} {
+    padding: 4% 6%;
+  }
 
+  label {
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+    width: 100%;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
     text-align: left;
 
     ${mq("medium")} {
     }
 
     ${mq("small")} {
-      text-align: center;
+      text-align: left;
     }
   }
 
@@ -176,11 +211,12 @@ const Form = styled.form`
   textarea {
     margin-bottom: 1rem;
     padding: 1rem;
-    font-size: 1rem;
+    font-size: 0.75rem;
     width: 100%;
     border-radius: 4px;
     border: 1px solid #ccc;
     outline: none;
+    font-family: "Montserrat", sans-serif;
   }
 `;
 
@@ -191,30 +227,49 @@ const Title = styled.h1`
 const InputDiv = styled.div`
   display: flex;
   justify-content: space-between;
+  margin: 1% 0;
 
   div {
     width: 47.5%;
     text-align: left;
+  }
+
+  ${mq("small")} {
+    flex-direction: column;
+
+    div {
+      width: 100%;
+    }
   }
 `;
 
 const Dropdown = styled(Select)`
   align-self: flex-start;
   margin-bottom: 1rem;
-  font-size: 1rem;
   width: 100%;
   outline: none;
+
+  div {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.75rem;
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
 `;
 
 const NoteText = styled.p`
   font-style: italic;
   font-size: 0.75rem;
   margin-bottom: 1rem;
+  width: 100%;
 `;
 
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-around;
+  margin: 2.5%;
 `;
 
 const SubmitButton = styled.button`

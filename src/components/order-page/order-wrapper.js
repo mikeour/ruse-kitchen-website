@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { mq } from "../../styles";
+import { mq } from "@styles";
 
 function OrderWrapper({ children }) {
   return <Wrapper>{children}</Wrapper>;
@@ -19,11 +19,13 @@ const Wrapper = styled.div`
     ". form";
   grid-template-columns: auto 1fr;
   grid-template-rows: 10rem auto 1fr;
+  background: whitesmoke;
+  border-radius: 10px;
 
-  ${mq("medium")} {
+  ${mq("small")} {
     grid-template-areas:
-      "form"
-      "info";
+      "info"
+      "form";
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
   }

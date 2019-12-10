@@ -5,8 +5,8 @@ import styled from "@emotion/styled";
 import useForm from "react-hook-form";
 
 import ContactSocialMediaLinks from "./contact-social-media-links";
-import { useIcons } from "../../hooks";
-import { mq, flexMixin } from "../../styles";
+import { useIcons } from "@hooks";
+import { mq, flexMixin } from "@styles";
 
 function ContactForm() {
   const { handleSubmit, register, errors } = useForm();

@@ -1,10 +1,9 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
 import styled from "@emotion/styled";
-import { mq, flexMixin } from "../../styles";
+import { mq, flexMixin } from "@styles";
 
-import { ButtonLink } from "../shared";
+import { ButtonLink } from "@components/shared";
 
 // function MenuHeader() {
 //   return (

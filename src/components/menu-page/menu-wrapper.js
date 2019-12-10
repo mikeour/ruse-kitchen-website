@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { mq } from "../../styles";
+import { mq } from "@styles";
 
 function MenuWrapper({ children }) {
   return <Wrapper>{children}</Wrapper>;

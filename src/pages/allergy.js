@@ -1,9 +1,10 @@
-import React from "react"
-import AllergyItem from "../components/allergy-item"
-import { Slideshow } from "../components/shared"
-import { css } from "@emotion/core"
-import SectionContainer from "../components/sectionContainer"
-import { mq } from "../styles"
+import React from "react";
+import { css } from "@emotion/core";
+import { mq } from "@styles";
+
+import AllergyItem from "@components/allergy-item";
+import { Slideshow } from "@components/shared";
+import SectionContainer from "@components/sectionContainer";
 
 const AllergyPage = () => {
   return (
@@ -64,7 +65,7 @@ const AllergyPage = () => {
         </div>
       </SectionContainer>
     </>
-  )
-}
+  );
+};
 
-export default AllergyPage
+export default AllergyPage;

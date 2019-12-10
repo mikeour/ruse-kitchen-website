@@ -1,6 +1,6 @@
-import React from "react"
-import { css } from "@emotion/core"
-import { mq } from "../styles"
+import React from "react";
+import { css } from "@emotion/core";
+import { mq } from "@styles";
 
 function AllergyItem({ name, children }) {
   return (
@@ -47,7 +47,7 @@ function AllergyItem({ name, children }) {
         {children}
       </div>
     </div>
-  )
+  );
 }
 
-export default AllergyItem
+export default AllergyItem;

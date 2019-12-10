@@ -1,8 +1,8 @@
-import React from "react"
-import styled from "@emotion/styled"
-import { mq, flexMixin } from "../../styles"
+import React from "react";
+import styled from "@emotion/styled";
+import { mq, flexMixin } from "@styles";
 
-import { ButtonLink } from "../shared"
+import { ButtonLink } from "@components/shared";
 
 const BannerWrapper = styled.div`
   position: absolute;
@@ -28,7 +28,7 @@ const BannerWrapper = styled.div`
     display: block;
     background: white;
   }
-`
+`;
 
 const BannerName = styled.div`
   grid-area: name;
@@ -59,7 +59,7 @@ const BannerName = styled.div`
       font-size: 2rem;
     }
   }
-`
+`;
 
 const BannerTagline = styled.div`
   grid-area: text;
@@ -82,7 +82,7 @@ const BannerTagline = styled.div`
   ${mq("small")} {
     padding: 1% 2.5%;
   }
-`
+`;
 
 function Banner() {
   return (
@@ -98,7 +98,7 @@ function Banner() {
         <ButtonLink to="/popups">Find us</ButtonLink>
       </BannerTagline>
     </BannerWrapper>
-  )
+  );
 }
 
-export default Banner
+export default Banner;

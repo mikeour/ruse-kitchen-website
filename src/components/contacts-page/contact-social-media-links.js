@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "gatsby-image";
 import styled from "@emotion/styled";
-import { mq, flexMixin } from "../../styles";
+import { mq, flexMixin } from "@styles";
 
-import { useIcons } from "../../hooks";
+import { useIcons } from "@hooks";
 
 function ContactSocialMediaLinks() {
   const { instagram, facebook } = useIcons();

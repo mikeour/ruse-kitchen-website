@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Global } from "@emotion/core";
 import styled from "@emotion/styled";
-import { globalStyles, flexMixin } from "../styles";
+import { globalStyles, flexMixin } from "@styles";
 import { motion, AnimatePresence } from "framer-motion";
 
-import Nav from "../components/nav/nav";
-import Footer from "../components/footer/footer";
-import Sidebar from "../components/sidebar/sidebar";
+import Nav from "@components/nav/nav";
+import Footer from "@components/footer/footer";
+import Sidebar from "@components/sidebar/sidebar";
 
 function Layout({ children, location }) {
   const [showSidebar, setShowSidebar] = useState(false);

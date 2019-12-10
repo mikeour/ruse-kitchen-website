@@ -1,6 +1,6 @@
-import React from "react"
-import { css } from "@emotion/core"
-import { mq } from "../styles"
+import React from "react";
+import { css } from "@emotion/core";
+import { mq } from "@styles";
 
 const SectionContainer = ({ children, marginTop }) => {
   return (
@@ -29,7 +29,7 @@ const SectionContainer = ({ children, marginTop }) => {
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
-export default SectionContainer
+export default SectionContainer;

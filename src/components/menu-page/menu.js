@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import Image from "gatsby-image";
 import styled from "@emotion/styled";
-import { mq } from "../../styles";
+import { mq } from "@styles";
 
 import MenuItem from "./menu-item";
 

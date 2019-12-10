@@ -2,9 +2,9 @@ import React from "react";
 import Image from "gatsby-image";
 import styled from "@emotion/styled";
 
-import { mq } from "../../styles";
-import { ButtonLink } from "../shared";
-import { useIcons } from "../../hooks";
+import { mq } from "@styles";
+import { ButtonLink } from "@components/shared";
+import { useIcons } from "@hooks";
 
 function ContactHeader() {
   const { business } = useIcons();

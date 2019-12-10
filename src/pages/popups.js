@@ -1,13 +1,13 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
-import { Slideshow, PageContainer } from "../components/shared";
+import { Slideshow, PageContainer } from "@components/shared";
 import {
   PopUp,
   PopUps,
   PopUpHeader,
   PopUpWrapper
-} from "../components/popups-page";
+} from "@components/popups-page";
 
 function renderPopups(popups) {
   return (

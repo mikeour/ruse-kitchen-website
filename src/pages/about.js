@@ -1,10 +1,10 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import SectionContainer from "../components/sectionContainer"
-import FullSection from "../components/fullSection"
-import Button from "../components/button"
-import { css } from "@emotion/core"
-import { mq } from "../styles"
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import SectionContainer from "@components/sectionContainer";
+import FullSection from "@components/fullSection";
+import Button from "@components/button";
+import { css } from "@emotion/core";
+import { mq } from "@styles";
 
 const AboutPage = () => {
   const data = useStaticQuery(graphql`
@@ -24,12 +24,12 @@ const AboutPage = () => {
         }
       }
     }
-  `)
+  `);
 
   const {
     title,
-    text,
-  } = data.allFile.edges[0].node.childMarkdownRemark.frontmatter
+    text
+  } = data.allFile.edges[0].node.childMarkdownRemark.frontmatter;
 
   return (
     <>
@@ -59,7 +59,7 @@ const AboutPage = () => {
         </SectionContainer>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default AboutPage
+export default AboutPage;

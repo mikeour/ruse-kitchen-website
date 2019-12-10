@@ -1,17 +1,17 @@
-import React from "react"
-import Image from "gatsby-image"
-import { css } from "@emotion/core"
-import styled from "@emotion/styled"
-import { motion, AnimatePresence } from "framer-motion"
-import { mq } from "../../styles"
+import React from "react";
+import Image from "gatsby-image";
+import { css } from "@emotion/core";
+import styled from "@emotion/styled";
+import { motion, AnimatePresence } from "framer-motion";
+import { mq } from "@styles";
 
-import { useIcons, useOnClickOutside } from "../../hooks"
-import NavLink from "./nav-link"
+import { useIcons, useOnClickOutside } from "@hooks";
+import NavLink from "./nav-link";
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
-`
+`;
 
 const Text = styled(motion.span)`
   text-decoration: none;
@@ -32,7 +32,7 @@ const Text = styled(motion.span)`
   :visited {
     color: var(--navlink);
   }
-`
+`;
 
 const variants = {
   closed: {
@@ -41,8 +41,8 @@ const variants = {
     transition: {
       duration: 0.1,
       when: "afterChildren",
-      staggerChildren: 0.25,
-    },
+      staggerChildren: 0.25
+    }
   },
   open: {
     opacity: 1,
@@ -50,10 +50,10 @@ const variants = {
     transition: {
       duration: 0.25,
       when: "beforeChildren",
-      staggerChildren: 0.25,
-    },
-  },
-}
+      staggerChildren: 0.25
+    }
+  }
+};
 
 const items = {
   closed: {
@@ -63,8 +63,8 @@ const items = {
       duration: 0.1,
       when: "afterChildren",
       staggerChildren: 0.25,
-      staggerDirection: -1,
-    },
+      staggerDirection: -1
+    }
   },
   open: {
     opacity: 1,
@@ -72,35 +72,35 @@ const items = {
     transition: {
       duration: 0.25,
       when: "beforeChildren",
-      staggerChildren: 0.25,
-    },
-  },
-}
+      staggerChildren: 0.25
+    }
+  }
+};
 
 const links = {
   closed: {
     opacity: 0,
     scale: 0,
     transition: {
-      duration: 0.25,
-    },
+      duration: 0.25
+    }
   },
   open: {
     opacity: 1,
-    scale: 1,
-  },
-}
+    scale: 1
+  }
+};
 
 function ExpandingNavLinkMobile({ name, additionalLinks, handleClick }) {
-  const [showExpanding, setExpanding] = React.useState(false)
+  const [showExpanding, setExpanding] = React.useState(false);
   const toggleExpanding = React.useCallback(() =>
     setExpanding(prevState => !prevState)
-  )
-  const ref = React.useRef()
+  );
+  const ref = React.useRef();
 
-  const { expand } = useIcons()
+  const { expand } = useIcons();
 
-  useOnClickOutside(ref, toggleExpanding)
+  useOnClickOutside(ref, toggleExpanding);
 
   return (
     <>
@@ -121,7 +121,7 @@ function ExpandingNavLinkMobile({ name, additionalLinks, handleClick }) {
             exit="closed"
             variants={{
               open: { opacity: 1, height: "auto" },
-              closed: { opacity: 0, height: 0 },
+              closed: { opacity: 0, height: 0 }
             }}
             transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
             ref={ref}
@@ -160,7 +160,7 @@ function ExpandingNavLinkMobile({ name, additionalLinks, handleClick }) {
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }
 
-export default ExpandingNavLinkMobile
+export default ExpandingNavLinkMobile;

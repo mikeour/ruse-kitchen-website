@@ -1,9 +1,9 @@
-import React from "react"
-import { ButtonLink } from "./shared"
-import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
-import { css } from "@emotion/core"
-import { mq } from "../styles"
+import React from "react";
+import { ButtonLink } from "./shared";
+import { useStaticQuery, graphql } from "gatsby";
+import Image from "gatsby-image";
+import { css } from "@emotion/core";
+import { mq } from "@styles";
 
 const HalfSection = ({ title, button, children }) => {
   const { leaf } = useStaticQuery(graphql`
@@ -16,7 +16,7 @@ const HalfSection = ({ title, button, children }) => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <div
@@ -109,7 +109,7 @@ const HalfSection = ({ title, button, children }) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default HalfSection
+export default HalfSection;

@@ -3,9 +3,9 @@ import { graphql, useStaticQuery } from "gatsby";
 import Img from "gatsby-image";
 import { motion } from "framer-motion";
 
-import { useSlideshow } from "../../hooks";
+import { useSlideshow } from "@hooks";
 import { css } from "@emotion/core";
-import { mq } from "../../styles";
+import { mq } from "@styles";
 
 function Slideshow({ caption, slides }) {
   const {

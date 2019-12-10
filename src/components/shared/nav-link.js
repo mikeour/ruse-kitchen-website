@@ -1,7 +1,7 @@
-import React from "react"
-import styled from "@emotion/styled"
-import { Link } from "gatsby"
-import { mq } from "../../styles"
+import React from "react";
+import styled from "@emotion/styled";
+import { Link } from "gatsby";
+import { mq } from "@styles";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -44,18 +44,18 @@ const StyledLink = styled(Link)`
   :hover {
     color: var(--navlink-hover);
   }
-`
+`;
 const NavLink = props => (
   <StyledLink
     {...props}
     getProps={({ isCurrent }) => {
       return {
         style: {
-          color: isCurrent ? "seagreen" : "black",
-        },
-      }
+          color: isCurrent ? "seagreen" : "black"
+        }
+      };
     }}
   />
-)
+);
 
-export default NavLink
+export default NavLink;

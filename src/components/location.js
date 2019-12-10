@@ -1,7 +1,8 @@
-import React from "react"
-import { mq } from "../styles"
-import { ButtonLinkRedirect } from "./shared"
-import { css } from "@emotion/core"
+import React from "react";
+import { css } from "@emotion/core";
+
+import { mq } from "@styles";
+import { ButtonLinkRedirect } from "@components/shared";
 
 const LocationCard = ({ button, title }) => {
   return (
@@ -160,7 +161,7 @@ const LocationCard = ({ button, title }) => {
         Grape silver beet watercress potato tigernut corn groundnut.
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LocationCard
+export default LocationCard;

@@ -1,13 +1,13 @@
 import React from "react";
-
-import { PageContainer } from "../components/shared";
+import { useStaticQuery, graphql } from "gatsby";
+import { PageContainer } from "@components/shared";
 import {
   OrderForm,
   OrderInfo,
   OrderWrapper,
   OrderHeader,
   OrderFooter
-} from "../components/order-page";
+} from "@components/order-page";
 
 const data = [
   {
@@ -42,12 +42,32 @@ const data = [
 const options = data.sort((a, b) => a.position - b.position);
 
 function OrderPage() {
+  const { imageOne, imageTwo } = useStaticQuery(graphql`
+    query {
+      imageOne: file(relativePath: { eq: "slides/steak-pesto.jpg" }) {
+        sharp: childImageSharp {
+          fluid(maxWidth: 350, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+
+      imageTwo: file(relativePath: { eq: "slides/burrito.jpg" }) {
+        sharp: childImageSharp {
+          fluid(maxWidth: 350, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+    }
+  `);
+
   return (
     <PageContainer noSlideshow>
-      <OrderHeader />
+      <OrderHeader image={imageOne} image2={imageTwo} />
       <OrderWrapper>
-        <OrderForm options={options} />
         <OrderInfo options={options} />
+        <OrderForm options={options} />
       </OrderWrapper>
       {/* <OrderFooter /> */}
     </PageContainer>

@@ -3,9 +3,13 @@ import Img from "gatsby-image";
 import { motion } from "framer-motion";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
-import { mq } from "../../styles";
+import { mq } from "@styles";
 
-import { NavLink, NavLinkLogo, ExpandingNavLinkDesktop } from "../shared";
+import {
+  NavLink,
+  NavLinkLogo,
+  ExpandingNavLinkDesktop
+} from "@components/shared";
 
 const links = [
   {

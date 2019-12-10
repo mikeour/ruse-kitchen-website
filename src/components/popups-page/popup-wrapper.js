@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { mq, flexMixin } from "../../styles";
+import { mq, flexMixin } from "@styles";
 
 function PopUpWrapper({ children }) {
   return <Wrapper>{children}</Wrapper>;

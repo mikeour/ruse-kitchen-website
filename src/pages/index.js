@@ -2,8 +2,8 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import styled from "@emotion/styled";
 
-import { Slideshow } from "../components/shared";
-import { Banner } from "../components/home-page";
+import { Slideshow } from "@components/shared";
+import { Banner } from "@components/home-page";
 
 const IndexWrapper = styled.div`
   position: relative;

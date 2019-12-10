@@ -2,9 +2,9 @@ import React from "react";
 import { navigate } from "gatsby";
 import { css } from "@emotion/core";
 import addToMailchimp from "gatsby-plugin-mailchimp";
-import { mq } from "../../styles";
+import { mq } from "@styles";
 
-import { ButtonLink } from "../shared";
+import { ButtonLink } from "@components/shared";
 
 function Footer() {
   const [email, setEmail] = React.useState("");

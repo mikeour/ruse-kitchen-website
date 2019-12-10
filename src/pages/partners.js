@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 
-import { PageContainer, Slideshow } from "../components/shared"
-import { PartnersHeader, Partner } from "../components/partners-page"
+import { PageContainer, Slideshow } from "@components/shared";
+import { PartnersHeader, Partner } from "@components/partners-page";
 
 function PartnersPage() {
   return (
@@ -35,7 +35,7 @@ function PartnersPage() {
         />
       </PageContainer>
     </>
-  )
+  );
 }
 
-export default PartnersPage
+export default PartnersPage;

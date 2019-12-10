@@ -1,7 +1,7 @@
-import React from "react"
-import { ButtonLink } from "./shared"
-import { css } from "@emotion/core"
-import { mq } from "../styles"
+import React from "react";
+import { ButtonLink } from "./shared";
+import { css } from "@emotion/core";
+import { mq } from "@styles";
 
 const FullSection = ({ title, button, children }) => {
   return (
@@ -91,7 +91,7 @@ const FullSection = ({ title, button, children }) => {
         </div>
       )}
     </section>
-  )
-}
+  );
+};
 
-export default FullSection
+export default FullSection;

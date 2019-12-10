@@ -1,13 +1,15 @@
-import React from "react"
-import Image from "gatsby-image"
-import FullSection from "./fullSection"
-import Button from "./button"
-import { css } from "@emotion/core"
-import { useInstagram } from "../hooks"
+import React from "react";
+import { css } from "@emotion/core";
+import Image from "gatsby-image";
+
+import { useInstagram } from "@hooks";
+
+import FullSection from "./fullSection";
+import Button from "./button";
 
 const Insta = () => {
-  const instaPhotos = useInstagram()
-  const { username } = instaPhotos[0]
+  const instaPhotos = useInstagram();
+  const { username } = instaPhotos[0];
 
   return (
     <FullSection title="What's new with us?">
@@ -71,7 +73,7 @@ const Insta = () => {
         <Button>See more on Instagram &rarr;</Button>
       </div>
     </FullSection>
-  )
-}
+  );
+};
 
-export default Insta
+export default Insta;

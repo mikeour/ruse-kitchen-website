@@ -1,8 +1,8 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
-import { Slideshow, PageContainer } from "../components/shared";
-import { Menu, MenuImages, MenuWrapper } from "../components/menu-page";
+import { Slideshow, PageContainer } from "@components/shared";
+import { Menu, MenuImages, MenuWrapper } from "@components/menu-page";
 
 function MenuPage() {
   const {

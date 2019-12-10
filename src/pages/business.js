@@ -1,11 +1,11 @@
 import React from "react";
 
-import { PageContainer } from "../components/shared";
+import { PageContainer } from "@components/shared";
 import {
   BusinessHeader,
   BusinessForm,
   BusinessWrapper
-} from "../components/business-page";
+} from "@components/business-page";
 
 function BusinessPage() {
   return (

@@ -1,8 +1,8 @@
-import React from "react"
-import styled from "@emotion/styled"
+import React from "react";
+import styled from "@emotion/styled";
 
-import { ButtonLink } from "../shared"
-import { mq, flexMixin } from "../../styles"
+import { ButtonLink } from "@components/shared";
+import { mq, flexMixin } from "@styles";
 
 const Header = styled.div`
   ${flexMixin}
@@ -34,7 +34,7 @@ const Header = styled.div`
       padding: 0 5%;
     }
   }
-`
+`;
 
 function PartnersHeader() {
   return (
@@ -43,7 +43,7 @@ function PartnersHeader() {
       <h3>Here are our partners whom stock Ruse products daily!</h3>
       {/* <ButtonLink to="/popups">Pop-ups</ButtonLink> */}
     </Header>
-  )
+  );
 }
 
-export default PartnersHeader
+export default PartnersHeader;

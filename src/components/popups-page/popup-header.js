@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import { mq, flexMixin } from "../../styles";
-import { ButtonLink } from "../shared";
+import { mq, flexMixin } from "@styles";
+import { ButtonLink } from "@components/shared";
 
 function PopUpHeader() {
   return (
