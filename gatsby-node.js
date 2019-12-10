@@ -22,7 +22,10 @@ exports.onCreateWebpackConfig = ({ actions, getConfig, stage }) => {
       alias: {
         "@components": path.resolve(__dirname, "./src/components/"),
         "@styles": path.resolve(__dirname, "./src/styles/"),
-        "@components/shared": path.resolve(__dirname, "./src/shared/components"),
+        "@components/shared": path.resolve(
+          __dirname,
+          "./src/shared/components"
+        ),
         "@hooks": path.resolve(__dirname, "./src/hooks/")
       }
     }
