@@ -96,3 +96,48 @@ collections:
           widget: "string",
           hint: "Just a normal Google Maps link!",
         }
+
+  - label: "Order Items"
+    name: "orders"
+    label_singular: "Order Item"
+    description: >
+      Create order items here! Each item here will add a new item to your order page.
+    folder: "content/order-items"
+    create: true
+    fields:
+      - {
+          label: "Value",
+          name: "title",
+          widget: "string",
+          hint: "Name of the item in database",
+        }
+      - {
+          label: "Label",
+          name: "label",
+          widget: "string",
+          hint: "Name of the item to be displayed",
+        }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "string",
+          hint: "Item description, eg: Plant based gyro with harissa, tzatiziki, marinated cucumbers, tomatoes and onions all on a folded pita",
+        }
+      - {
+          label: "Price",
+          name: "price",
+          widget: "number",
+          hint: "Enter a number",
+        }
+      - {
+          label: "Serves",
+          name: "serves",
+          widget: "number",
+          hint: "Enter a number",
+        }
+      - {
+          label: "Position",
+          name: "position",
+          widget: "number",
+          hint: "Where you'd like this item positioned",
+        }
