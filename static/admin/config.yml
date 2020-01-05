@@ -62,6 +62,7 @@ collections:
       Create partners here! Each item here will add a new partner to your partner page.
     folder: "content/partners"
     create: true
+    identifier_field: name
     fields:
       - {
           label: "Position",
