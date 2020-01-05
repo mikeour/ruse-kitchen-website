@@ -3,10 +3,13 @@ import styled from "@emotion/styled";
 
 import { mq, flexMixin } from "@styles";
 
-function Partner({ name, address, phone, hours, description }) {
+function Partner({ name, address, phone, hours, description, url }) {
   return (
     <Wrapper>
       <h3>{name}</h3>
+      <a href={`http://${url}`} target="_blank" rel="noopener noreferrer">
+        {url}
+      </a>
       <span>{address}</span>
       <span>{phone}</span>
       <span>{hours}</span>
@@ -26,6 +29,12 @@ const Wrapper = styled.div`
 
   h3 {
     font-size: 2rem;
+  }
+
+  a,
+  a:hover,
+  a:visited {
+    color: var(--button-outside);
   }
 
   span {

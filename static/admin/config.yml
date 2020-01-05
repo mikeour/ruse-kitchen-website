@@ -60,7 +60,7 @@ collections:
     label_singular: "Partner"
     description: >
       Create partners here! Each item here will add a new partner to your partner page.
-    folder: "content/pop-up-events"
+    folder: "content/partners"
     create: true
     fields:
       - {
@@ -75,6 +75,13 @@ collections:
           name: "name",
           widget: "string",
           hint: "The name of the partner!",
+        }
+        - {
+          label: "Partner Website",
+          name: "url",
+          widget: "string",
+          required: false,
+          hint: "The website of the partner you'd like to link to!",
         }
       - {
           label: "Address",
