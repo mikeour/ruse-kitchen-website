@@ -26,7 +26,7 @@ const Header = styled.div`
   padding: 2.5rem 2.5rem 2.5rem 1rem;
   grid-area: info;
   ${flexMixin}
-  max-width: 400px;
+  max-width: 350px;
   width: 100%;
   background: white;
   position: sticky;

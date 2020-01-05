@@ -15,7 +15,7 @@ export default PopUps;
 // Styles
 
 const Wrapper = styled.div`
-  padding: 5%;
+  padding: 5% 0;
   grid-area: form;
   display: flex;
   flex-direction: column;

@@ -9,40 +9,8 @@ import {
   OrderFooter
 } from "@components/order-page";
 
-const data = [
-  {
-    value: "Gyro Kit",
-    label: "Gyro Kit",
-    description:
-      "Plant based gyro with harissa, tzatiziki, marinated cucumbers, tomatoes and onions all on a folded pita",
-    price: 25,
-    serves: 3,
-    position: 1
-  },
-
-  {
-    value: "Steak Pesto Ciabatta Kit",
-    label: "Steak Pesto Ciabatta Kit",
-    description:
-      "Charbroiled plant-based steak with sautéed peppers and onions and house made pesto with ciabatta rolls.",
-    price: 25,
-    serves: 3,
-    position: 2
-  },
-  {
-    value: "Spicy Italian Sausage",
-    label: "Spicy Italian Sausage",
-    description:
-      "Plant-based sausage with hot and sweet peppers with a garlic mustard and served on a hoagie roll.",
-    price: 18,
-    position: 3
-  }
-];
-
-const options = data.sort((a, b) => a.position - b.position);
-
 function OrderPage() {
-  const { imageOne, imageTwo } = useStaticQuery(graphql`
+  const { imageOne, imageTwo, items } = useStaticQuery(graphql`
     query {
       imageOne: file(relativePath: { eq: "slides/steak-pesto.jpg" }) {
         sharp: childImageSharp {
@@ -59,15 +27,41 @@ function OrderPage() {
           }
         }
       }
+
+      items: allFile(
+        filter: {
+          sourceInstanceName: { regex: "/content/" }
+          relativeDirectory: { eq: "order-items" }
+        }
+      ) {
+        edges {
+          node {
+            childMarkdownRemark {
+              frontmatter {
+                label
+                position
+                price
+                serves
+                description
+                title
+              }
+            }
+          }
+        }
+      }
     }
   `);
+
+  const orderItems = items.edges
+    .map(item => item.node.childMarkdownRemark.frontmatter)
+    .sort((a, b) => a.position - b.position);
 
   return (
     <PageContainer noSlideshow>
       <OrderHeader image={imageOne} image2={imageTwo} />
       <OrderWrapper>
-        <OrderInfo options={options} />
-        <OrderForm options={options} />
+        <OrderInfo options={orderItems} />
+        <OrderForm options={orderItems} />
       </OrderWrapper>
       {/* <OrderFooter /> */}
     </PageContainer>

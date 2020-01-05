@@ -36,9 +36,74 @@ collections:
     folder: "content/menu-items"
     create: true
     fields:
-      - { label: "Item Name", name: "title", widget: "string" }
-      - { label: "Item Description", name: "description", widget: "string" }
-      - { label: "Item Position", name: "position", widget: "number" }
+      - {
+          label: "Item Name",
+          name: "title",
+          hint: "What's it called?",
+          widget: "string",
+        }
+      - {
+          label: "Item Description",
+          name: "description",
+          widget: "string",
+          hint: "What's in it?",
+        }
+      - {
+          label: "Item Position",
+          name: "position",
+          widget: "number",
+          required: false,
+        }
+
+  - label: "Partners"
+    name: "partners"
+    label_singular: "Partner"
+    description: >
+      Create partners here! Each item here will add a new partner to your partner page.
+    folder: "content/pop-up-events"
+    create: true
+    fields:
+      - {
+          label: "Position",
+          name: "position",
+          widget: "number",
+          required: false,
+          hint: "Where this will be positioned in order, the higher the number the later it will be.",
+        }
+      - {
+          label: "Partner Name",
+          name: "name",
+          widget: "string",
+          hint: "The name of the partner!",
+        }
+      - {
+          label: "Address",
+          name: "address",
+          widget: "string",
+          required: false,
+          hint: "Partner's location",
+        }
+      - {
+          label: "Phone Number",
+          name: "phone",
+          widget: "string",
+          required: false,
+          hint: "Their phone number",
+        }
+      - {
+          label: "Hours",
+          name: "hours",
+          widget: "string",
+          required: false,
+          hint: "eg: Monday - Saturday 9:00 am to 7:00 pm Closed Sunday",
+        }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "string",
+          required: false,
+          hint: "A sentence or two talking about your affiliation. eg: Pure Health Foods is a local health food store where you can purchase our pre-packaged meat. Here, we sell our plant-based gyro, spicy Italian sausage and our charbroiled steak to take home!",
+        }
 
   - label: "Pop Up Events"
     name: "popups"
@@ -52,6 +117,7 @@ collections:
           label: "Event Position",
           name: "position",
           widget: "number",
+          required: false,
           hint: "Where this will be positioned in order, the higher the number the later it will be.",
         }
       - {
@@ -64,36 +130,42 @@ collections:
           label: "Event Day",
           name: "day",
           widget: "string",
+          required: false,
           hint: "eg: Friday",
         }
       - {
           label: "Event Date",
           name: "date",
           widget: "string",
+          required: false,
           hint: "eg: September 21",
         }
       - {
           label: "Event Address",
           name: "address",
           widget: "string",
+          required: false,
           hint: "eg: 1234 Sunset Road",
         }
       - {
           label: "Event Time",
           name: "time",
           widget: "string",
+          required: false,
           hint: "eg: 12pm - 4pm",
         }
       - {
           label: "Event Description",
           name: "description",
           widget: "markdown",
-          hint: "Whatever important information you wanna include! Written in Markdown",
+          required: false,
+          hint: "Whatever important information you wanna include!",
         }
       - {
           label: "Event Map URL",
           name: "map_url",
           widget: "string",
+          required: false,
           hint: "Just a normal Google Maps link!",
         }
 
@@ -115,29 +187,33 @@ collections:
           label: "Label",
           name: "label",
           widget: "string",
-          hint: "Name of the item to be displayed",
+          hint: "Name of the item to be displayed. Probably the same as Value",
         }
       - {
           label: "Description",
           name: "description",
           widget: "string",
+          required: false,
           hint: "Item description, eg: Plant based gyro with harissa, tzatiziki, marinated cucumbers, tomatoes and onions all on a folded pita",
         }
       - {
           label: "Price",
           name: "price",
           widget: "number",
+          required: false,
           hint: "Enter a number",
         }
       - {
           label: "Serves",
           name: "serves",
           widget: "number",
+          required: false,
           hint: "Enter a number",
         }
       - {
           label: "Position",
           name: "position",
           widget: "number",
+          required: false,
           hint: "Where you'd like this item positioned",
         }

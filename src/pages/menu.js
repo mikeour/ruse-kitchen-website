@@ -64,6 +64,7 @@ function MenuPage() {
               frontmatter {
                 description
                 title
+                position
               }
             }
           }
@@ -72,9 +73,9 @@ function MenuPage() {
     }
   `);
 
-  const menuItems = items.edges.map(
-    item => item.node.childMarkdownRemark.frontmatter
-  );
+  const menuItems = items.edges
+    .map(item => item.node.childMarkdownRemark.frontmatter)
+    .sort((a, b) => a.position - b.position);
 
   return (
     <>

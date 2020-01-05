@@ -7,8 +7,8 @@ function OrderInfo({ options }) {
     <Wrapper>
       <Text>
         {options.map(option => (
-          <ItemWrapper>
-            <ItemName>{option.value}</ItemName>
+          <ItemWrapper key={option.title}>
+            <ItemName>{option.title}</ItemName>
             <ItemDescription>{option.description}</ItemDescription>
             <ItemPrice>${option.price}</ItemPrice>
             {option.serves && <ItemServes>Serves {option.serves}</ItemServes>}
@@ -25,7 +25,7 @@ export default OrderInfo;
 
 const Wrapper = styled.div`
   grid-area: info;
-  max-width: 500px;
+  max-width: 450px;
   width: 100%;
   padding: 2.5rem 2.5rem 2.5rem 1rem;
   position: sticky;
@@ -33,7 +33,7 @@ const Wrapper = styled.div`
 
   ${mq("medium")} {
     padding: 2.5%;
-    max-width: 100%;
+    max-width: 400px;
   }
 
   ${mq("small")} {
