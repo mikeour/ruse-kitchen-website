@@ -4,12 +4,12 @@ import styled from "@emotion/styled";
 import useForm from "react-hook-form";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import { mq, flexMixin } from "@styles";
+import { mq } from "@styles";
 
 const animatedComponents = makeAnimated();
 
 function OrderForm({ options }) {
-  const { register, handleSubmit, setValue, errors } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
 
   const [values, setReactSelect] = useState({ selectedOption: [] });
 
@@ -40,72 +40,41 @@ function OrderForm({ options }) {
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
-        {/* <Title>Order Form</Title> */}
         <InputDiv>
           <input type="hidden" name="form-name" value="Order Form" />
 
           <div>
             <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              name="name"
-              ref={register}
-              // placeholder="Name"
-            ></input>
+            <input type="text" name="name" ref={register}></input>
           </div>
 
           <div>
             <label htmlFor="email">Email</label>
-            <input
-              type="text"
-              name="email"
-              ref={register}
-              // placeholder="Your email address"
-            ></input>
+            <input type="text" name="email" ref={register}></input>
           </div>
         </InputDiv>
 
         <InputDiv>
           <div>
             <label htmlFor="address">Address</label>
-            <input
-              type="text"
-              name="address"
-              ref={register}
-              // placeholder="Delivery Address"
-            ></input>
+            <input type="text" name="address" ref={register}></input>
           </div>
 
           <div>
             <label htmlFor="phone">Phone Number</label>
-            <input
-              type="text"
-              name="phone"
-              ref={register}
-              // placeholder="10-Digit Phone Number"
-            ></input>
+            <input type="text" name="phone" ref={register}></input>
           </div>
         </InputDiv>
 
         <InputDiv>
           <div>
             <label htmlFor="delivery-day">Delivery Day</label>
-            <input
-              type="text"
-              name="delivery-day"
-              ref={register}
-              // placeholder="Your delivery day"
-            ></input>
+            <input type="text" name="delivery-day" ref={register}></input>
           </div>
 
           <div>
             <label htmlFor="delivery-time">Delivery Time</label>
-            <input
-              type="text"
-              name="delivery-time"
-              ref={register}
-              // placeholder="Your delivery time"
-            ></input>
+            <input type="text" name="delivery-time" ref={register}></input>
           </div>
         </InputDiv>
 
@@ -113,7 +82,6 @@ function OrderForm({ options }) {
         <Dropdown
           components={animatedComponents}
           name="items"
-          // placeholder="Items to purchase"
           value={values.selectedOption}
           options={options}
           onChange={handleMultiChange}
@@ -140,7 +108,6 @@ function OrderForm({ options }) {
           type="text"
           name="special-instructions"
           ref={register}
-          // placeholder="(Optional)"
         ></textarea>
 
         <ButtonWrapper>
@@ -218,10 +185,6 @@ const Form = styled.form`
     outline: none;
     font-family: "Montserrat", sans-serif;
   }
-`;
-
-const Title = styled.h1`
-  padding: 0 0 5% 0;
 `;
 
 const InputDiv = styled.div`

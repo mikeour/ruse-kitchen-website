@@ -110,8 +110,9 @@ const links = {
 
 function ExpandingNavLinkDesktop({ name, additionalLinks }) {
   const [showExpanding, setExpanding] = React.useState(false);
-  const toggleExpanding = React.useCallback(() =>
-    setExpanding(prevState => !prevState)
+  const toggleExpanding = React.useCallback(
+    () => setExpanding(prevState => !prevState),
+    []
   );
   const ref = React.useRef();
 

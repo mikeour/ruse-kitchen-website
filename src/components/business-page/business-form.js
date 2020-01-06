@@ -132,24 +132,14 @@ const Form = styled.form`
     font-size: 1.25rem;
     padding: 2.5% 10%;
     margin-bottom: 3rem;
-   
   }
 
   label {
     font-size: 1.15rem;
     letter-spacing: 2px;
     width: 80%;
-    padding: 0 5rem 0.5rem 5rem;
+    padding: 0 5% 0.5rem 5%;
     text-align: left;
-
-    ${mq("medium")} {
-      padding: 0 5.5rem;
-    }
-
-    ${mq("small")} {
-      text-align: center;
-      padding: 0 4.5rem;
-    }
   }
 
   input,

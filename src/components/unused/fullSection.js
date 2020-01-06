@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonLink } from "./shared";
+import { ButtonLink } from "../shared";
 import { css } from "@emotion/core";
 import { mq } from "@styles";
 

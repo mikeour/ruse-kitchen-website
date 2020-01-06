@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import { mq } from "../../styles/";
-import { ButtonLink } from "../shared";
+import { mq } from "@styles/";
+import { ButtonLink } from "@components/shared";
 
 function BusinessHeader() {
   return (
@@ -48,6 +48,7 @@ const Wrapper = styled.div`
     position: relative;
     top: 0;
     max-width: 100%;
+    padding: 10% 5%;
   }
 `;
 

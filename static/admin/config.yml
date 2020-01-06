@@ -99,13 +99,6 @@ collections:
           hint: "Their phone number",
         }
       - {
-          label: "Hours",
-          name: "hours",
-          widget: "string",
-          required: false,
-          hint: "eg: Monday - Saturday 9:00 am to 7:00 pm Closed Sunday",
-        }
-      - {
           label: "Description",
           name: "description",
           widget: "string",

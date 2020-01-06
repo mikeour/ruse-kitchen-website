@@ -6,6 +6,7 @@ import ExpandingNavLinkDesktop from "./expanding-nav-link-desktop"
 import ExpandingNavLinkMobile from "./expanding-nav-link-mobile"
 import Slideshow from "./slideshow"
 import PageContainer from "./page-container"
+import AllergyItem from './allergy-item'
 
 export {
   ButtonLink,
@@ -16,4 +17,5 @@ export {
   ExpandingNavLinkMobile,
   Slideshow,
   PageContainer,
+  AllergyItem
 }

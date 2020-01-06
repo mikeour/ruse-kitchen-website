@@ -3,8 +3,6 @@ import Image from "gatsby-image";
 import styled from "@emotion/styled";
 import { mq, flexMixin } from "@styles";
 
-import { ButtonLink } from "@components/shared";
-
 // function MenuHeader() {
 //   return (
 //     <Header>
@@ -21,8 +19,8 @@ function MenuImages({ images }) {
   return (
     <Wrapper>
       {images.map((image, i) => (
-        <ImageWrapper>
-          <FoodImage key={i} fluid={image.sharp.fluid}></FoodImage>
+        <ImageWrapper key={i}>
+          <FoodImage fluid={image.sharp.fluid}></FoodImage>
         </ImageWrapper>
       ))}
     </Wrapper>

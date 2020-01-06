@@ -2,9 +2,8 @@ import React from "react";
 import { css } from "@emotion/core";
 import { mq } from "@styles";
 
-import AllergyItem from "@components/allergy-item";
-import { Slideshow } from "@components/shared";
-import SectionContainer from "@components/sectionContainer";
+import { Slideshow, AllergyItem } from "@components/shared";
+import SectionContainer from "@components/unused/sectionContainer";
 
 const AllergyPage = () => {
   return (

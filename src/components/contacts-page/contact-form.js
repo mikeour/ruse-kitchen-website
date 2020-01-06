@@ -116,16 +116,8 @@ const Form = styled.form`
     font-size: 1.15rem;
     letter-spacing: 2px;
     width: 80%;
-    padding: 0 5rem 0.5rem 5rem;
+    padding: 0 5% 0.5rem 5%;
     text-align: left;
-
-    ${mq("medium")} {
-      padding: 0 5.5rem;
-    }
-
-    ${mq("small")} {
-      padding: 0 4.5rem;
-    }
   }
 
   input,
@@ -218,6 +210,7 @@ const SubmitButton = styled.button`
   align-items: center;
   justify-content: space-between;
   opacity: 1;
+  border: none;
 
   :hover {
     color: white;

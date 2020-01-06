@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 import { mq, flexMixin } from "@styles";
 
-function Partner({ name, address, phone, hours, description, url }) {
+function Partner({ name, address, phone, description, url }) {
   return (
     <Wrapper>
       <h3>{name}</h3>
@@ -12,7 +12,6 @@ function Partner({ name, address, phone, hours, description, url }) {
       </a>
       <span>{address}</span>
       <span>{phone}</span>
-      <span>{hours}</span>
       <p>{description}</p>
     </Wrapper>
   );

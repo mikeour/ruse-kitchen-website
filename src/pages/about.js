@@ -1,8 +1,8 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import SectionContainer from "@components/sectionContainer";
-import FullSection from "@components/fullSection";
-import Button from "@components/button";
+import SectionContainer from "@components/unused/sectionContainer";
+import FullSection from "@components/unused/fullSection";
+import Button from "@components/unused/button";
 import { css } from "@emotion/core";
 import { mq } from "@styles";
 

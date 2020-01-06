@@ -1,5 +1,5 @@
 import React from "react";
-import { mq } from "../styles";
+import { mq } from "../../styles";
 import { ButtonLinkRedirect } from "@components/shared";
 import { css } from "@emotion/core";
 

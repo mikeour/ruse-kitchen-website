@@ -2,23 +2,7 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
 import { Slideshow, PageContainer } from "@components/shared";
-import {
-  PopUp,
-  PopUps,
-  PopUpHeader,
-  PopUpWrapper
-} from "@components/popups-page";
-
-function renderPopups(popups) {
-  return (
-    <>
-      {popups &&
-        popups.map(eventInfo => (
-          <PopUp key={eventInfo.map_url} {...eventInfo} />
-        ))}
-    </>
-  );
-}
+import { PopUps, PopUpHeader, PopUpWrapper } from "@components/popups-page";
 
 function PopupsPage() {
   const { popups } = useStaticQuery(graphql`
@@ -59,7 +43,7 @@ function PopupsPage() {
       <PageContainer>
         <PopUpWrapper>
           <PopUpHeader />
-          <PopUps>{renderPopups(events)}</PopUps>
+          <PopUps events={events} />
         </PopUpWrapper>
       </PageContainer>
     </>

@@ -83,6 +83,11 @@ const ButtonLink = styled.a`
     background: var(--button-outside-hover);
     cursor: pointer;
   }
+
+  ${mq("small")} {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
 `;
 
 const Logo = styled(Image)`

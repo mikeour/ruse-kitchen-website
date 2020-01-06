@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonLink } from "./shared";
+import { ButtonLink } from "../shared";
 import { useStaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
 import { css } from "@emotion/core";

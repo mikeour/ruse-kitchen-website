@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Image from "gatsby-image";
-import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { ButtonLinkRedirect, ButtonLink } from "@components/shared";
-import { mq, flexMixin } from "@styles";
+import { ButtonLinkRedirect } from "@components/shared";
+import { mq } from "@styles";
 import { useIcons } from "@hooks";
 
 function Popup({ description, title, day, date, address, time, map_url }) {
