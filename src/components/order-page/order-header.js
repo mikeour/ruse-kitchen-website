@@ -11,9 +11,7 @@ function OrderHeader({ image, image2 }) {
         <span>Steak Pesto</span>
       </ImageWrapper1>
       <TextWrapper>
-        <Title>
-          We Deliver<span>!</span>
-        </Title>
+        <Title>We Deliver!</Title>
         <Text>
           Order our meal kits and other delicious items straight to your door.
           Choose any of the items below, include your address, delivery date and
@@ -138,12 +136,6 @@ const Title = styled.p`
   letter-spacing: 2.5px;
   margin: 2.5% 1%;
   font-family: "Montserrat", serif;
-
-  span {
-    color: seagreen;
-    font-family: "Montserrat", serif;
-    font-size: 2rem;
-  }
 `;
 
 const Text = styled.p`

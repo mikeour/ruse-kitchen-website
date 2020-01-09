@@ -5,6 +5,9 @@ backend:
 
 media_folder: static/assets
 
+site_url: https://rusekitchen.com
+display_url: https://rusekitchen.com
+
 collections:
   - label: "Pages"
     name: "pages"
