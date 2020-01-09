@@ -1,7 +1,7 @@
 ---
-title: Beef Chimichurri Taco
+title: Steak Chimichurri Taco
 description: >-
-  House made vegan beef. Served with cumin-blistered shishito peppers. Topped
+  House made vegan steak. Served with cumin-blistered shishito peppers. Topped
   with pickled red onions
 ---
 
