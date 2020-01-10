@@ -203,14 +203,14 @@ collections:
       - {
           label: "Price",
           name: "price",
-          widget: "number",
+          widget: "string",
           required: false,
           hint: "Enter a number",
         }
       - {
           label: "Serves",
           name: "serves",
-          widget: "number",
+          widget: "string",
           required: false,
           hint: "Enter a number",
         }
