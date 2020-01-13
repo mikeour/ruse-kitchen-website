@@ -40,8 +40,6 @@ function OrderPage() {
               frontmatter {
                 label
                 position
-                price
-                serves
                 description
                 title
               }
