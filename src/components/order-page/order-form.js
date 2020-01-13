@@ -125,6 +125,8 @@ export default OrderForm;
 const Wrapper = styled.div`
   width: 100%;
   padding: 5% 0;
+  position: sticky;
+  top: 0;
   grid-area: form;
   display: flex;
   flex-direction: column;

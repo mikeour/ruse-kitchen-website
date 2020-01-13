@@ -42,6 +42,8 @@ function OrderPage() {
                 position
                 description
                 title
+                price
+                serves
               }
             }
           }

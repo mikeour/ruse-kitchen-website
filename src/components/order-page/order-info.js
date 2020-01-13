@@ -28,8 +28,6 @@ const Wrapper = styled.div`
   max-width: 450px;
   width: 100%;
   padding: 2.5rem 2.5rem 2.5rem 1rem;
-  position: sticky;
-  top: 10%;
 
   ${mq("medium")} {
     padding: 2.5%;

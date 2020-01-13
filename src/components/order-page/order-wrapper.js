@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   grid-template-areas:
     "info form"
     "info form"
-    ". form";
+    "info .";
   grid-template-columns: auto 1fr;
   grid-template-rows: 10rem auto 1fr;
   background: whitesmoke;
