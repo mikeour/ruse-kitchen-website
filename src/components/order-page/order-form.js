@@ -31,6 +31,12 @@ function OrderForm({ options }) {
       .catch(error => alert(error));
   }
 
+  const formattedOptions = options.map(option => ({
+    ...option,
+    label: option.title,
+    value: option.title
+  }));
+
   return (
     <Wrapper>
       <Form
@@ -83,7 +89,7 @@ function OrderForm({ options }) {
           components={animatedComponents}
           name="items"
           value={values.selectedOption}
-          options={options}
+          options={formattedOptions}
           onChange={handleMultiChange}
           ref={() =>
             register(
