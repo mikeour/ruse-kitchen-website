@@ -39,10 +39,6 @@ function OrderPage() {
             childMarkdownRemark {
               frontmatter {
                 title
-                position
-                description
-                price
-                serves
               }
             }
           }
