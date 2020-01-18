@@ -182,7 +182,7 @@ collections:
     create: true
     fields:
       - {
-          label: "Value",
+          label: "Item Name",
           name: "title",
           widget: "string",
           hint: "Name of the item in database",

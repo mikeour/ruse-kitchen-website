@@ -38,10 +38,9 @@ function OrderPage() {
           node {
             childMarkdownRemark {
               frontmatter {
-                label
+                title
                 position
                 description
-                title
                 price
                 serves
               }
