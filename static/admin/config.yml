@@ -188,12 +188,6 @@ collections:
           hint: "Name of the item in database",
         }
       - {
-          label: "Label",
-          name: "label",
-          widget: "string",
-          hint: "Name of the item to be displayed. Probably the same as Value",
-        }
-      - {
           label: "Description",
           name: "description",
           widget: "string",

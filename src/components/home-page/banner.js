@@ -92,7 +92,7 @@ function Banner() {
       </BannerName>
       <BannerTagline>
         <p>
-          A plant-based pop-up serving thoughtfully made food all across Las
+          A plant-based company providing thoughtfully made food all across Las
           Vegas.
         </p>
         <ButtonLink to="/popups">Find us</ButtonLink>
