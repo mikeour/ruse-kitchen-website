@@ -6,5 +6,6 @@ description: >-
   hoagie rolls.
 price: '18'
 serves: '3'
+position: 3
 ---
 
