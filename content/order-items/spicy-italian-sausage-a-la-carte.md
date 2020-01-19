@@ -5,5 +5,6 @@ description: >-
   scrambles, bowls and more!
 price: '10'
 serves: '3'
+position: 4
 ---
 
