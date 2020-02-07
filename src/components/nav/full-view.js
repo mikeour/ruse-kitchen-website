@@ -1,52 +1,48 @@
-import React from "react";
-import Img from "gatsby-image";
-import { motion } from "framer-motion";
-import { css } from "@emotion/core";
-import styled from "@emotion/styled";
-import { mq } from "@styles";
+import React from 'react';
+import Img from 'gatsby-image';
+import { motion } from 'framer-motion';
+import { css } from '@emotion/core';
+import styled from '@emotion/styled';
+import { mq } from '@styles';
 
-import {
-  NavLink,
-  NavLinkLogo,
-  ExpandingNavLinkDesktop
-} from "@components/shared";
+import { NavLink, NavLinkLogo, ExpandingNavLinkDesktop } from '@components/shared';
 
 const links = [
   {
-    to: "/menu",
-    name: "Menu"
+    to: '/menu',
+    name: 'Menu'
   },
   {
     to: null,
-    name: "Find Us",
+    name: 'Find Us',
     additionalLinks: [
       {
-        to: "/popups",
-        name: "Pop-up Events"
+        to: '/popups',
+        name: 'Pop-up Events'
       },
       {
-        to: "/partners",
-        name: "Partners"
+        to: '/partners',
+        name: 'Partners'
       }
     ]
   },
   {
     to: null,
-    name: "Contact",
+    name: 'Contact',
     additionalLinks: [
       {
-        to: "/contact",
-        name: "General"
+        to: '/contact',
+        name: 'General'
       },
       {
-        to: "/business",
-        name: "Business"
+        to: '/business',
+        name: 'Business'
       }
     ]
   },
   {
-    to: "/order",
-    name: "Order"
+    to: '/order',
+    name: 'Order'
   }
 ];
 
@@ -56,7 +52,7 @@ const FullViewWrapper = styled(motion.div)`
   align-items: center;
   width: 100%;
 
-  ${mq("small")} {
+  ${mq('small')} {
     display: none;
     visibility: hidden;
   }
@@ -65,7 +61,7 @@ const FullViewWrapper = styled(motion.div)`
 export default function FullView({ instagram, facebook, yelp, logo, expand }) {
   return (
     <FullViewWrapper>
-      <NavLink to="/">
+      <NavLink to='/'>
         <Img fixed={logo.sharp.fixed} />
       </NavLink>
 
@@ -97,25 +93,25 @@ export default function FullView({ instagram, facebook, yelp, logo, expand }) {
         `}
       >
         <NavLinkLogo
-          href="https://www.instagram.com/rusevegankitchen/"
-          target="_blank"
-          rel="noopener noreferrer"
+          href='https://www.instagram.com/rusevegankitchen/'
+          target='_blank'
+          rel='noopener noreferrer'
         >
           <Img fixed={instagram.sharp.fixed} />
         </NavLinkLogo>
 
         <NavLinkLogo
-          href="https://www.facebook.com/rusevegankitchen/"
-          target="_blank"
-          rel="noopener noreferrer"
+          href='https://www.facebook.com/rusevegankitchen/'
+          target='_blank'
+          rel='noopener noreferrer'
         >
           <Img fixed={facebook.sharp.fixed} />
         </NavLinkLogo>
 
         <NavLinkLogo
-          href="https://www.yelp.com/biz/ruse-vegan-kitchen-las-vegas"
-          target="_blank"
-          rel="noopener noreferrer"
+          href='https://www.yelp.com/biz/ruse-vegan-kitchen-las-vegas'
+          target='_blank'
+          rel='noopener noreferrer'
         >
           <Img fixed={yelp.sharp.fixed} />
         </NavLinkLogo>
