@@ -5,6 +5,6 @@ description: >-
   our housemade pesto sauce
 price: '6'
 serves: '4'
-position: 3
+position: 7
 ---
 
