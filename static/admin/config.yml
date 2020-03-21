@@ -51,12 +51,6 @@ collections:
           widget: "string",
           hint: "What's in it?",
         }
-      - {
-          label: "Item Position",
-          name: "position",
-          widget: "number",
-          required: false,
-        }
 
   - label: "Partners"
     name: "partners"
@@ -67,13 +61,6 @@ collections:
     create: true
     identifier_field: name
     fields:
-      - {
-          label: "Position",
-          name: "position",
-          widget: "number",
-          required: false,
-          hint: "Where this will be positioned in order, the higher the number the later it will be.",
-        }
       - {
           label: "Partner Name",
           name: "name",
@@ -117,13 +104,6 @@ collections:
     folder: "content/pop-up-events"
     create: true
     fields:
-      - {
-          label: "Event Position",
-          name: "position",
-          widget: "number",
-          required: false,
-          hint: "Where this will be positioned in order, the higher the number the later it will be.",
-        }
       - {
           label: "Event Name",
           name: "title",
@@ -207,11 +187,4 @@ collections:
           widget: "string",
           required: false,
           hint: "Enter a number",
-        }
-      - {
-          label: "Position",
-          name: "position",
-          widget: "string",
-          required: false,
-          hint: "Where you'd like this item positioned",
         }
