@@ -5,5 +5,4 @@ description: >-
   joy to your day. Contains nuts
 price: "15"
 serves: 6 pieces
-position: "1"
 ---

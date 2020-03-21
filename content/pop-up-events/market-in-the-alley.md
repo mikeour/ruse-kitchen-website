@@ -8,7 +8,5 @@ description: >-
   Sea lettuce lettuce water chestnut eggplant winter purslane fennel azuki bean
   earthnut pea sierra leone bologi leek soko chicory celtuce parsley jícama
   salsify.
-map_url: 'https://goo.gl/maps/quQLSBJCzUVL9eZ3A'
-position: 2
+map_url: "https://goo.gl/maps/quQLSBJCzUVL9eZ3A"
 ---
-

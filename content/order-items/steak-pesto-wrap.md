@@ -5,5 +5,4 @@ description: >-
   our housemade pesto sauce
 price: "6"
 serves: "1"
-position: "10"
 ---

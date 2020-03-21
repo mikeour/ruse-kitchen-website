@@ -6,5 +6,4 @@ description: >-
   onions with pita bread.
 price: "18"
 serves: "3"
-position: "1"
 ---

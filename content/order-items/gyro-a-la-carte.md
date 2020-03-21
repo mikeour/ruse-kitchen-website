@@ -5,5 +5,4 @@ description: >-
   to a morning bagel topping, our gyro is as versaltile as your imagination!
 price: "9"
 serves: 3-4
-position: "4"
 ---

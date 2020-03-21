@@ -6,5 +6,4 @@ description: >-
   of our spicy and somkey cashew cream sauce!
 price: "6"
 serves: "1"
-position: "8"
 ---
