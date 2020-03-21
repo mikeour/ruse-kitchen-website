@@ -38,7 +38,6 @@ function OrderPage() {
           node {
             childMarkdownRemark {
               frontmatter {
-                position
                 description
                 title
                 serves
@@ -53,7 +52,7 @@ function OrderPage() {
 
   const orderItems = items.edges
     .map(item => item.node.childMarkdownRemark.frontmatter)
-    .sort((a, b) => a.position - b.position);
+    .sort();
 
   return (
     <PageContainer noSlideshow>

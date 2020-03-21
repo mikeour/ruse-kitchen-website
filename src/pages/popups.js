@@ -24,7 +24,6 @@ function PopupsPage() {
                 address
                 time
                 map_url
-                position
               }
             }
           }
@@ -35,7 +34,7 @@ function PopupsPage() {
 
   const events = popups.edges
     .map(popup => popup.node.childMarkdownRemark.frontmatter)
-    .sort((a, b) => a.position - b.position);
+    .sort();
 
   return (
     <>

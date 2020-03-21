@@ -25,7 +25,6 @@ function PartnersPage() {
                 address
                 phone
                 description
-                position
                 url
               }
             }
@@ -37,7 +36,7 @@ function PartnersPage() {
 
   const partners = data.edges
     .map(item => item.node.childMarkdownRemark.frontmatter)
-    .sort((a, b) => a.position - b.position);
+    .sort();
 
   return (
     <>
