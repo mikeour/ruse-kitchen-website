@@ -211,7 +211,7 @@ collections:
       - {
           label: "Position",
           name: "position",
-          widget: "number",
+          widget: "string",
           required: false,
           hint: "Where you'd like this item positioned",
         }
