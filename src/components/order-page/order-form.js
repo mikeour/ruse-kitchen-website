@@ -1,22 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { navigate } from "gatsby";
 import styled from "@emotion/styled";
+import { motion, AnimatePresence } from "framer-motion";
 import useForm from "react-hook-form";
-import Select from "react-select";
-import makeAnimated from "react-select/animated";
 import { mq } from "@styles";
 
-const animatedComponents = makeAnimated();
-
-function OrderForm({ options }) {
+function OrderForm({ cart }) {
   const { register, handleSubmit, setValue } = useForm();
 
-  const [values, setReactSelect] = useState({ selectedOption: [] });
-
-  function handleMultiChange(selectedOption) {
-    setValue("items", formatItems(selectedOption));
-    setReactSelect({ selectedOption });
-  }
+  const cartSubtotal = Object.values(cart).reduce((acc, curr) => {
+    if (curr.count > 0) acc += curr.count * curr.price;
+    return acc;
+  }, 0);
 
   function onSubmit(values) {
     fetch("/", {
@@ -31,11 +26,9 @@ function OrderForm({ options }) {
       .catch(error => alert(error));
   }
 
-  const formattedOptions = options.map(option => ({
-    ...option,
-    label: option.title,
-    value: option.title
-  }));
+  useEffect(() => {
+    setValue("items", JSON.stringify(cart));
+  }, [cart.length]);
 
   return (
     <Wrapper>
@@ -46,6 +39,74 @@ function OrderForm({ options }) {
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
+        <CartContainer>
+          <CartHeader>
+            Your Cart
+            <span>
+              (
+              {Object.values(cart)
+                .map(item => item.count)
+                .reduce((a, c) => a + c, 0)}{" "}
+              items)
+            </span>
+          </CartHeader>
+
+          {cart &&
+            Object.entries(cart).map(
+              ([itemName, { id, count, price }], index) => {
+                return (
+                  <AnimatePresence>
+                    {count > 0 && (
+                      <ItemListingContainer
+                        key={index}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        positionTransition
+                      >
+                        <ItemListingName>
+                          {itemName.replace(/-/g, " ")}
+                        </ItemListingName>
+                        <AnimatePresence exitBeforeEnter>
+                          <ItemListingCount
+                            key={count}
+                            initial={{ opacity: 0, y: -4 }}
+                            animate={{
+                              opacity: 1,
+                              y: 0
+                            }}
+                            exit={{ opacity: 0, y: -4 }}
+                          >
+                            {count} <span>order{count >= 2 ? "s" : ""}</span>
+                          </ItemListingCount>
+                        </AnimatePresence>
+                      </ItemListingContainer>
+                    )}
+                  </AnimatePresence>
+                );
+              }
+            )}
+
+          {cartSubtotal > 0 && (
+            <CartFooter>
+              Subtotal:{" "}
+              <AnimatePresence exitBeforeEnter>
+                <motion.span
+                  key={cartSubtotal}
+                  initial={{ opacity: 0, y: -4 }}
+                  animate={{
+                    opacity: 1,
+                    y: 0
+                  }}
+                  exit={{ opacity: 0, y: -4 }}
+                >
+                  ${cartSubtotal}.00
+                </motion.span>
+              </AnimatePresence>
+            </CartFooter>
+          )}
+        </CartContainer>
+
         <InputDiv>
           <input type="hidden" name="form-name" value="Order Form" />
 
@@ -83,31 +144,6 @@ function OrderForm({ options }) {
             <input type="text" name="delivery-time" ref={register}></input>
           </div>
         </InputDiv>
-
-        <label htmlFor="items">Items</label>
-        <Dropdown
-          components={animatedComponents}
-          name="items"
-          value={values.selectedOption}
-          options={formattedOptions}
-          onChange={handleMultiChange}
-          ref={() =>
-            register(
-              { name: "items" },
-              {
-                validate: value => {
-                  // need to validate if it is undefined or empty array
-                  return Array.isArray(value) ? value.length > 0 : !!value;
-                }
-              }
-            )
-          }
-          isMulti
-        />
-        <NoteText>
-          NOTE: If you'd like to order more than one of an item, let us know in
-          the Special Instructions! Thanks.
-        </NoteText>
 
         <label htmlFor="special-instructions">Special Instructions</label>
         <textarea
@@ -150,7 +186,7 @@ const Wrapper = styled.div`
 
 const Form = styled.form`
   width: 100%;
-  padding: 5% 10%;
+  padding: 5% 7.5%;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -195,6 +231,78 @@ const Form = styled.form`
   }
 `;
 
+const CartContainer = styled.div`
+  width: 100%;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-direction: center;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-bottom: 1px solid seagreen;
+  margin-bottom: 1rem;
+`;
+
+const CartHeader = styled.p`
+  font-size: 1.25rem;
+  letter-spacing: 1.5px;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  margin: 0 0 1rem 0;
+
+  span {
+    padding-left: 0.5rem;
+    font-size: 1rem;
+  }
+`;
+
+const CartFooter = styled.p`
+  font-size: 1.25rem;
+  letter-spacing: 1.5px;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  margin: 1rem 0;
+
+  span {
+    padding-left: 0.5rem;
+    font-size: 1rem;
+  }
+`;
+
+const ItemListingContainer = styled(motion.div)`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  margin: 0.5rem 0;
+`;
+
+const ItemListingName = styled.div`
+  font-size: 1rem;
+  letter-spacing: 1px;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 0 1rem 0 0;
+  margin-left: 0.25rem;
+  text-indent: -0.25rem;
+`;
+
+const ItemListingCount = styled(motion.div)`
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: seagreen;
+
+  span {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+`;
+
 const InputDiv = styled.div`
   display: flex;
   justify-content: space-between;
@@ -212,29 +320,6 @@ const InputDiv = styled.div`
       width: 100%;
     }
   }
-`;
-
-const Dropdown = styled(Select)`
-  align-self: flex-start;
-  margin-bottom: 1rem;
-  width: 100%;
-  outline: none;
-
-  div {
-    font-family: "Montserrat", sans-serif;
-    font-size: 0.75rem;
-    &:focus {
-      outline: none;
-      border: none;
-    }
-  }
-`;
-
-const NoteText = styled.p`
-  font-style: italic;
-  font-size: 0.75rem;
-  margin-bottom: 1rem;
-  width: 100%;
 `;
 
 const ButtonWrapper = styled.div`
@@ -268,12 +353,4 @@ function encode(data) {
   return Object.keys(data)
     .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
     .join("&");
-}
-
-function formatItems(items) {
-  let formattedItems = [];
-  if (Array.isArray(items) && items.length > 0) {
-    formattedItems = [...items].map(option => option.value).join(", ");
-  }
-  return formattedItems;
 }

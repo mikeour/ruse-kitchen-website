@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { PageContainer } from "@components/shared";
 import {
   OrderForm,
   OrderInfo,
   OrderWrapper,
-  OrderHeader,
-  OrderFooter
+  OrderHeader
 } from "@components/order-page";
 
 function OrderPage() {
@@ -54,14 +53,29 @@ function OrderPage() {
     .map(item => item.node.childMarkdownRemark.frontmatter)
     .sort((a, b) => (a.title < b.title ? -1 : 1));
 
+  function buildCart(items) {
+    return items.reduce((acc, cur, index) => {
+      const itemNameFormatted = cur.title.replace(/\s+/g, "-").toLowerCase();
+      acc[itemNameFormatted] = {
+        id: index + 1,
+        count: 0,
+        price: Number(cur.price)
+      };
+      return acc;
+    }, {});
+  }
+
+  const initialCart = buildCart(orderItems);
+
+  const [cart, setCart] = useState(initialCart);
+
   return (
     <PageContainer noSlideshow>
       <OrderHeader image={imageOne} image2={imageTwo} />
       <OrderWrapper>
-        <OrderInfo options={orderItems} />
-        <OrderForm options={orderItems} />
+        <OrderInfo options={orderItems} cart={cart} setCart={setCart} />
+        <OrderForm cart={cart} />
       </OrderWrapper>
-      {/* <OrderFooter /> */}
     </PageContainer>
   );
 }
