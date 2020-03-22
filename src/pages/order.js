@@ -52,7 +52,7 @@ function OrderPage() {
 
   const orderItems = items.edges
     .map(item => item.node.childMarkdownRemark.frontmatter)
-    .sort();
+    .sort((a, b) => (a.title < b.title ? -1 : 1));
 
   return (
     <PageContainer noSlideshow>

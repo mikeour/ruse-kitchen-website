@@ -34,7 +34,7 @@ function PopupsPage() {
 
   const events = popups.edges
     .map(popup => popup.node.childMarkdownRemark.frontmatter)
-    .sort();
+    .sort((a, b) => (a.title < b.title ? -1 : 1));
 
   return (
     <>
