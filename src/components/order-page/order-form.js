@@ -6,7 +6,7 @@ import useForm from "react-hook-form";
 import { mq } from "@styles";
 
 function OrderForm({ cart }) {
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit, setValue, getValues } = useForm();
 
   const cartSubtotal = Object.values(cart).reduce((acc, curr) => {
     if (curr.count > 0) acc += curr.count * curr.price;
@@ -27,8 +27,14 @@ function OrderForm({ cart }) {
   }
 
   useEffect(() => {
-    setValue("items", JSON.stringify(cart));
-  }, [cart.length]);
+    const items = formatCart(cart);
+
+    setValue("items", items);
+
+    const vals = getValues();
+
+    console.log({ vals });
+  }, [cart]);
 
   return (
     <Wrapper>
@@ -109,6 +115,13 @@ function OrderForm({ cart }) {
 
         <InputDiv>
           <input type="hidden" name="form-name" value="Order Form" />
+
+          <input
+            type="hidden"
+            name="items"
+            ref={register}
+            value={formatCart(cart)}
+          />
 
           <div>
             <label htmlFor="name">Name</label>
@@ -353,4 +366,18 @@ function encode(data) {
   return Object.keys(data)
     .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
     .join("&");
+}
+
+function formatCart(cartItems) {
+  const formattedItems = Object.entries(cartItems).reduce(
+    (acc, [itemName, { count }]) => {
+      if (count > 0) {
+        acc[itemName.replace(/-/g, " ")] = `${count} order(s)`;
+      }
+      return acc;
+    },
+    {}
+  );
+
+  return JSON.stringify(formattedItems);
 }
