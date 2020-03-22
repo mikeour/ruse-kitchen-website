@@ -10,8 +10,8 @@ function OrderInfo({ options, cart, setCart }) {
     <Wrapper>
       <Text>
         {options.map(option => (
-          <ItemContainer>
-            <ItemWrapper key={option.title}>
+          <ItemContainer key={option.title}>
+            <ItemWrapper>
               <ItemName>{option.title}</ItemName>
               <ItemDescription>{option.description}</ItemDescription>
               <ItemPrice>${option.price}</ItemPrice>

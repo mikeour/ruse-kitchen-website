@@ -30,11 +30,8 @@ function OrderForm({ cart }) {
     const items = formatCart(cart);
 
     setValue("items", items);
-
-    const vals = getValues();
-
-    console.log({ vals });
-  }, [cart]);
+    setValue("subtotal", `${cartSubtotal} dollars`);
+  }, [cart.length]);
 
   return (
     <Wrapper>
@@ -61,7 +58,7 @@ function OrderForm({ cart }) {
             Object.entries(cart).map(
               ([itemName, { id, count, price }], index) => {
                 return (
-                  <AnimatePresence>
+                  <AnimatePresence key={id}>
                     {count > 0 && (
                       <ItemListingContainer
                         key={index}
@@ -121,6 +118,13 @@ function OrderForm({ cart }) {
             name="items"
             ref={register}
             value={formatCart(cart)}
+          />
+
+          <input
+            type="hidden"
+            name="subtotal"
+            ref={register}
+            value={`${cartSubtotal}`}
           />
 
           <div>
@@ -369,15 +373,14 @@ function encode(data) {
 }
 
 function formatCart(cartItems) {
-  const formattedItems = Object.entries(cartItems).reduce(
-    (acc, [itemName, { count }]) => {
+  const formattedItems = Object.entries(cartItems)
+    .reduce((acc, [itemName, { count }]) => {
       if (count > 0) {
-        acc[itemName.replace(/-/g, " ")] = `${count} order(s)`;
+        acc += `${itemName.replace(/-/g, " ")}, `.repeat(count);
       }
       return acc;
-    },
-    {}
-  );
+    }, "")
+    .trim();
 
-  return JSON.stringify(formattedItems);
+  return formattedItems;
 }
