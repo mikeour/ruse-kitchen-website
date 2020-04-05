@@ -1,8 +1,9 @@
 ---
-title: Pesto
+title: Harissa
 description: >-
-  Get our signature pesto sauce that we use on our steak wraps for your home!
-  Use it in pastas, brighten up sandwiches or use it as a marinade. This 16oz
-  jarred sauce does not disapoint! 
+  Do you love our gyros? Then you already love our harissa sauce. This roasted
+  red pepper sauce comes in a 12oz jar & is flavored with cumin and coriander
+  with just the right amount of zing. Use it everywhere! From sandwiches to
+  marinades, this sauce will be the secret to elevate your cooking! 
 price: '9'
 ---
