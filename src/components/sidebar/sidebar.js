@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
+import { css } from "@emotion/core";
 
 import { NavLink, ExpandingNavLinkMobile } from "../shared";
 import { useLockBodyScroll } from "../../hooks";

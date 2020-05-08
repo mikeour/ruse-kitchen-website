@@ -1,5 +1,5 @@
 [[redirects]]
   from = "/order"
   to = "https://order-ruse.myshopify.com"
-  status = 301
+  status = 200
   force = true
