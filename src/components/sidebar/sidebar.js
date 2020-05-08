@@ -14,18 +14,18 @@ const variants = {
       delay: 0.25,
       when: "beforeChildren",
       staggerChildren: 0.05,
-      duration: 0.5
-    }
-  }
+      duration: 0.5,
+    },
+  },
 };
 
 const item = {
   hidden: { y: 20, opacity: 0 },
-  show: { y: 0, opacity: 1 }
+  show: { y: 0, opacity: 1 },
 };
 
 function Sidebar({ setShowSidebar }) {
-  const handleClick = () => setShowSidebar(prevState => !prevState);
+  const handleClick = () => setShowSidebar((prevState) => !prevState);
 
   useLockBodyScroll();
 
@@ -58,6 +58,57 @@ function Sidebar({ setShowSidebar }) {
             );
           }
         })}
+        <NavLinkWrapper>
+          <motion.a
+            href="https://order-ruse.myshopify.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            css={css`
+              text-decoration: none;
+              color: var(--navlink);
+              position: relative;
+              padding: 0.25rem 0.5rem;
+              font-size: 1.5rem;
+              background-image: none;
+              text-shadow: none;
+              text-transform: uppercase;
+              font-weight: bold;
+              letter-spacing: 2px;
+
+              ${mq("small")} {
+                margin: 1rem 0;
+              }
+
+              :visited {
+                color: var(--navlink);
+              }
+
+              :before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background-color: var(--navlink-hover);
+                visibility: hidden;
+                transform: scaleX(0);
+                transition: all 0.3s ease-in-out 0s;
+              }
+
+              :hover:before {
+                visibility: visible;
+                transform: scaleX(1);
+              }
+
+              :hover {
+                color: var(--navlink-hover);
+              }
+            `}
+          >
+            Order
+          </motion.a>
+        </NavLinkWrapper>
       </LinksWrapper>
     </SidebarWrapper>
   );
@@ -97,11 +148,7 @@ const NavLinkWrapper = styled(motion.div)``;
 const links = [
   {
     to: "/",
-    name: "Home"
-  },
-  {
-    to: "/menu",
-    name: "Menu"
+    name: "Home",
   },
   {
     to: null,
@@ -109,13 +156,13 @@ const links = [
     additionalLinks: [
       {
         to: "/popups",
-        name: "Pop-up Events"
+        name: "Pop-up Events",
       },
       {
         to: "/partners",
-        name: "Partners"
-      }
-    ]
+        name: "Partners",
+      },
+    ],
   },
   {
     to: null,
@@ -123,16 +170,12 @@ const links = [
     additionalLinks: [
       {
         to: "/contact",
-        name: "General"
+        name: "General",
       },
       {
         to: "/business",
-        name: "Business"
-      }
-    ]
+        name: "Business",
+      },
+    ],
   },
-  {
-    to: "/order",
-    name: "Order"
-  }
 ];
