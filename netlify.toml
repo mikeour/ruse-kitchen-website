@@ -1,5 +1,11 @@
+[build]
+  publish = "public"
+
+[[plugins]]
+  package = "netlify-plugin-gatsby-cache"
+
 [[redirects]]
-  from = "/order"
+  from = "https://rusekitchen.com/order"
   to = "https://order-ruse.myshopify.com"
   status = 301
   force = true

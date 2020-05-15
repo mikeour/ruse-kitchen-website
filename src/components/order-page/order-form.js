@@ -6,7 +6,7 @@ import useForm from "react-hook-form";
 import { mq } from "@styles";
 
 function OrderForm({ cart }) {
-  const { register, handleSubmit, setValue, getValues } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
 
   const cartSubtotal = Object.values(cart).reduce((acc, curr) => {
     if (curr.count > 0) acc += curr.count * curr.price;
@@ -113,20 +113,6 @@ function OrderForm({ cart }) {
         <InputDiv>
           <input type="hidden" name="form-name" value="Order Form" />
 
-          <input
-            type="hidden"
-            name="items"
-            ref={register}
-            value={formatCart(cart)}
-          />
-
-          <input
-            type="hidden"
-            name="subtotal"
-            ref={register}
-            value={`${cartSubtotal}`}
-          />
-
           <div>
             <label htmlFor="name">Name</label>
             <input type="text" name="name" ref={register}></input>
@@ -167,7 +153,12 @@ function OrderForm({ cart }) {
           type="text"
           name="special-instructions"
           ref={register}
+          placeholder="Anything else you'd like us to know?"
         ></textarea>
+
+        <input type="hidden" name="items" ref={register} />
+
+        <input type="hidden" name="subtotal" ref={register} />
 
         <ButtonWrapper>
           <SubmitButton type="submit">Submit Order</SubmitButton>
