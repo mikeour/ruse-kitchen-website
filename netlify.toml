@@ -16,15 +16,3 @@
   status = 301
   force = true
 
-
-[[redirects]]
-  from = "https://rusekitchen.com/order"
-  to = "https://order-ruse.myshopify.com"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/order"
-  to = "https://order-ruse.myshopify.com"
-  status = 200
-  force = true
